@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.team05">
+
+    <uses-permission android:name="com.example.team05.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- changes 13.04.22 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher0"
+        android:label="Planner"
+        android:roundIcon="@mipmap/ic_launcher_round0"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Team05">
+        <activity
+            android:name=".ThingsToDo"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAHVJQxykBY31DrV2BZadqbtJkoyDaFVwA" />
+<!--            android:value="AIzaSyCz11KwOqI48pSIKmvSY5TR2YNAvaF9Yh4"-->
+<!--            />-->
+
+        <activity
+            android:name=".Welcome"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CastleScreen1"
+            android:label="Alnwick Castle"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Home" />
+        <activity
+            android:name=".CastleScreen2"
+            android:label="Auckland Castle"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CastleScreen3"
+            android:label="Barnard Castle"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CastleScreen4"
+            android:label="Bamburgh Castle"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Booking"
+            android:label="Booking"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BookOutbound"
+            android:label="Book Outbound Journey"
+            android:parentActivityName=".Booking" />
+        <activity
+            android:name=".BookReturn"
+            android:label="Book Return Journey"
+            android:parentActivityName=".BookOutbound" />
+        <activity
+            android:name=".ConfirmationPage"
+            android:label="Confirmation"
+            android:parentActivityName=".BookReturn" />
+        <activity
+            android:name=".More"
+            android:label="Recommend"
+            android:parentActivityName=".MainActivity" />
+    </application>
+
+</manifest>

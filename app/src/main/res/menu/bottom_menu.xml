@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/ic_home"
+        android:id="@+id/mainActivityNav"/>
+    <item android:title="Book"
+        android:icon="@drawable/ic_book"
+        android:id="@+id/bookingNav"/>
+    <item android:title="More"
+        android:icon="@drawable/ic_more"
+        android:id="@+id/moreNav"/>
+</menu>

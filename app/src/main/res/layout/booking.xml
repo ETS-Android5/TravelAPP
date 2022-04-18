@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="40dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="0dp"
+    android:background="#F4F9FA">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:menu="@menu/bottom_menu"
+        android:id="@+id/bottomNav"
+        />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination: "
+        android:id="@+id/castleText"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp" />
+
+    <Spinner
+        android:id="@+id/castleList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/castleText"
+        android:background="@drawable/rectangle"
+        android:gravity="center"
+        android:scrollbarSize="40dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quantity"
+        android:spinnerMode="dropdown"
+        android:scrollbarSize="40dp"
+        android:gravity="center"
+        android:layout_alignStart="@id/castleList"
+        android:layout_below="@id/castleList"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity: "
+        android:id="@+id/quantityText"
+        android:layout_below="@id/castleText"
+        android:textColor="@color/black"
+        android:layout_toLeftOf="@id/quantity"
+        android:layout_alignBaseline="@id/quantity"
+        android:textSize="25dp"/>
+
+
+    <TextView
+        android:id="@+id/date_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:gravity="center"
+        android:hint="Select Date"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_above="@id/bottomNav"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="95dp"
+        android:text="Get Times &amp; Tickets"
+        android:textSize="25dp" />
+
+
+
+
+</RelativeLayout>

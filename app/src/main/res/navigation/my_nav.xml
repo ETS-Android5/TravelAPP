@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/booking"
+        android:name="com.example.team05.Booking"
+        android:label="Booking" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.team05.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/castleScreen1"
+        android:name="com.example.team05.CastleScreen1"
+        android:label="CastleScreen1" />
+</navigation>
