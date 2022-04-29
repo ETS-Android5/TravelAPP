@@ -17,19 +17,18 @@
  *
  * - Google API/Introduction Pages
  * - updated by Qingbiao Song 03/04/2022
- * - Ruipeng (Dennis) completes Navmore button function the page jump 12/04/2022
+ * - Ruipeng (Dennis) Completes Navmore button function the page jump 12/04/2022
+ *
+ * - Ruipeng (Dennis) Add website jump function on the castle information page 23/04/2022
  *
  * **/
 
 package com.example.team05;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -38,6 +37,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,7 +55,6 @@ public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallba
 
     private GoogleMap mMap;
 
-    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +105,6 @@ public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallba
         TextView price = (TextView) findViewById(R.id.price);
         price.setText("Student: £15.75");
 
-
         //set action bar
         ActionBar bar = getSupportActionBar();
         if(bar!=null){
@@ -133,6 +134,17 @@ public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallba
                 "It is a Grade I listed building and as of 2012 received over 800,000 visitors per year when combined with adjacent attraction The Alnwick Garden.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set visit Website button
+        Button button = findViewById(R.id.WebSite);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.alnwickcastle.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         //set Book button
         Button book = (Button) findViewById(R.id.BookCastle);

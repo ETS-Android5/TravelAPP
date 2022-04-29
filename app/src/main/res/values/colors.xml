@@ -12,7 +12,41 @@
     <color name="dark_blue">#3B5998</color>
     <color name="brown">#FF682828</color>
 
-    /*Main page color*/
-    <color name="main_bule">#FFE6F2F4</color>
+    /***********************************************/
+    <color name="line_yellow">#FFF3CF12</color>
+    <color name="payment_page_line">#FFC5C5C5</color>
+
+    /*welcome page*/
+    <color name="title_orange">#FFFFA300</color>
+    <color name="text_white">#FFFFFFFF</color>
+    <color name="locating_point_white">#CCFFFFFF</color>
+
+    /*Main page*/
+    <color name="main_blue">#FFE6F2F4</color>
+
+    /*Castle Information page*/
+    <color name="button_blue">#FF3B5998</color>
+    <color name="button_text_blue">#FFDFF3F9</color>
+
+    /*Book Outbound Journey Page*/
+    <color name="back_black">#FF000000</color>
+    <color name="back_white">#FFFFFFFF</color>
+    <color name="title_background_blue">#FF12519A</color>
+    <color name="timetable_blue">#FFD9E5FC</color>
+    <color name="legs_grey">#FF7F89AD</color>
+    <color name="type_box_blue">#FF4098D7</color>
+
+    /*to do page*/
+    <color name="todo_left_background">#FFAFC0CA</color>
+    <color name="todo_right_background">#30BDBF67</color>
+
+    /*ic button*/
+    <color name="ic_color">#FF6540F5</color>
+
+    /*successful page*/
+    <color name="success_color">#FF81E3D7</color>
+
+    /*Failed page*/
+    <color name="failed_color">#FFFF83A1</color>
 
 </resources>

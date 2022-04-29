@@ -4,42 +4,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="50dp"
-    android:layout_marginTop="20dp">
+    android:background="#c0c0c0"
+    >
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/bottomNav"
+            android:layout_width="500dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/Layout"
             android:layout_alignParentBottom="true"
             android:background="@color/white"
-            app:menu="@menu/bottom_menu"
-            android:id="@+id/bottomNav"
-            />
+            app:menu="@menu/bottom_menu" />
 
         <RelativeLayout
+            android:id="@+id/Layout"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:gravity="center">
+            android:layout_height="620dp"
+            android:gravity="center"
+            android:padding="20dp">
+
+
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/confir"
                     android:gravity="center"
                     android:text="TextView"
-                    android:textSize="20dp"
-                    android:lineHeight="25dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="28dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/confir"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="28dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView2"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/confir"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="28dp" />
+
+                <RelativeLayout
+                    android:id="@+id/paylayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView3"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/confir"
+                    android:gravity="center"
+                    android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            android:text="To pay:"
+                            android:textColor="@color/black"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="80dp"
+                            android:layout_toRightOf="@id/textView4"
+                            android:gravity="left"
+                            android:text="price"
+                            android:textColor="@color/black"
+                            android:textSize="25dp" />
+                </RelativeLayout>
 
                 <Button
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView"
-                    android:layout_marginTop="100dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/paylayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="70dp"
                     android:background="@drawable/buttom_radius"
-                    android:gravity="center"
-                    android:text="Confirmed"
-                    android:layout_centerHorizontal="true"/>
+                    android:text="Payment" />
         </RelativeLayout>
+
+
 
 
 

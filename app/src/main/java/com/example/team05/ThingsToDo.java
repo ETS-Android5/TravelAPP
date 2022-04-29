@@ -23,6 +23,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.method.ScrollingMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,16 +46,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, LocationListener, OnMapReadyCallback {
+public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     Location mLocation;
     TextView latLng;
@@ -75,6 +80,28 @@ public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.Co
     public static GoogleMap mMap;
 
     Spinner mySpinner;
+
+    //Defines list view
+//    ScrollView sv;
+
+    static String markerInfo;
+
+    public static String placeName;
+    public static String placeUrl;
+    public static String placePhoneNo;
+    public static String placeRating;
+
+    private TextView placeNameTV;
+    private static WeakReference<TextView> weakTVRefPlaceName;
+    private TextView placeURLTV;
+    private static WeakReference<TextView> weakTVRefURL;
+    private TextView placePhoneTV;
+    private static WeakReference<TextView> weakTVRefphone;
+    private TextView placeRatingTV;
+    private static WeakReference<TextView> weakTVRefRating;
+
+
+    private static ArrayList<String> list= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,7 +185,7 @@ public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.Co
             String Restaurant = "restaurant";
             @Override
             public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
+                Log.d("onClick", String.valueOf(latitude));
                 mMap.clear();
                 String url = getUrl(latitude, longitude, Restaurant);
                 Log.d("onClick", url);
@@ -170,6 +197,42 @@ public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.Co
                 Toast.makeText(ThingsToDo.this,"Nearby Restaurants", Toast.LENGTH_LONG).show();
             }
         });
+
+        //Button initialises search for nearby supermarkets
+        Button btnSupermarket = (Button) findViewById(R.id.btnSupermarket);
+        btnSupermarket.setOnClickListener(new View.OnClickListener() {
+            String Supermarket = "supermarket";
+            @Override
+            public void onClick(View v) {
+                Log.d("onClick", String.valueOf(latitude));
+                mMap.clear();
+                String url = getUrl(latitude, longitude, Supermarket);
+                Log.d("onClick", url);
+                Object[] DataTransfer = new Object[2];
+                DataTransfer[0] = mMap;
+                DataTransfer[1] = url;
+                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+                getNearbyPlacesData.execute(DataTransfer);
+                Toast.makeText(ThingsToDo.this,"Nearby Supermarkets", Toast.LENGTH_LONG).show();
+            }
+        });
+
+//        sv = (ScrollView) findViewById((R.id.places_list));
+
+        // List Adapter for format
+//        PlaceAdapter adapter = new PlaceAdapter(this, R.layout.places_list_adapter, list);
+
+        placeNameTV = findViewById(R.id.PlaceName);
+        weakTVRefPlaceName = new WeakReference<>(placeNameTV);
+
+        placeURLTV = findViewById(R.id.PlaceUrl);
+        weakTVRefURL = new WeakReference<>(placeURLTV);
+
+        placePhoneTV = findViewById(R.id.PlacePhone);
+        weakTVRefphone = new WeakReference<>(placePhoneTV);
+
+        placeRatingTV = findViewById(R.id.PlaceRating);
+        weakTVRefRating = new WeakReference<>(placeRatingTV);
     }
 
     //Finds URL to request from google maps API based on lat,long
@@ -369,6 +432,8 @@ public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.Co
         Log.d("Test","Latitude = "+latitude+" Longitude = "+longitude);
         mMap.addMarker(new MarkerOptions().position(Current_Position).title("Current Position"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+
+        googleMap.setOnMarkerClickListener(this);
     }
 
     //sets new location based on spinner
@@ -420,22 +485,102 @@ public class ThingsToDo extends AppCompatActivity  implements GoogleApiClient.Co
 
     //Adds nearby places to map
     public static void ShowNearbyPlaces(List<HashMap<String, String>> nearbyPlacesList) {
+        list.removeAll(list);
+
         for (int i = 0; i < nearbyPlacesList.size(); i++) {
             Log.d("onPostExecute","Entered into showing locations");
             MarkerOptions markerOptions = new MarkerOptions();
             HashMap<String, String> googlePlace = nearbyPlacesList.get(i);
             String placeName = googlePlace.get("place_name");
+
+            int placeIDPos = Integer.parseInt(googlePlace.get("placeIDPos"));
+
+
+//            Log.d("Test",rating+" rating added in");
+//            Log.d("Test",phoneNo+" phoneNo added in");
+            Log.d("Test",placeName+" placeName added in MATCHES WITH");
+            Log.d("Test",placeIDPos+" placeID ");
+            Log.d("Test", "This: "+DataParser.placeIDs.get(placeIDPos));
+
             String vicinity = googlePlace.get("vicinity");
             LatLng latLng = new LatLng(Double.parseDouble(googlePlace.get("lat")), Double.parseDouble(googlePlace.get("lng")));
             Log.d("onPostExecute","Latlng = "+latitude+", "+longitude);
             markerOptions.position(latLng);
             markerOptions.title(placeName + " : " + vicinity);
-            mMap.addMarker(markerOptions);
+
+            mMap.addMarker(markerOptions).setTag(placeIDPos);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
             //move map camera
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            Log.d("onPostExecute",placeName);
         }
+
+
+
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+
+        Log.d("Test",marker.getTitle());
+        Log.d("Test",marker.getId());
+        Log.d("Test", String.valueOf(marker.getTag()));
+        String placeID = DataParser.placeIDs.get(marker.getTag());
+        Log.d("Test","On marker click placeID = "+DataParser.placeIDs.get(marker.getTag()));
+
+        //add more fields here
+        String url ="https://maps.googleapis.com/maps/api/place/details/json?place_id="+placeID+"&fields=name,website,formatted_phone_number,rating&key=AIzaSyAHVJQxykBY31DrV2BZadqbtJkoyDaFVwA";
+        Object[] DataTransfer = new Object[1];
+        DataTransfer[0] = url;
+        GetPlaceData getPlaceData = new GetPlaceData();
+        getPlaceData.execute(DataTransfer);
+
+        Log.d("Test",Thread.currentThread().getName());
+//        try {
+//            getPlaceData.wait(10);
+////            getPlaceData.notify();
+//            Log.d("Test",getPlaceData.getStatus().toString());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+
+
+        return false;
+    }
+
+
+    public static void showPlaceInfo(){
+
+
+        if(placeName.equals("null") || placeName==null){
+            weakTVRefPlaceName.get().setText("Name not available");
+        }else{
+            weakTVRefPlaceName.get().setText(placeName);
+        }
+
+        if(placeUrl.equals("null") || placeUrl==null){
+            weakTVRefURL.get().setText("URL not available");
+        }else{
+            weakTVRefURL.get().setText(placeUrl);
+        }
+
+        if(placePhoneNo.equals("null") || placePhoneNo==null){
+            weakTVRefphone.get().setText("Phone Number not available");
+        }else{
+            weakTVRefphone.get().setText(placePhoneNo);
+        }
+
+        if(placeRating.equals("null") || placeRating==null){
+            weakTVRefRating.get().setText("Rating not available");
+        }else{
+            weakTVRefRating.get().setText(placeRating);
+        }
+
+
+
+
     }
 
 }

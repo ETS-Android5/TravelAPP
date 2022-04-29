@@ -31,61 +31,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/buttonLocation"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:background="@color/main_bule"
-                android:text="Location" />
-
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/buttonLocation"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Welcome to Newcastle \nCastle Planner"
                 android:textColor="@color/black"
                 android:textSize="30dp"/>
 
-            <TextView
-                android:id="@+id/castleCards"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textTitle"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Castle Cards"
-                android:textColor="@color/black"
-                android:textSize="20dp"/>
-
 
             <ImageButton
                 android:id="@+id/topImage"
-                android:layout_width="340dp"
-                android:layout_height="320dp"
-                android:layout_below="@id/castleCards"
+                android:layout_width="310dp"
+                android:layout_height="310dp"
+                android:layout_below="@id/textTitle"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/radius"
-                />
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:background="@drawable/radius" />
 
             <TextView
                 android:id="@+id/alnwickTitle"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_below="@id/topImage"
+                android:layout_marginBottom="10dp"
                 android:text="Alnwick Castle"
+                android:typeface="monospace"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:translationY="-150dp"
-                android:translationX="60dp"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationX="60dp"
+                android:translationY="-150dp" />
 
             <Button
                 android:id="@+id/BookAlnwick"
@@ -105,9 +84,12 @@
 
             <ImageButton
                 android:id="@+id/secondImage"
-                android:layout_width="340dp"
-                android:layout_height="320dp"
+                android:layout_width="310dp"
+                android:layout_height="310dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
                 android:layout_centerHorizontal="true"
+                android:background="@drawable/radius"
                 android:layout_below="@id/aucklandTitle"/>
 
             <TextView
@@ -116,6 +98,7 @@
                 android:id="@+id/aucklandTitle"
                 android:text="Auckland Castle"
                 android:textSize="25sp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
@@ -140,8 +123,11 @@
 
             <ImageButton
                 android:id="@+id/thirdImage"
-                android:layout_width="340dp"
-                android:layout_height="320dp"
+                android:layout_width="310dp"
+                android:layout_height="310dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:background="@drawable/radius"
                 android:layout_below="@id/BarnardTitle"
                 android:layout_centerHorizontal="true"
                 android:translationY="-40dp" />
@@ -153,6 +139,7 @@
                 android:layout_below="@id/BookAuckland"
                 android:layout_marginBottom="10dp"
                 android:text="Barnard Castle"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:translationX="60dp"
@@ -174,8 +161,11 @@
 
             <ImageButton
                 android:id="@+id/fourthImage"
-                android:layout_width="340dp"
-                android:layout_height="320dp"
+                android:layout_width="310dp"
+                android:layout_height="310dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:background="@drawable/radius"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/bamburghTitle"
                 android:translationY="-70dp"/>
@@ -189,6 +179,7 @@
                 android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:text="Bamburgh Castle"
+                android:textStyle="bold"
                 android:translationY="160dp"
                 android:translationX="60dp"/>
 
@@ -204,6 +195,15 @@
                 android:textColor="@color/dark_blue"
                 android:translationX="260dp"
                 android:translationY="-145dp" />
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="320dp"
+                android:layout_height="320dp"
+                android:layout_marginBottom="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/fourthImage" />
 
 
 

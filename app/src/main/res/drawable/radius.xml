@@ -4,6 +4,7 @@
 
     <!-- Fillet radius of rectangle -->
     <corners android:radius="15dip" />
+    <!--<solid android:color="@color/button_blue"/>-->
 
 </shape>
 

@@ -20,8 +20,7 @@
         />
 
 
-
-
+<!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,40 +29,60 @@
         android:textSize="25dp"
         android:textColor="@color/black"
         android:layout_marginTop="10dp" />
+        -->
+
+
+    <!--delete android:layout_toRightOf="@id/castleText"-->
+
+    <!--quantity delete android:layout_alignStart="@id/castleList"-->
 
     <Spinner
         android:id="@+id/castleList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/castleText"
+
         android:background="@drawable/rectangle"
         android:gravity="center"
+        android:hint="Castle"
         android:scrollbarSize="40dp"
         android:spinnerMode="dropdown"
         android:textAlignment="center" />
 
     <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/quantity"
-        android:spinnerMode="dropdown"
-        android:scrollbarSize="40dp"
-        android:gravity="center"
-        android:layout_alignStart="@id/castleList"
-        android:layout_below="@id/castleList"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_input"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="160dp"
         android:background="@drawable/rectangle"
-        android:layout_marginTop="20dp"/>
+        android:gravity="center"
+        android:scrollbarSize="40dp"
+        android:spinnerMode="dropdown" />
 
+    <!--delete android:layout_below="@id/castleText"-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quantity: "
         android:id="@+id/quantityText"
-        android:layout_below="@id/castleText"
+
         android:textColor="@color/black"
-        android:layout_toLeftOf="@id/quantity"
         android:layout_alignBaseline="@id/quantity"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ticket Price: "
+        android:id="@+id/priceText"
+        android:layout_below="@id/quantityText"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
         android:textSize="25dp"/>
 
 
@@ -71,7 +90,7 @@
         android:id="@+id/date_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/quantity"
+        android:layout_below="@id/castleList"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
@@ -83,8 +102,10 @@
 
     <Button
         android:id="@+id/search_button"
-        android:layout_width="320dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:background="@drawable/radius"
+        android:textColor="@color/button_text_blue"
         android:layout_above="@id/bottomNav"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="95dp"

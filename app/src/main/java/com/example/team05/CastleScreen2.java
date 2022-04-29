@@ -16,6 +16,8 @@
  * - updated by Qingbiao Song 03/04/2022
  *
  * - Ruipeng (Dennis) completes Navmore button function the page jump 12/04/2022
+ *
+ * - Ruipeng (Dennis) Add website jump function on the castle information page 23/04/2022
  * **/
 
 package com.example.team05;
@@ -26,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -124,6 +127,17 @@ public class CastleScreen2 extends AppCompatActivity implements OnMapReadyCallba
                 "In 1832, this castle replaced Durham Castle as the official residence of the Bishops of Durham.It is now a tourist attraction, but still houses the Bishop's offices; the Castle is a Grade I listed building.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set visit Website button
+        Button button = findViewById(R.id.WebSite);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://aucklandproject.org/venues/auckland-castle/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         //set Book button
         Button book = (Button) findViewById(R.id.BookCastle);

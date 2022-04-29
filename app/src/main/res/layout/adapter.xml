@@ -67,11 +67,4 @@
             android:textAlignment="textEnd" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/info_btn"
-        android:layout_width="40dp"
-        android:layout_height="59dp"
-        android:icon="@drawable/ic_baseline_info_24"
-        android:gravity="center"></Button>
-
 </LinearLayout>

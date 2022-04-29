@@ -13,9 +13,6 @@
 
 package com.example.team05;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,25 +21,22 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class BookOutbound extends AppCompatActivity {
@@ -50,21 +44,29 @@ public class BookOutbound extends AppCompatActivity {
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
 
-    //method to change number value in database to money
-    public String money(String s) {
-        String str;
-        str = "£" + s.charAt(0) + "." + s.charAt(1) + s.charAt(2);
-        return str;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_outbound);
         Intent incomingIntent = getIntent();
+
+        //All incoming intents
         String castleName = incomingIntent.getStringExtra("Castle");
-        String castleNameShortened = castleName.substring(0, castleName.length() - 7);
+        String quantity = incomingIntent.getStringExtra("quantity");
         int currentTime = incomingIntent.getIntExtra("CurrentTime", 0);
+        String dayName = incomingIntent.getStringExtra("DayName");
+        String currentDate = incomingIntent.getStringExtra("currentDate"); //current date
+        String searchedDate = incomingIntent.getStringExtra("selectedDate"); //searched date
+
+        //turns dayName into dayType (Weekday/Saturday/Sunday)
+        if (dayName.equals("Monday") || dayName.equals("Tuesday") || dayName.equals("Wednesday") || dayName.equals("Thursday") || dayName.equals("Friday") || dayName.equals("Weekday")) {
+            dayName = "Weekday";
+        }
+        //finalDayName required for intent
+        String finalDayName = dayName;
+
+        //turns castleName into castleName without 'Castle'
+        String castleNameShortened = castleName.substring(0, castleName.length() - 7);
 
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
@@ -92,10 +94,6 @@ public class BookOutbound extends AppCompatActivity {
             }
         });
 
-        // extra info button
-        Button info_btn = (Button) findViewById(R.id.info_btn);
-
-
         //Defines list view
         ListView lv = (ListView) findViewById(R.id.lv1);
 
@@ -105,33 +103,18 @@ public class BookOutbound extends AppCompatActivity {
         // List Adapter for format
         JourneyAdapter adapter = new JourneyAdapter(this, R.layout.adapter, list);
 
-        //gets day number from previous page.
-        String dayName = incomingIntent.getStringExtra("DayName");
-//        Log.d(TAG, String.valueOf(dayName));
-//        Log.d(TAG, castleNameShortened);
-        if (dayName.equals("Monday") || dayName.equals("Tuesday") || dayName.equals("Wednesday") || dayName.equals("Thursday") || dayName.equals("Friday") || dayName.equals("Weekday")) {
-            dayName = "Weekday";
-        }
-
         //Loads instance of FireBase
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-
-        //sort out issue of not showing times past current on any day
-        String currentDate = incomingIntent.getStringExtra("currentDate"); //current date
-        String searchedDate = incomingIntent.getStringExtra("selectedDate"); //searched date
-        //Legacy collectionReference incase query type does not work
-//        CollectionReference collectionReference = fStore.collection("/DepartureDays/"+dayName+"/Castles/"+castleNameShortened+"/OutboundBuses/");
-
+        //Conditional collection reference based on if selected date is current date
         Query collectionReference = null;
-        // Query collection reference that searches only for bus times after current time
         if (currentDate.equalsIgnoreCase(searchedDate)) { //only display times after current if the day searched is today
             collectionReference = fStore.collection("/DepartureDays/" + dayName + "/Castles/" + castleNameShortened + "/OutboundBuses/").whereGreaterThan("Leg1DepartureTime", currentTime);
         } else {
             collectionReference = fStore.collection("/DepartureDays/" + dayName + "/Castles/" + castleNameShortened + "/OutboundBuses/");
         }
-        String finalDayName = dayName;
+
         collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -142,17 +125,18 @@ public class BookOutbound extends AppCompatActivity {
                         //legs as int for required logic
                         int legsNumber = Integer.parseInt(String.valueOf(document.getData().get("Legs")));
 
-                        //return values from database as Strings
-                        String leg = "Legs: " + String.valueOf(document.getData().get("Legs"));
+                        //return values from database as Strings, to be passed to intent
+                        String LegsInfo = "Legs: " + String.valueOf(document.getData().get("Legs"));
                         String arrivalTime = null;
-
                         String departureT1 = String.valueOf(document.getData().get("Leg1DepartureTime"));
                         String arrivalT1 = String.valueOf(document.getData().get("Leg1ArrivalTime"));
                         String departureT2 = null;
                         String arrivalT2 = null;
                         String departureT3 = null;
                         String arrivalT3 = null;
+                        String price = money(String.valueOf(document.getData().get("TicketPrice")));
 
+                        //returns additional info when multiple legs
                         if (legsNumber > 1) {
                             departureT2 = String.valueOf(document.getData().get("Leg2DepartureTime"));
                             arrivalT2 = String.valueOf(document.getData().get("Leg2ArrivalTime"));
@@ -161,20 +145,19 @@ public class BookOutbound extends AppCompatActivity {
                                 arrivalT3 = String.valueOf(document.getData().get("Leg3ArrivalTime"));
                             }
                         }
-                        String price = money(String.valueOf(document.getData().get("TicketPrice")));
 
-                        //cases for number of legs
+                        //Creates journey objects to be used in list
                         if (legsNumber == 1) {
                             arrivalTime = arrivalT1;
-                            list.add(new Journey(departureT1, arrivalT1, price, leg));
+                            list.add(new Journey(departureT1, arrivalT1, price, LegsInfo));
                         }
                         if (legsNumber == 2) {
                             arrivalTime = arrivalT2;
-                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, price, leg));
+                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, price, LegsInfo));
                         }
                         if (legsNumber == 3) {
                             arrivalTime = arrivalT3;
-                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, leg));
+                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, LegsInfo));
                         }
 
                         // create listener for when user clicks on desired trip
@@ -194,6 +177,9 @@ public class BookOutbound extends AppCompatActivity {
                                 intent.putExtra("outPrice", price); //retains price
                                 intent.putExtra("Castle", castleNameShortened); //retains castle searched
                                 intent.putExtra("DayName", finalDayName); //retains day type
+                                intent.putExtra("legsNumber",legsNumber); //retains no. legs
+                                intent.putExtra("searchedDate",searchedDate);
+                                intent.putExtra("quantity",quantity);
 
 
                                 //retains additional information if multiple legs:
@@ -226,6 +212,13 @@ public class BookOutbound extends AppCompatActivity {
         });
 
 
+    }
+
+    //method to change number value in database to money
+    public String money(String s) {
+        String str;
+        str = "£" + s.charAt(0) + "." + s.charAt(1) + s.charAt(2);
+        return str;
     }
 
     //error for no journeys

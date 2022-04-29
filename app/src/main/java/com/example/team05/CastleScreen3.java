@@ -16,6 +16,8 @@
  *updated by Qingbiao Song 03/04/2022
  *
  * - Ruipeng (Dennis) completes Navmore button function the page jump 12/04/2022
+ *
+ * - Ruipeng (Dennis) Add website jump function on the castle information page 23/04/2022
  * **/
 
 package com.example.team05;
@@ -25,6 +27,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -123,6 +126,17 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
                 + "It sits on the opposite bank to Startforth and is 21 miles (34 km) south-west of the county town of Durham. Nearby towns include Bishop Auckland to the north-east, Darlington to the east and Richmond in North Yorkshire to the south-east. The largest employer is GlaxoSmithKline, with a manufacturing facility on the town's outskirts.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set visit Website button
+        Button button = findViewById(R.id.WebSite);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.english-heritage.org.uk/visit/places/barnard-castle/?utm_source=Google%20Business&utm_campaign=Local%20Listings&utm_medium=Google%20Business%20Profiles&utm_content=barnard%20castle");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         //set Book button
         Button book = (Button) findViewById(R.id.BookCastle);
