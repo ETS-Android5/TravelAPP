@@ -47,7 +47,7 @@ public class JourneyAdapter extends ArrayAdapter<Journey> {
         journeyTime = setJourneyTime(departT, arrivalT);
 
         String price = getItem(position).getPrice();
-        String totalT = getItem(position).getTotalT();
+        String legs = getItem(position).getLegs();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
@@ -61,7 +61,7 @@ public class JourneyAdapter extends ArrayAdapter<Journey> {
         tvDep.setText(journeyStartFinish);
         tvJourneyTime.setText(journeyTime);
         tvPri.setText(price);
-        tvTot.setText(totalT);
+        tvTot.setText("Legs: " + legs);
 
         //debugging
 //        Log.d(TAG,"Position is "+position+", depTime = "+departT+", arrTime = "+ArrivalT);

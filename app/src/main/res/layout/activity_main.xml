@@ -36,10 +36,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/abhaya_libre"
                 android:text="Welcome to Newcastle \nCastle Planner"
                 android:textColor="@color/black"
-                android:textSize="30dp"/>
+                android:shadowRadius="8"
+                android:shadowColor="@color/legs_grey"
+                android:shadowDx="0"
+                android:shadowDy="10"
+                android:textSize="30sp" />
 
 
             <ImageButton
@@ -50,7 +55,8 @@
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:background="@drawable/radius" />
+                android:background="@drawable/radius"
+                android:translationY="30dp" />
 
             <TextView
                 android:id="@+id/alnwickTitle"
@@ -58,79 +64,103 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topImage"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Alnwick Castle"
-                android:typeface="monospace"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 android:translationX="60dp"
-                android:translationY="-150dp" />
+                android:translationY="-90dp" />
+
+
+            <View
+                android:id="@+id/viewline"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:background="@color/line_yellow"
+                android:layout_below="@id/alnwickTitle"
+                android:layout_alignParentStart="true"
+                android:translationX="60dp"
+                android:translationY="-95dp" />
 
             <Button
                 android:id="@+id/BookAlnwick"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/topImage"
-                android:layout_marginTop="-52dp"
-                android:translationX="260dp"
-                android:translationY="-25dp"
-                android:text="Book"
-                android:textSize="20dp"
-                android:textAllCaps="false"
+                android:layout_marginTop="-20dp"
                 android:background="@drawable/home_button"
-                android:textColor="@color/dark_blue"/>
-
+                android:fontFamily="@font/alata"
+                android:text="Book"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/dark_blue"
+                android:textSize="18dp"
+                android:translationX="250dp"
+                android:translationY="-25dp" />
 
 
             <ImageButton
                 android:id="@+id/secondImage"
                 android:layout_width="310dp"
                 android:layout_height="310dp"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
+                android:layout_below="@id/aucklandTitle"
                 android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
                 android:background="@drawable/radius"
-                android:layout_below="@id/aucklandTitle"/>
+                android:scaleType="fitXY"
+                android:translationY="10dp" />
 
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/aucklandTitle"
                 android:text="Auckland Castle"
-                android:textSize="25sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:translationY="220dp"
+                android:translationY="250dp"
                 android:translationX="60dp"
                 android:layout_below="@id/BookAlnwick"/>
+
+            <View
+                android:id="@+id/viewline2"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:background="@color/line_yellow"
+                android:layout_below="@id/aucklandTitle"
+                android:layout_alignParentStart="true"
+                android:translationX="60dp"
+                android:translationY="245dp" />
 
             <Button
                 android:id="@+id/BookAuckland"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/secondImage"
                 android:text="Book"
-                android:textSize="20dp"
+                android:fontFamily="@font/alata"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:background="@drawable/home_button"
                 android:textColor="@color/dark_blue"
-                android:translationX="260dp"
-                android:translationY="-75dp" />
-
+                android:translationX="250dp"
+                android:translationY="-50dp" />
 
 
             <ImageButton
                 android:id="@+id/thirdImage"
                 android:layout_width="310dp"
                 android:layout_height="310dp"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
-                android:background="@drawable/radius"
                 android:layout_below="@id/BarnardTitle"
                 android:layout_centerHorizontal="true"
-                android:translationY="-40dp" />
+                android:adjustViewBounds="true"
+                android:background="@drawable/radius"
+                android:scaleType="fitXY"
+                android:translationY="-20dp" />
 
             <TextView
                 android:id="@+id/BarnardTitle"
@@ -139,23 +169,36 @@
                 android:layout_below="@id/BookAuckland"
                 android:layout_marginBottom="10dp"
                 android:text="Barnard Castle"
+                android:fontFamily="@font/montserrat_bold"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:translationX="60dp"
-                android:translationY="180dp" />
+                android:translationY="210dp" />
+
+            <View
+                android:id="@+id/viewline3"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:background="@color/line_yellow"
+                android:layout_below="@id/BarnardTitle"
+                android:layout_alignParentStart="true"
+                android:translationX="60dp"
+                android:translationY="205dp" />
 
             <Button
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:id="@+id/BookBarnard"
                 android:text="Book"
-                android:textSize="20dp"
+                android:fontFamily="@font/alata"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:background="@drawable/home_button"
                 android:textColor="@color/dark_blue"
-                android:translationX="260dp"
-                android:translationY="-115dp"
+                android:translationX="250dp"
+                android:translationY="-85dp"
                 android:layout_below="@id/thirdImage" />
 
 
@@ -168,44 +211,69 @@
                 android:background="@drawable/radius"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/bamburghTitle"
-                android:translationY="-70dp"/>
+                android:translationY="-50dp"/>
 
             <TextView
                 android:id="@+id/bamburghTitle"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/BookBarnard"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:text="Bamburgh Castle"
+                android:fontFamily="@font/montserrat_bold"
                 android:textStyle="bold"
-                android:translationY="160dp"
+                android:translationY="175dp"
                 android:translationX="60dp"/>
+
+            <View
+                android:id="@+id/viewline4"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:background="@color/line_yellow"
+                android:layout_below="@id/bamburghTitle"
+                android:layout_alignParentStart="true"
+                android:translationX="60dp"
+                android:translationY="165dp" />
 
             <Button
                 android:id="@+id/BookBamburgh"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/fourthImage"
                 android:text="Book"
-                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alata"
+                android:textSize="18dp"
                 android:textAllCaps="false"
                 android:background="@drawable/home_button"
                 android:textColor="@color/dark_blue"
-                android:translationX="260dp"
-                android:translationY="-145dp" />
+                android:translationX="250dp"
+                android:translationY="-115dp" />
+
+            <TextView
+                android:id="@+id/maptitle"
+                android:layout_below="@+id/fourthImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="50dp"
+                android:fontFamily="@font/abhaya_libre"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Castle Locations" />
 
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="320dp"
-                android:layout_height="320dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_marginBottom="80dp"
+                android:translationY="15dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/fourthImage" />
-
-
+                android:layout_below="@id/maptitle" />
 
 
         </RelativeLayout>

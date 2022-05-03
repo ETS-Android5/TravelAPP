@@ -3,7 +3,7 @@
     android:shape="rectangle" >
 
     <!-- Fillet radius of rectangle -->
-    <corners android:radius="15dip" />
+    <corners android:radius="45dip" />
     <solid android:color="@color/transparent_white"/>
 
 </shape>

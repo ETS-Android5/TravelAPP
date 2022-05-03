@@ -94,25 +94,26 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
         TextView sun2 = (TextView) findViewById(R.id.sun2);
         sun2.setText("5:00pm");
 
+        TextView castleName = (TextView) findViewById(R.id.castleName);
+        castleName.setText("Barnard Castle");
+
+        //back button
+        Button back_btn = (Button) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CastleScreen3.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //set price
         TextView price = (TextView) findViewById(R.id.price);
         price.setText("Student: £8.10");
 
         //set action bar
         ActionBar bar = getSupportActionBar();
-        if(bar!=null){
-            TextView tv = new TextView(getApplicationContext());
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.MATCH_PARENT, // Width of TextView
-                    RelativeLayout.LayoutParams.WRAP_CONTENT); // Height of TextView
-            tv.setLayoutParams(lp);
-            tv.setText(bar.getTitle());
-            tv.setTextColor(Color.WHITE);
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-            bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            bar.setCustomView(tv);
-            bar.setDisplayHomeAsUpEnabled(true);
-        }
+        bar.hide();
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
@@ -151,6 +152,7 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
 
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
+        bottomNavBar.getMenu().setGroupCheckable(0,false,true);
         bottomNavBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

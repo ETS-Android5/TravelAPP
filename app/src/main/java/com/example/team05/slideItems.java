@@ -10,12 +10,20 @@ package com.example.team05;
 
 public class slideItems {
 
-    private int featured_image;
-    public slideItems(int hero) {
-        this.featured_image = hero;
+    private int image;
+    private String caption;
+
+
+    public slideItems(int image, String caption) {
+        this.image = image;
+        this.caption = caption;
     }
 
     public int getFeatured_image() {
-        return featured_image;
+        return image;
+    }
+
+    public String getCaption() {
+        return caption;
     }
 }

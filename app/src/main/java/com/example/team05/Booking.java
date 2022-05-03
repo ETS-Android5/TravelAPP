@@ -75,6 +75,7 @@ public class Booking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking);
 
+
         //Sets display date to current date
         displayDate = (TextView) findViewById(R.id.date_input);
         resetDate();
@@ -89,18 +90,7 @@ public class Booking extends AppCompatActivity {
 
         // set action bar
         ActionBar bar = getSupportActionBar();
-        if(bar!=null){
-            TextView tv = new TextView(getApplicationContext());
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.MATCH_PARENT, // Width of TextView
-                    RelativeLayout.LayoutParams.WRAP_CONTENT); // Height of TextView
-            tv.setLayoutParams(lp);
-            tv.setText(bar.getTitle());
-            tv.setTextColor(Color.WHITE);
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-            bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            bar.setCustomView(tv);
-        }
+        bar.hide();
 
         //region //create spinner with ticket quantities
         //value must be between 1 and 5
@@ -158,13 +148,27 @@ public class Booking extends AppCompatActivity {
         //date listener. Checks if before or after current date and time
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int day, int month, int year) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                String date = year + "/" + month + "/" + day;
-                String selectedDate = String.valueOf(day) + String.valueOf(month) + String.valueOf(year);
+                String monthNew = null;
+                String dayNew = null;
+
+                if(day<10){
+                    dayNew = "0"+day;
+                }else{
+                    dayNew = String.valueOf(day);
+                }
+
+                if(month<10){
+                    monthNew = "0"+month;
+                }else{
+                    monthNew = String.valueOf(month);
+                }
+                String date = dayNew + "/"+monthNew+"/" + year;
 
                 Log.d(TAG, String.valueOf(day));
-                //Corrects problem with finding date
+
+                //Corrects problem with finding day
                 SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
                 Calendar calendar = new GregorianCalendar(datePicker.getYear(),datePicker.getMonth(),datePicker.getDayOfMonth(),0,0,0);
                 selectedDay = sdf.format(calendar.getTime());
@@ -202,13 +206,13 @@ public class Booking extends AppCompatActivity {
                 intent.putExtra("currentDate", currentDate);
                 intent.putExtra("selectedDate", displayDate.getText());
                 intent.putExtra("quantity",quantity);
-                System.out.println(quantity);
                 startActivity(intent);
             }
         });
 
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
+        bottomNavBar.getMenu().setGroupCheckable(0,false,true);
         bottomNavBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -242,7 +246,24 @@ public class Booking extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         selectedDay = String.valueOf(sdf.format(cal.getTime()));
 
-        displayDate.setText(String.valueOf(cal.get(Calendar.DAY_OF_MONTH))+"/"+String.valueOf(cal.get(Calendar.MONTH)+1)+"/"+String.valueOf(cal.get(Calendar.YEAR)));
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH)+1;
+
+        String dayNew = null;
+        if(day<10){
+            dayNew = "0"+day;
+        }else{
+            dayNew = String.valueOf(day);
+        }
+
+        String monthNew = null;
+        if(month<10){
+            monthNew = "0"+month;
+        }else{
+            monthNew = String.valueOf(month);
+        }
+
+        displayDate.setText(dayNew+"/"+monthNew+"/"+String.valueOf(cal.get(Calendar.YEAR)));
 
 
     }
@@ -264,7 +285,6 @@ public class Booking extends AppCompatActivity {
         //Setting the title manually
         alert.setTitle("Error - Date is in the past.");
         alert.show();
-        Log.d(TAG,"This has run ");
 
     }
 

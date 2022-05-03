@@ -8,11 +8,9 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- changes 13.04.22 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -20,7 +18,14 @@
         android:label="Planner"
         android:roundIcon="@mipmap/ic_launcher_round0"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Team05">
+        android:theme="@style/Theme.Team05"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".PaymentFailed"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentSuccess"
+            android:exported="false" />
         <activity
             android:name=".ThingsToDo"
             android:exported="false"
@@ -29,9 +34,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAHVJQxykBY31DrV2BZadqbtJkoyDaFVwA" />
-<!--            android:value="AIzaSyCz11KwOqI48pSIKmvSY5TR2YNAvaF9Yh4"-->
-<!--            />-->
-
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" /> <!-- android:value="AIzaSyCz11KwOqI48pSIKmvSY5TR2YNAvaF9Yh4" -->
+        <!-- /> -->
         <activity
             android:name=".Welcome"
             android:exported="true">

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -37,6 +38,8 @@ public class slideItemsAdapter extends PagerAdapter {
         View sliderLayout = inflater.inflate(R.layout.welcome_items,null);
 
         ImageView featured_image = sliderLayout.findViewById(R.id.my_featured_image);
+        TextView title = sliderLayout.findViewById(R.id.title);
+        title.setText(theSlideItemsModelClassList.get(position).getCaption());
 
         featured_image.setImageResource(theSlideItemsModelClassList.get(position).getFeatured_image());
         container.addView(sliderLayout);

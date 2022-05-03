@@ -45,10 +45,10 @@ public class Welcome extends AppCompatActivity{
 
         //create object list of castle images
         listItems = new ArrayList<>() ;
-        listItems.add(new slideItems(R.drawable.alnwick_castle));
-        listItems.add(new slideItems(R.drawable.auckland_castle));
-        listItems.add(new slideItems(R.drawable.barnard_castle));
-        listItems.add(new slideItems(R.drawable.bamburgh_castle));
+        listItems.add(new slideItems(R.drawable.welcome_discover, "Castle\n"+"Information"));  //Discover
+        listItems.add(new slideItems(R.drawable.welcome_book, "Book Tickets"));         //Book
+        listItems.add(new slideItems(R.drawable.welcome_student, "Surrounding\n"+"Locations")); //Find Things to Do
+        listItems.add(new slideItems(R.drawable.welcome_todo, "For Newcastle\n"+"Students"));  //For Students in Newcastle
 
         //set page adapter
         slideItemsAdapter itemsPager_adapter = new slideItemsAdapter(this, listItems);
@@ -56,7 +56,7 @@ public class Welcome extends AppCompatActivity{
 
         // Set timer and time between slides in milliseconds
         java.util.Timer timer = new java.util.Timer();
-        timer.scheduleAtFixedRate(new The_slide_timer(),4000,3000);
+        timer.scheduleAtFixedRate(new The_slide_timer(),10000,10000);
 
         //create Enter button to take the user to the Main page when clicked
         Button enterBtn = (Button) findViewById(R.id.welcomeBtn);

@@ -3,7 +3,8 @@
 
     <item android:title="Home"
         android:icon="@drawable/ic_home"
-        android:id="@+id/mainActivityNav"/>
+        android:id="@+id/mainActivityNav"
+        />
     <item android:title="Book"
         android:icon="@drawable/ic_book"
         android:id="@+id/bookingNav"/>

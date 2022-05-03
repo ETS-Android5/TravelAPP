@@ -12,11 +12,30 @@
         app:menu="@menu/bottom_menu"
         android:id="@+id/bottomNav"
         />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/back_btn"
+        android:id="@+id/back_btn"
+        android:background="@drawable/back_btn"
+        ></Button>
+
+    <TextView
+        android:id="@+id/book_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp"></TextView>
 
     <ListView
         android:id="@+id/lv1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:dividerHeight="5.0sp"
+        android:divider="@color/white"
+        android:layout_margin="5dp"
+        android:layout_below="@id/book_title"/>
 
 </RelativeLayout>
 

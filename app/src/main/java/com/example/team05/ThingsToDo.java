@@ -127,6 +127,7 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
 
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
+        bottomNavBar.getMenu().setGroupCheckable(0,false,true);
         bottomNavBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

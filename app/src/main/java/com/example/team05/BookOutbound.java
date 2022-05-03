@@ -18,12 +18,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,12 +49,31 @@ public class BookOutbound extends AppCompatActivity {
     private final String TAG = "DayCheck";
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
+    private View popupView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_outbound);
         Intent incomingIntent = getIntent();
+
+        //hide action bar
+        ActionBar bar = getSupportActionBar();
+        bar.hide();
+
+        //set title
+        TextView title = (TextView) findViewById(R.id.book_title);
+        title.setText("Outbound");
+
+        //set back button
+        Button back_btn = (Button) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BookOutbound.this,Booking.class);
+                startActivity(intent);
+            }
+        });
 
         //All incoming intents
         String castleName = incomingIntent.getStringExtra("Castle");
@@ -58,6 +83,7 @@ public class BookOutbound extends AppCompatActivity {
         String currentDate = incomingIntent.getStringExtra("currentDate"); //current date
         String searchedDate = incomingIntent.getStringExtra("selectedDate"); //searched date
 
+        Log.d("DATECHECK","Outbound: "+searchedDate);
         //turns dayName into dayType (Weekday/Saturday/Sunday)
         if (dayName.equals("Monday") || dayName.equals("Tuesday") || dayName.equals("Wednesday") || dayName.equals("Thursday") || dayName.equals("Friday") || dayName.equals("Weekday")) {
             dayName = "Weekday";
@@ -70,6 +96,7 @@ public class BookOutbound extends AppCompatActivity {
 
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
+        bottomNavBar.getMenu().setGroupCheckable(0,false,true);
         bottomNavBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -127,73 +154,139 @@ public class BookOutbound extends AppCompatActivity {
 
                         //return values from database as Strings, to be passed to intent
                         String LegsInfo = "Legs: " + String.valueOf(document.getData().get("Legs"));
-                        String arrivalTime = null;
+                        String legs = String.valueOf(document.getData().get("Legs"));
                         String departureT1 = String.valueOf(document.getData().get("Leg1DepartureTime"));
                         String arrivalT1 = String.valueOf(document.getData().get("Leg1ArrivalTime"));
-                        String departureT2 = null;
-                        String arrivalT2 = null;
-                        String departureT3 = null;
-                        String arrivalT3 = null;
                         String price = money(String.valueOf(document.getData().get("TicketPrice")));
+                        String op1 = String.valueOf(document.getData().get("Leg1Operator"));
+                        String bus1 = String.valueOf(document.getData().get("Leg1Bus"));
+                        String departureStation = String.valueOf(document.getData().get("Leg1DepartureStation"));
+                        String arrivalStation = String.valueOf(document.getData().get("Leg1ArrivalStation"));
+                        String departureT2 = String.valueOf(document.getData().get("Leg2DepartureTime"));
+                        String arrivalT2 = String.valueOf(document.getData().get("Leg2ArrivalTime"));
+                        String op2 = String.valueOf(document.getData().get("Leg2Operator"));
+                        String bus2 = String.valueOf(document.getData().get("Leg2Bus"));
+                        String departureStation2 = String.valueOf(document.getData().get("Leg2DepartureStation"));
+                        String arrivalStation2 = String.valueOf(document.getData().get("Leg2ArrivalStation"));
+                        String departureT3 = String.valueOf(document.getData().get("Leg3DepartureTime"));
+                        String arrivalT3 = String.valueOf(document.getData().get("Leg3ArrivalTime"));
+                        String op3 = String.valueOf(document.getData().get("Leg3Operator"));
+                        String bus3 = String.valueOf(document.getData().get("Leg3Bus"));
+                        String departureStation3 = String.valueOf(document.getData().get("Leg3DepartureStation"));
+                        String arrivalStation3 = String.valueOf(document.getData().get("Leg3ArrivalStation"));
+                        String ticketType = String.valueOf(document.getData().get("TicketType"));
 
-                        //returns additional info when multiple legs
-                        if (legsNumber > 1) {
-                            departureT2 = String.valueOf(document.getData().get("Leg2DepartureTime"));
-                            arrivalT2 = String.valueOf(document.getData().get("Leg2ArrivalTime"));
-                            if (legsNumber > 2) {
-                                departureT3 = String.valueOf(document.getData().get("Leg3DepartureTime"));
-                                arrivalT3 = String.valueOf(document.getData().get("Leg3ArrivalTime"));
-                            }
-                        }
 
                         //Creates journey objects to be used in list
                         if (legsNumber == 1) {
-                            arrivalTime = arrivalT1;
-                            list.add(new Journey(departureT1, arrivalT1, price, LegsInfo));
+                            list.add(new Journey(departureT1, arrivalT1, price, legs, op1, bus1, departureStation, arrivalStation));
                         }
                         if (legsNumber == 2) {
-                            arrivalTime = arrivalT2;
-                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, price, LegsInfo));
+                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, price, legs, op1, bus1, op2, bus2, departureStation, arrivalStation, departureStation2, arrivalStation2));
                         }
                         if (legsNumber == 3) {
-                            arrivalTime = arrivalT3;
-                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, LegsInfo));
+                            list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, legs, op1, bus1, op2, bus2, op3, bus3, departureStation, arrivalStation, departureStation2, arrivalStation2, departureStation3, arrivalStation3));
                         }
-
-                        // create listener for when user clicks on desired trip
-                        // retains info for next page
-                        String finalArrive = arrivalTime;
-                        String finalArrivalT1 = arrivalT1;
-                        String finalDepartureT2 = departureT2;
-                        String finalArrivalT2 = arrivalT2;
-                        String finalDepartureT3 = departureT3;
 
                         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Intent intent = new Intent(BookOutbound.this, BookReturn.class);
-                                intent.putExtra("departureT1", departureT1); //retains outbound depart time
-                                intent.putExtra("finalArrive", finalArrive); //retains outbound arrive time
-                                intent.putExtra("outPrice", price); //retains price
-                                intent.putExtra("Castle", castleNameShortened); //retains castle searched
-                                intent.putExtra("DayName", finalDayName); //retains day type
-                                intent.putExtra("legsNumber",legsNumber); //retains no. legs
-                                intent.putExtra("searchedDate",searchedDate);
-                                intent.putExtra("quantity",quantity);
 
+                                //return selected journey
+                                Journey journey = (Journey) adapterView.getItemAtPosition(i);
+                                int legsNumber = Integer.valueOf(journey.getLegs());
 
-                                //retains additional information if multiple legs:
-                                if (legsNumber > 1) {
-                                    intent.putExtra("arrivalT1", finalArrivalT1);
-                                    intent.putExtra("departureT2", finalDepartureT2);
-                                    if (legsNumber > 2) {
-                                        intent.putExtra("arrivalT2", finalArrivalT2);
-                                        intent.putExtra("departureT3", finalDepartureT3);
-                                    }
+                                // inflate the layout of the popup window
+                                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+
+                                // parameters for popup window
+                                int height = 1000;
+                                int width = 1000;
+
+                                if (legsNumber == 1) {
+                                    popupView = inflater.inflate(R.layout.journey_details_1_leg, null);
+                                    height = 850;
+                                }
+                                if (legsNumber == 2) {
+                                    popupView = inflater.inflate(R.layout.journey_details_2_leg, null);
+                                    height = 1450;
+                                }
+                                if (legsNumber == 3) {
+                                    popupView = inflater.inflate(R.layout.journey_details_3_leg, null);
+                                    height = 2000;
                                 }
 
-                                startActivity(intent);
-                                finish();
+                                PopupWindow pw = new PopupWindow(popupView, width, height, true);
+                                pw.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                                //leg 1 text views
+                                TextView tv_op1 = pw.getContentView().findViewById(R.id.leg1_operator);
+                                tv_op1.setText(journey.getOperator1() + " " + journey.getBus1());
+                                TextView leg1_start = pw.getContentView().findViewById(R.id.leg1_start);
+                                leg1_start.setText("Departure: " + setTimeFormat(journey.getDepartureT1()) + " from " + journey.getDepartureStation1());
+                                TextView leg1_end = pw.getContentView().findViewById(R.id.leg1_end);
+                                leg1_end.setText("Arrival Time: " + setTimeFormat(journey.getArrivalT1()) + " at " + journey.getArrivalStation1());
+                                TextView leg1_time = pw.getContentView().findViewById(R.id.leg1_time);
+                                String leg1_total = setJourneyTime(setTimeFormat(journey.getArrivalT1()), setTimeFormat(journey.getDepartureT1()));
+                                leg1_time.setText(leg1_total);
+
+                                if (legsNumber > 1) {
+                                    //leg 2 text views
+                                    TextView tv_op2 = pw.getContentView().findViewById(R.id.leg2_operator);
+                                    tv_op2.setText(journey.getOperator2() + " " + journey.getBus2());
+                                    TextView leg2_end = pw.getContentView().findViewById(R.id.leg2_end);
+                                    leg2_end.setText("Arrival Time: " + setTimeFormat(journey.getArrivalT2()) + " at " + journey.getArrivalStation2());
+                                    TextView leg2_info = pw.getContentView().findViewById(R.id.leg2_info);
+                                    leg2_info.setText("Departure: " + setTimeFormat(journey.getDepartureT2()) + " from " + journey.getDepartureStation2());
+                                    TextView leg2_time = pw.getContentView().findViewById(R.id.leg2_time);
+                                    String leg2_total = setJourneyTime(setTimeFormat(journey.getArrivalT2()), setTimeFormat(journey.getDepartureT2()));
+                                    leg2_time.setText(leg2_total);
+                                }
+
+                                if (legsNumber>2) {
+                                    // leg 3 text views
+                                    TextView tv_op3 = pw.getContentView().findViewById(R.id.leg3_operator);
+                                    tv_op3.setText(journey.getOperator3() + " " + journey.getBus3());
+                                    TextView leg3_info = pw.getContentView().findViewById(R.id.leg3_info);
+                                    leg3_info.setText("Departure: " + setTimeFormat(journey.getDepartureT3()) + " from " + journey.getDepartureStation3());
+                                    TextView leg3_end = pw.getContentView().findViewById(R.id.leg3_end);
+                                    leg3_end.setText("Arrival Time: " + setTimeFormat(journey.getArrivalT3()) + " at " + journey.getArrivalStation3());
+                                    TextView leg3_time = pw.getContentView().findViewById(R.id.leg3_time);
+                                    String leg3_total = setJourneyTime(setTimeFormat(journey.getArrivalT3()), setTimeFormat(journey.getDepartureT3()));
+                                    leg3_time.setText(leg3_total);
+                                }
+
+                                //set leg total time values
+                                    TextView total_time = pw.getContentView().findViewById(R.id.total_time);
+                                    total_time.setText("Total Time: " + setJourneyTime(setTimeFormat(journey.getArrivalT()),setTimeFormat(journey.getDepartureT1())));
+
+
+                                // set return button
+                                pw.getContentView().findViewById(R.id.return_btn).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        pw.dismiss();
+                                    }
+                                });
+
+                                // set book button
+                                pw.getContentView().findViewById(R.id.yes_btn).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent(BookOutbound.this, BookReturn.class);
+                                        intent.putExtra("Castle", castleNameShortened); //retains castle searched
+                                        intent.putExtra("DayName", finalDayName); //retains day type
+                                        intent.putExtra("searchedDate",searchedDate);
+                                        intent.putExtra("quantity",quantity);
+                                        intent.putExtra("JourneyDetails", journey);
+                                        intent.putExtra("currentDate",currentDate);
+                                        intent.putExtra("currentTime",currentTime);
+                                        intent.putExtra("TicketType",ticketType);
+
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
                             }
                         });
 
@@ -237,5 +330,27 @@ public class BookOutbound extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+    private String setTimeFormat(String providedTime){
 
-}
+        if(providedTime.length()==3){
+            providedTime = "0"+providedTime;
+        }
+        return providedTime.substring(0,2) + ":" + providedTime.substring(2,4);
+
+    }
+
+    private String setJourneyTime(String arriveT, String departT){
+        int departAsMinutes = 60 * Integer.parseInt(departT.substring(0,2)) + Integer.parseInt(departT.substring(3,5));
+        int arrivalAsMinutes = 60*Integer.parseInt(arriveT.substring(0,2)) + Integer.parseInt(arriveT.substring(3,5));
+
+        int totalMinutes = arrivalAsMinutes - departAsMinutes;
+        int minutes = totalMinutes%60;
+        int hours = (totalMinutes - minutes)/60;
+
+        if(hours==1){
+            return (hours + " hour, "+minutes+" minutes.");
+        }else{
+            return (hours + " hours, "+minutes+" minutes.");
+        }
+    }
+    }
