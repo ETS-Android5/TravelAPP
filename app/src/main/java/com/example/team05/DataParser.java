@@ -1,3 +1,19 @@
+/**
+ ***** Description *****
+ * This class creates JSON Object of nearby places
+ *
+ ***** Key Functionality *****
+ * -Reformat information pulled from Google Map API query into accessible JSON object
+ *
+ ***** Author(s)  *****
+ * Oli Presland
+ * -Key functionality
+ *
+ ***** References *****
+ * Andy Point - Google Maps search feature into JSON (https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places)
+ *
+ * **/
+
 package com.example.team05;
 
 import android.util.Log;

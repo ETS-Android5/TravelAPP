@@ -1,11 +1,18 @@
 /**
+ ***** Description *****
  * This is the page to set the format of the list view of journeys
  *
- * created by Harry Akitt 04/04/2022
+ ***** Key Functionality *****
+ * -Adapt journey object to become displayable as ListView
  *
- * UPDATE:
- * -OP Made non static so that class could accept different instances of journeys
+ ***** Author(s)  *****
+ * Harry Akitt
+ * -Key functionality
+ * Oli Presland
+ * -Bug fixes and reformat
+ *
  * **/
+
 
 package com.example.team05;
 
@@ -60,7 +67,7 @@ public class JourneyAdapter extends ArrayAdapter<Journey> {
 
         tvDep.setText(journeyStartFinish);
         tvJourneyTime.setText(journeyTime);
-        tvPri.setText(price);
+        tvPri.setText(price + " including return");
         tvTot.setText("Legs: " + legs);
 
         //debugging

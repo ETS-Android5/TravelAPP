@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
     android:background="#F4F9FA">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,12 +23,15 @@
         android:src="@drawable/back_btn"
         android:id="@+id/back_btn"
         android:background="@drawable/back_btn"
+        android:layout_marginTop="20dp"
         ></Button>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
 
         <RelativeLayout
@@ -39,34 +41,42 @@
 
             <ImageView
                 android:id="@+id/topImage"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:scaleType="fitXY"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:layout_centerHorizontal="true" />
+                android:background="@drawable/radius"
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/castleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topImage"
-                android:layout_centerHorizontal="true"
+                android:layout_alignStart="@id/topImage"
                 android:text="Castle Name"
+                android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/black"
                 android:textSize="15pt"></TextView>
+            <View
+                android:id="@+id/viewline"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/line_yellow"
+                android:layout_below="@id/castleName"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/subtitle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/castleName"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="History"
                 android:textColor="@color/black"
-                android:textSize="15pt"></TextView>
+                android:textSize="12pt"></TextView>
 
             <TextView
                 android:id="@+id/messageWindow"
@@ -75,7 +85,7 @@
                 android:layout_below="@id/subtitle3"
                 android:layout_margin="10dp"
                 android:textColor="@color/black"
-                android:textSize="10pt" />
+                android:textSize="8pt" />
 
             <TextView
                 android:id="@+id/subtitle1"
@@ -85,7 +95,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="Opening Times"
                 android:textColor="@color/black"
-                android:textSize="15pt"></TextView>
+                android:textSize="12pt"></TextView>
 
             <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
@@ -121,7 +131,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-
                     >
 
                     <TextView
@@ -134,6 +143,7 @@
                         android:background="@color/white"
                         android:textStyle="bold"
                         android:gravity="center"
+                        android:textSize="9pt"
                         />
 
                     <TextView
@@ -146,6 +156,7 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="9pt"
                         />
 
                     <TextView
@@ -158,6 +169,7 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:layout_column="2"
+                        android:textSize="9pt"
                         />
                 </TableRow>
 
@@ -177,6 +189,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -188,6 +201,7 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:id="@+id/mon1"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -198,7 +212,8 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:layout_column="2"
-                        android:id="@+id/mon2"/>
+                        android:id="@+id/mon2"
+                        android:textSize="8pt"/>
                 </TableRow>
 
 
@@ -219,6 +234,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -230,6 +246,7 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:id="@+id/tues1"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -240,13 +257,15 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
+                    android:textSize="8pt"
                     >
 
                     <TextView
@@ -258,6 +277,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -269,6 +289,7 @@
                         android:layout_column="1"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -279,13 +300,15 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
+                    android:textSize="8pt"
                     >
 
                     <TextView
@@ -297,6 +320,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -308,6 +332,7 @@
                         android:layout_column="1"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -318,13 +343,15 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
+                    android:textSize="8pt"
                     >
 
                     <TextView
@@ -336,6 +363,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -347,6 +375,7 @@
                         android:layout_column="1"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -357,13 +386,15 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
+                    android:textSize="8pt"
                     >
 
                     <TextView
@@ -375,6 +406,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -386,6 +418,7 @@
                         android:layout_column="1"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -396,13 +429,15 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
+                    android:textSize="8pt"
                     >
 
                     <TextView
@@ -414,6 +449,7 @@
                         android:layout_column="0"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -425,6 +461,7 @@
                         android:layout_column="1"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textSize="8pt"
                         />
 
                     <TextView
@@ -435,7 +472,8 @@
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2" />
+                        android:layout_column="2"
+                        android:textSize="8pt"/>
                 </TableRow>
 
 
@@ -450,49 +488,56 @@
                 android:layout_marginTop="10dp"
                 android:text="Price"
                 android:textColor="@color/black"
-                android:textSize="15pt"></TextView>
+                android:textSize="12pt"></TextView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:id="@+id/price"
                 android:text=""
                 android:layout_below="@id/subtitle2"
                 android:layout_marginBottom="10dp"
                 ></TextView>
 
-            <Button
-                android:id="@+id/BookCastle"
-                android:layout_width="140dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/price"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/button_blue"
-                android:text="Book Now"
-                android:textColor="@color/button_text_blue"
-                android:translationX="220dp" />
+                android:layout_below="@+id/price"
+                android:id="@+id/layout_btn">
 
-            <Button
-                android:id="@+id/WebSite"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/price"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/button_blue"
-                android:text="Visit Website"
-                android:textColor="@color/button_text_blue"
-                android:translationX="30dp" />
+                <Button
+                    android:id="@+id/BookCastle"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/buttom_radius"
+                    android:text="Book Now"
+                    android:textColor="@color/button_text_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/WebSite"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/WebSite"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/buttom_radius"
+                    android:text="Visit Website"
+                    android:textColor="@color/button_text_blue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/BookCastle"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_below="@id/WebSite" />
+                android:layout_below="@id/layout_btn"
+                android:layout_marginTop="20dp"/>
 
         </RelativeLayout>
     </ScrollView>

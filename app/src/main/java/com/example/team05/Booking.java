@@ -1,27 +1,34 @@
 /**
+ ***** Description: *****
  * This is the booking page the user will be sent to when they click on any of the book buttons
  *
- * Functionalities include three spinners to select castle, quantity of tickets and date.
- *
- * There is also a search button that takes the user to the BookOutbound page to select their
+ ***** Key functionalities: *****
+ * -Functionalities include three spinners to select castle, quantity of tickets and date.
+ * -There is also a search button that takes the user to the BookOutbound page to select their
  * bus time options
- *
- * The castle spinner will autofill will a selection if the user has accessed the page via
+ * -The castle spinner will autofill will a selection if the user has accessed the page via
  * the information page of a specific castle.
  *
- * TO DO:
+ ***** Author(s): *****
+ * Harry Akitt
+ * -Created 16/03/2022
+ * -Key functionality
+ * Oli Presland
+ * -Bug fixes
+ *
+ ***** References: *****
+ * JavaPoint - Alert Dialog (https://www.javatpoint.com/android-alert-dialog-example)
+ *
+ ***** TO DO:  *****
  * - DENNIS TO COMPLETE UI
  *
- * Changelog:
+ ***** Changelog:  *****
  * - OLI fixed bug where date did not correctly identify day of week
  * - OLI updated date display for current date
  * - OLI error handling for if date is in past.
  * - Ruipeng (Dennis) completes Navmore button function the page jump
+ * -Qingbiao Song Send the booking message to the confirmation page
  *
- * created by Harry Akitt 16/03/2022
- *
- * Refernces:
- * - https://www.javatpoint.com/android-alert-dialog-example
  * **/
 
 package com.example.team05;
@@ -34,24 +41,19 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -62,10 +64,10 @@ public class Booking extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     Calendar cal = Calendar.getInstance();
     private final String TAG = "DebuggingDayOfWeek";
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
 
     //Alert dialog for if date is before current time
     AlertDialog.Builder builder;
-    Button closeButton;
 
     //making variable dayOfWeek to be passed to outbound bookings
     String selectedDay;
@@ -75,7 +77,6 @@ public class Booking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking);
 
-
         //Sets display date to current date
         displayDate = (TextView) findViewById(R.id.date_input);
         resetDate();
@@ -84,9 +85,21 @@ public class Booking extends AppCompatActivity {
         builder = new AlertDialog.Builder(this);
 
         //Getting values for currentTime and currentDate. These are passed to intent
-        int currentTime =Integer.parseInt(String.valueOf(cal.get(Calendar.HOUR_OF_DAY))+String.valueOf(cal.get(Calendar.MINUTE)));
-        String currentDate = String.valueOf(cal.get(Calendar.DAY_OF_MONTH))+"/"+String.valueOf(cal.get(Calendar.MONTH)+1) + "/"
-                + String.valueOf(cal.get(Calendar.YEAR));
+        int currentTime =Integer.parseInt(String.valueOf(cal.get(Calendar.HOUR_OF_DAY))
+                +String.valueOf(cal.get(Calendar.MINUTE)));
+
+        //change format for comparison
+        String currentDay = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        if (currentDay.length() ==1){
+            currentDay = "0" + currentDay;
+        }
+        String currentMon =String.valueOf(cal.get(Calendar.MONTH)+1);
+        if (currentMon.length() ==1){
+            currentMon = "0" + currentMon;
+        }
+        String currentYear= String.valueOf(cal.get(Calendar.YEAR));
+        String currentDate = currentDay+"/"+ currentMon + "/"
+                + currentYear;
 
         // set action bar
         ActionBar bar = getSupportActionBar();
@@ -106,10 +119,7 @@ public class Booking extends AppCompatActivity {
         numberSpinner.setAdapter(numAdapter);
 
 
-
-        //endregion
-
-        //region //create spinner with list of castles
+        //create spinner with list of castles
         //default will be Alnwick, unless accessed through a specific castle page
         Spinner mySpinner = (Spinner) findViewById(R.id.castleList);
         ArrayList<String> CastleName = new ArrayList<>();
@@ -118,10 +128,10 @@ public class Booking extends AppCompatActivity {
         CastleName.add("Bamburgh Castle");
         CastleName.add("Barnard Castle");
 
+        //list adapter for castle spinner
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Booking.this,
                 android.R.layout.simple_list_item_1, CastleName);
         mySpinner.setAdapter(myAdapter);
-        //endregion
 
         // get intent from specific castle page to autofill chosen castle
         Intent incomingIntent = getIntent();
@@ -193,20 +203,24 @@ public class Booking extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(Booking.this, BookOutbound.class);
-                Spinner spinner = (Spinner)findViewById(R.id.castleList);
+                Spinner spinner = (Spinner) findViewById(R.id.castleList);
                 String text = spinner.getSelectedItem().toString();
-                Spinner spinner2 = (Spinner)findViewById(R.id.quantity);
+                Spinner spinner2 = (Spinner) findViewById(R.id.quantity);
                 String quantity = spinner2.getSelectedItem().toString();
 
+                if (text.equalsIgnoreCase("Auckland Castle") && (selectedDay.equalsIgnoreCase("Monday") || selectedDay.equalsIgnoreCase("Tuesday"))) {
+                    castleError();
+                } else {
 
-                //All relevant values
-                intent.putExtra("Castle", text);
-                intent.putExtra("DayName",selectedDay);
-                intent.putExtra("CurrentTime",currentTime);
-                intent.putExtra("currentDate", currentDate);
-                intent.putExtra("selectedDate", displayDate.getText());
-                intent.putExtra("quantity",quantity);
-                startActivity(intent);
+                    //All relevant values
+                    intent.putExtra("Castle", text);
+                    intent.putExtra("DayName", selectedDay);
+                    intent.putExtra("CurrentTime", currentTime);
+                    intent.putExtra("currentDate", currentDate);
+                    intent.putExtra("selectedDate", String.valueOf(displayDate.getText()));
+                    intent.putExtra("quantity", quantity);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -228,7 +242,7 @@ public class Booking extends AppCompatActivity {
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(Booking.this, More.class);
+                        Intent intent2 = new Intent(Booking.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 
@@ -243,7 +257,6 @@ public class Booking extends AppCompatActivity {
 
     //Sets date to current day
     public void resetDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         selectedDay = String.valueOf(sdf.format(cal.getTime()));
 
         int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -268,6 +281,7 @@ public class Booking extends AppCompatActivity {
 
     }
 
+    //error for user trying to search dates in the past
     public void displayError(){
         builder.setMessage("Bookings cannot be placed in the past.")
                 .setCancelable(false)
@@ -288,5 +302,19 @@ public class Booking extends AppCompatActivity {
 
     }
 
-
+    //error for castle closed
+    public void castleError(){
+        builder.setMessage("Auckland Castle is closed on Mondays and Tuesday. Please select a different castle or day")
+                .setCancelable(false)
+                .setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Error - Castle closed.");
+        alert.show();
+    }
 }

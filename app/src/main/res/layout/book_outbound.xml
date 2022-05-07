@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F4F9FA">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -12,30 +14,34 @@
         app:menu="@menu/bottom_menu"
         android:id="@+id/bottomNav"
         />
+
     <Button
+        android:id="@+id/back_btn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/back_btn"
-        android:id="@+id/back_btn"
         android:background="@drawable/back_btn"
-        ></Button>
+        android:src="@drawable/back_btn"></Button>
 
     <TextView
         android:id="@+id/book_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
         android:layout_centerHorizontal="true"
+        android:text="Title"
+        android:textColor="@color/black"
         android:textSize="40dp"></TextView>
 
     <ListView
         android:id="@+id/lv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="5.0sp"
-        android:divider="@color/white"
-        android:layout_margin="5dp"
-        android:layout_below="@id/book_title"/>
+        android:layout_below="@id/book_title"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:divider="#F4F9FA"
+        android:dividerHeight="5.0sp" />
 
 </RelativeLayout>
 

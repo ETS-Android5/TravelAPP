@@ -1,14 +1,32 @@
 /**
+ ***** Description *****
  * This is the page to all the user to view their booking and confirm.
  *
- * TO DO:
- * - RETURN AND OUTBOUND JOURNEY WILL BE SHOWN, ALONG WITH QUANTITY AND TOTAL COST
+ ***** Key Functionality *****
+ * -Retrieve information about selected journey
+ * -Display overall price
+ * -Allow 'booking' of journey
  *
- * Changelog:
- * - page now returns details of outbound and return journeys
+ ***** Author(s)  *****
+ * Harry Akitt (Created 16/03/22)
+ * -Retrieves information from passed intent and displays to user
+ * Qingbiao Song
+ * -Calculates price
+ * -display information(Destination,time of Outbound and Return And total price)
+ * -User Interface design
+ * -added payment button
+ * Oli Presland
+ * -Create request to send to HorsePay via PaymentTask
  *
- * created by Harry Akitt 16/03/2022
+ ***** Changelog: *****
+ * -page now returns selected journeys to the screen and can be clicked on to take to next page
+ * - RETURN AND OUTBOUND JOURNEY WILL SHOWN, ALONG WITH QUANTITY AND TOTAL COST
+ * Qingbiao Song
+ * -Calculates price
+ * -display information(Destination,time of Outbound and Return And total price)
+ * -User Interface design
  * **/
+
 
 package com.example.team05;
 
@@ -19,6 +37,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -29,9 +48,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,14 +65,20 @@ public class ConfirmationPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //set page layout
         setContentView(R.layout.confirm);
-        TextView tv = (TextView) findViewById(R.id.textView);
-        TextView tv2 = (TextView) findViewById(R.id.textView2);
-        TextView tv3 = (TextView) findViewById(R.id.textView3);
-        TextView tv5 = (TextView) findViewById(R.id.tv5);
-        TextView tv6 = (TextView) findViewById(R.id.tv6);
-        TextView priceTv = (TextView) findViewById(R.id.price);
-        TextView tv7 = (TextView) findViewById(R.id.textViewDepart);
+
+        //identify text views
+        TextView tv = (TextView) findViewById(R.id.textView); //castle name
+        TextView tv2 = (TextView) findViewById(R.id.textView2); //outbound journey
+        TextView tv3 = (TextView) findViewById(R.id.textView3); //return journey
+        TextView tv5 = (TextView) findViewById(R.id.tv5); //ticket price for travel
+        TextView tv6 = (TextView) findViewById(R.id.tv6); //castle ticket price
+        TextView priceTv = (TextView) findViewById(R.id.price); //total price
+        TextView tv7 = (TextView) findViewById(R.id.textViewDepart); //departure station
+
+        //get intents from previous page
         Intent incomingIntent = getIntent();
 
         //extra info buttons
@@ -67,8 +89,7 @@ public class ConfirmationPage extends AppCompatActivity {
         //SHARED
         String price = incomingIntent.getStringExtra("outPrice");
         String searchedDate = incomingIntent.getStringExtra("searchedDate");
-        String castle = incomingIntent.getStringExtra("Castle");
-        String dayName = incomingIntent.getStringExtra("DayName");
+        String castleFull = incomingIntent.getStringExtra("Castle");
         String TicketType = incomingIntent.getStringExtra("TicketType");
 
         //journey objects
@@ -83,6 +104,7 @@ public class ConfirmationPage extends AppCompatActivity {
             }
         });
 
+        //pop up when extra button clicked
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +134,7 @@ public class ConfirmationPage extends AppCompatActivity {
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(ConfirmationPage.this, More.class);
+                        Intent intent2 = new Intent(ConfirmationPage.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 
@@ -128,19 +150,20 @@ public class ConfirmationPage extends AppCompatActivity {
         String retArrive = setTimeFormat(journeyRet.getArrivalT());
         Double priceBus = Double.parseDouble(price.substring(1));
 
+        //set departure station dependant on destination
         String departure = "Eldon Square";
-        if(castle.equals("Bamburgh")){
+        if(castleFull.equals("Bamburgh")){
             departure = "Haymarket";}
-        if (castle.equals("Alnwick")){
+        if (castleFull.equals("Alnwick")){
             departure = "Haymarket";}
 
         //Castle ticket price
         Double priceTicket = 0.0;
-        if(castle.equals("Alnwick")){
+        if(castleFull.equals("Alnwick")){
             priceTicket = 15.75;
-        } else if(castle.equals("Auckland")){
+        } else if(castleFull.equals("Auckland")){
             priceTicket = 14.00;
-        } else if(castle.equals("Barnard")){
+        } else if(castleFull.equals("Barnard")){
             priceTicket = 8.10;
         } else {
             priceTicket = 14.10;
@@ -148,26 +171,20 @@ public class ConfirmationPage extends AppCompatActivity {
 
         //Number of student
         Integer Number = Integer.parseInt(incomingIntent.getStringExtra("quantity"));
-//
+
+        //calculate total price
         Double totalPrice = (priceTicket+priceBus)*Number;
 
-
-//        String str = "Your trip to " + castleName+" Castle"+"\n"
-//                +"Outbound: " + outDepart + outArrive +"\n"
-//                + "Return: " + retDepart + retArrive +"\n"
-//                + "Price: £" + price;
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append(str);
-//        tv.setText(stringBuilder.toString());
+        //set text
         tv7.setText("Departure: " + departure);
-        tv.setText("Destination: "+castle+" Castle");
+        tv.setText("Destination: "+castleFull+" Castle");
         tv2.setText("Outbound: "+outDepart+" ->"+outArrive);
         tv3.setText("Return: "+retDepart+" ->"+retArrive);
         priceTv.setText("Price: £" + String.format("%.2f",totalPrice));
         tv5.setText("   " + Number + " x " + TicketType + " @ £" + String.format("%.2f",priceBus));
         tv6.setText("   " + Number + " x " + "Castle Ticket" + " @ £" + String.format("%.2f",priceTicket));
 
+        //set pay button
         Button payBtn = (Button) findViewById(R.id.payButton);
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,8 +220,32 @@ public class ConfirmationPage extends AppCompatActivity {
             }
         });
 
+        //Extra intents to return to previous page if back button pressed
+        String DayName = incomingIntent.getStringExtra("DayName");
+        String currentDate = incomingIntent.getStringExtra("currentDate");
+        int currentTime = incomingIntent.getIntExtra("currentTime",0);
+
+        //set back button
+        Button back_btn = (Button) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ConfirmationPage.this, BookReturn.class);
+                intent.putExtra("Castle", castleFull); //retains castle searched
+                intent.putExtra("DayName", DayName); //retains day type
+                intent.putExtra("searchedDate",searchedDate);
+                intent.putExtra("quantity",Number);
+                intent.putExtra("JourneyDetails", journeyOut);
+                intent.putExtra("currentDate",currentDate);
+                intent.putExtra("currentTime",currentTime);
+                intent.putExtra("TicketType",TicketType);
+                startActivity(intent);
+            }
+        });
+
     }
 
+    //method to create random customer ID
     private String createID(){
         char[] chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         Random rnd = new Random();
@@ -216,6 +257,7 @@ public class ConfirmationPage extends AppCompatActivity {
         return id.toString();
     }
 
+    //set time as string
     private String setTimeFormat(String providedTime){
 
         if(providedTime.length()==3){
@@ -224,6 +266,7 @@ public class ConfirmationPage extends AppCompatActivity {
         return providedTime.substring(0,2) + ":" + providedTime.substring(2,4);
     }
 
+    //calculate total journey time
     private String setJourneyTime(String arriveT, String departT){
         int departAsMinutes = 60 * Integer.parseInt(departT.substring(0,2)) + Integer.parseInt(departT.substring(3,5));
         int arrivalAsMinutes = 60*Integer.parseInt(arriveT.substring(0,2)) + Integer.parseInt(arriveT.substring(3,5));
@@ -239,6 +282,7 @@ public class ConfirmationPage extends AppCompatActivity {
         }
     }
 
+    //set popup window details
     private void popUp(Journey journey, View view) {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -246,23 +290,19 @@ public class ConfirmationPage extends AppCompatActivity {
         int legs = Integer.valueOf(journey.getLegs());
 
         // parameters for popup window
-        int height = 1000;
         int width = 1000;
 
         if (legs == 1) {
             popupView = inflater.inflate(R.layout.confirm_details_1_leg, null);
-            height = 850;
         }
         if (legs == 2) {
             popupView = inflater.inflate(R.layout.confirm_details_2_leg, null);
-            height = 1450;
         }
         if (legs == 3) {
             popupView = inflater.inflate(R.layout.confirm_details_3_leg, null);
-            height = 2000;
         }
 
-        PopupWindow pw = new PopupWindow(popupView, width, height, true);
+        PopupWindow pw = new PopupWindow(popupView, width, (ViewGroup.LayoutParams.WRAP_CONTENT), true);
         pw.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         //leg 1 text views

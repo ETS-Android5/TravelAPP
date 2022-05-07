@@ -1,3 +1,18 @@
+/**
+ ***** Description *****
+ * This class runs as a separate thread which calls DownloadUrl and DataParser to collect information on nearby places
+ *
+ ***** Key Functionality *****
+ * -Run simultaneously as main thread to retrieve nearby place data
+ *
+ ***** Author(s)  *****
+ * Oli Presland
+ * -Key functionality
+ *
+ ***** References *****
+ * Andy Point - Google Maps search feature into JSON (https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places)
+ *
+ * **/
 package com.example.team05;
 
 import android.os.AsyncTask;

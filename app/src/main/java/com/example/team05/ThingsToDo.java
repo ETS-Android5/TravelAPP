@@ -1,8 +1,23 @@
 /**
- * https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places
- * https://www.journaldev.com/13347/android-location-google-play-services
- * https://javapapers.com/android/get-current-location-in-android/
- * https://medium.com/@nickwright_15152/creating-an-android-application-to-show-a-list-of-local-restaurants-58a3fecdaa64
+ ***** Description:  *****
+ * This class handles displaying information about local restaurants and supermarkets
+ *
+ ***** Key functionality *****
+ * -Displays current or selected location of user
+ * -Allows user to search nearby for restaurants or supermarkets
+ * -On clicking on a search result, user should be able to see more information
+ *
+ ***** Author(s):  *****
+ * Oli Presland
+ * -Key functionality
+ * Ruipeng Jiao
+ * -UI formatting
+ *
+ ***** References:  *****
+ * Andy Point - Google Maps search feature (https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places)
+ * Anupam Chugh - Android Location services (https://www.journaldev.com/13347/android-location-google-play-services)
+ * Joe - Using current location (https://javapapers.com/android/get-current-location-in-android/)
+ * Nick Wright - Displaying list of restuarants (https://medium.com/@nickwright_15152/creating-an-android-application-to-show-a-list-of-local-restaurants-58a3fecdaa64)
  */
 
 package com.example.team05;
@@ -31,6 +46,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -108,6 +124,7 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_things_to_do);
 
+        //Request permission
         permissions.add(ACCESS_FINE_LOCATION);
         permissions.add(ACCESS_COARSE_LOCATION);
 
@@ -143,7 +160,7 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(ThingsToDo.this, More.class);
+                        Intent intent2 = new Intent(ThingsToDo.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 
@@ -158,27 +175,40 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //run the programme of choose castle
+        setLatLong();
 
         //Create castle spinner with default of current location
-        mySpinner = (Spinner) findViewById(R.id.castleList);
-        ArrayList<String> CastleName = new ArrayList<>();
-        CastleName.add("Current Location");
-        CastleName.add("Alnwick Castle");
-        CastleName.add("Auckland Castle");
-        CastleName.add("Bamburgh Castle");
-        CastleName.add("Barnard Castle");
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ThingsToDo.this,
-                android.R.layout.simple_list_item_1, CastleName);
-        mySpinner.setAdapter(myAdapter);
+//        mySpinner = (Spinner) findViewById(R.id.castleList);
+//        ArrayList<String> CastleName = new ArrayList<>();
+//        CastleName.add("Current Location");
+//        CastleName.add("Alnwick Castle");
+//        CastleName.add("Auckland Castle");
+//        CastleName.add("Bamburgh Castle");
+//        CastleName.add("Barnard Castle");
+//        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ThingsToDo.this,
+//                android.R.layout.simple_list_item_1, CastleName);
+//        mySpinner.setAdapter(myAdapter);
+
+
+        //press imagebutton to jump to castle
+//        imageButton1.setOnClickListener(new View.OnClickListener() {
+//            //mySpinner.getSelectedItem().equals("Alnwick Castle");
+//            @Override
+//            public void onClick(View view) {
+//                setLatLong();
+//            }
+//        });
+//
 
         //Button to set current location
-        Button searchButton = (Button) findViewById(R.id.Search_Button_Activities);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setLatLong();
-            }
-        });
+//        Button searchButton = (Button) findViewById(R.id.Search_Button_Activities);
+//        searchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setLatLong();
+//            }
+//        });
 
         //Button initialises search for nearby restaurants
         Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
@@ -440,47 +470,104 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
     //sets new location based on spinner
     private void setLatLong(){
 
-        if(mySpinner.getSelectedItem().equals("Current Location")){
-            onStart();
-        }
+        View imageButton1 = (View) findViewById(R.id.imageAlnwick);
+        View imageButton2 = (View) findViewById(R.id.imageAuckland);
+        View imageButton3 = (View) findViewById(R.id.imageBamburgh);
+        View imageButton4 = (View) findViewById(R.id.imageBarnard);
 
-        if(mySpinner.getSelectedItem().equals("Alnwick Castle")){
-//            MarkerOptions markerOptions = new MarkerOptions();
+        imageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MarkerOptions markerOptions = new MarkerOptions();
 //            markerOptions.title("Alnwick Castle");
-            latitude = 55.41571066816451;
-            longitude = -1.7058452995980735;
-            LatLng Current_Position  = new LatLng(latitude,longitude);
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Alnwick Castle"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-        }
+                latitude = 55.41571066816451;
+                longitude = -1.7058452995980735;
+                LatLng Current_Position  = new LatLng(latitude,longitude);
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(Current_Position).title("Alnwick Castle"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+            }
+        });
 
-        if(mySpinner.getSelectedItem().equals("Auckland Castle")){
-            latitude = 54.67153810776224;
-            longitude = -1.6712613553567615;
-            LatLng Current_Position  = new LatLng(latitude,longitude);
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Auckland Castle"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-        }
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                latitude = 54.67153810776224;
+                longitude = -1.6712613553567615;
+                LatLng Current_Position  = new LatLng(latitude,longitude);
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(Current_Position).title("Auckland Castle"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+            }
+        });
 
-        if(mySpinner.getSelectedItem().equals("Bamburgh Castle")){
-            latitude = 55.609080781406995;
-            longitude = -1.7099322879491325;
-            LatLng Current_Position  = new LatLng(latitude,longitude);
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Bamburgh Castle"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-        }
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                latitude = 55.609080781406995;
+                longitude = -1.7099322879491325;
+                LatLng Current_Position  = new LatLng(latitude,longitude);
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(Current_Position).title("Bamburgh Castle"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+            }
+        });
 
-        if(mySpinner.getSelectedItem().equals("Barnard Castle")){
-            latitude = 54.5456698230093;
-            longitude = -1.9236628163269331;
-            LatLng Current_Position  = new LatLng(latitude,longitude);
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Barnard Castle"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-        }
+        imageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                latitude = 54.5456698230093;
+                longitude = -1.9236628163269331;
+                LatLng Current_Position  = new LatLng(latitude,longitude);
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(Current_Position).title("Barnard Castle"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+            }
+        });
+
+
+
+//        if(mySpinner.getSelectedItem().equals("Current Location")){
+//            onStart();
+//        }
+//
+//        if(mySpinner.getSelectedItem().equals("Alnwick Castle")){
+////            MarkerOptions markerOptions = new MarkerOptions();
+////            markerOptions.title("Alnwick Castle");
+//            latitude = 55.41571066816451;
+//            longitude = -1.7058452995980735;
+//            LatLng Current_Position  = new LatLng(latitude,longitude);
+//            mMap.clear();
+//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Alnwick Castle"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+//        }
+//
+//        if(mySpinner.getSelectedItem().equals("Auckland Castle")){
+//            latitude = 54.67153810776224;
+//            longitude = -1.6712613553567615;
+//            LatLng Current_Position  = new LatLng(latitude,longitude);
+//            mMap.clear();
+//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Auckland Castle"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+//        }
+//
+//        if(mySpinner.getSelectedItem().equals("Bamburgh Castle")){
+//            latitude = 55.609080781406995;
+//            longitude = -1.7099322879491325;
+//            LatLng Current_Position  = new LatLng(latitude,longitude);
+//            mMap.clear();
+//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Bamburgh Castle"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+//        }
+//
+//        if(mySpinner.getSelectedItem().equals("Barnard Castle")){
+//            latitude = 54.5456698230093;
+//            longitude = -1.9236628163269331;
+//            LatLng Current_Position  = new LatLng(latitude,longitude);
+//            mMap.clear();
+//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Barnard Castle"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+//        }
 
     }
 
@@ -576,7 +663,7 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         if(placeRating.equals("null") || placeRating==null){
             weakTVRefRating.get().setText("Rating not available");
         }else{
-            weakTVRefRating.get().setText(placeRating);
+            weakTVRefRating.get().setText("Rating: "+placeRating);
         }
 
 

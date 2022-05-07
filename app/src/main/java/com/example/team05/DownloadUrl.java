@@ -1,3 +1,19 @@
+/**
+ ***** Description *****
+ * This class connects to URL with request and retrieves output string
+ *
+ ***** Key Functionality *****
+ * -run simple GET requests to receive output string to be used for nearby places data
+ *
+ ***** Author(s)  *****
+ * Oli Presland
+ * -Key functionality
+ *
+ ***** References *****
+ * Andy Point - Google Maps search feature into JSON (https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places)
+ *
+ * **/
+
 package com.example.team05;
 
 import android.util.Log;

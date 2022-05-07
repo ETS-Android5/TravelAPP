@@ -1,41 +1,44 @@
 /**
+ ***** Description *****
  * This is the screen to show more details on the first castle (Bamburgh)
  *
- * Functionalities include an image of the castle and a book button which takes you to the
- * BookOutbound page.
+ ***** Key Functionality *****
+ * -Display key information about castle
+ * -Links to booking castle and castle website
  *
- * TO DO:
- * - ADD TEXT ON THE PAGE INCLUDING OPENING TIMES, COSTS AND A BIO.
- * - GOOGLE MAP OF LOCATION?
- * - DENNIS/SONG/TIAN LOOKING INTO USING AN API
- * - DENNIS TO COMPLETE UI
+ ***** Author(s)  *****
+ * Harry Akitt (Created 16/03/22)
+ * Qingbiao Song
+ * -Added map functionality (03/04/2022)
+ * -Added Castle history Content introduction
+ * Ruipeng Jiao
+ * -Added nav functionality (12/04/2022)
+ * -Add website links (23/04/2022)
  *
- * created by Harry Akitt 16/03/2022
+ ***** Changelog: *****
+ * - TEXT ADDED ON THE PAGE INCLUDING OPENING TIMES, COSTS AND A BIO.
+ * - GOOGLE MAP OF LOCATION ADDED
+ *Qingbiao Song
+ *-Added map functionality (03/04/2022)
+ *-Added Castle history Content introduction
  *
- *Google API/Introduction Pages
- *updated by Qingbiao Song 03/04/2022
- *
- * - Ruipeng (Dennis) completes Navmore button function the page jump 12/04/2022
- *
- * - Ruipeng (Dennis) Add website jump function on the castle information page 23/04/2022
  * **/
+
 
 package com.example.team05;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -94,6 +97,7 @@ public class CastleScreen4 extends AppCompatActivity implements OnMapReadyCallba
         TextView sun2 = (TextView) findViewById(R.id.sun2);
         sun2.setText("5:00pm");
 
+        //set castle name
         TextView castleName = (TextView) findViewById(R.id.castleName);
         castleName.setText("Bamburgh Castle");
 
@@ -171,7 +175,7 @@ public class CastleScreen4 extends AppCompatActivity implements OnMapReadyCallba
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(CastleScreen4.this, More.class);
+                        Intent intent2 = new Intent(CastleScreen4.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 

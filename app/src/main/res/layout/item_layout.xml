@@ -16,7 +16,7 @@
             android:id="@+id/mYueDouXianShi"
             android:layout_width="3dp"
             android:layout_height="match_parent"
-            android:background="@color/dark_blue"
+            android:background="@color/failed_color"
             android:visibility="gone" />
 
         <TextView

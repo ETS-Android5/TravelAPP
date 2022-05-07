@@ -1,14 +1,26 @@
 /**
+ ***** Description *****
  * This is the page to view and select the outbound journey to the castle.
  *
+ ***** Key Functionality *****
+ * -Retrieve information about outbound journey times from database
+ * -Display journey times to user
+ * -Pass selected journey as intent to return journey
  *
- * Changelog:
+ ***** Author(s)  *****
+ * Harry Akitt (Created 16/03/22)
+ * -Displaying journey times
+ * -Passing information to intent via Journey object
+ * -Error handling on no database results
+ * Oli Presland
+ * -Retrieving journey information from database
+ *
+ ***** Changelog: *****
  * - OLI pulled in booking information from call
  * - OLI added calls to database. Currently not working. 03/04
  * - OLI Update, database call now fixed 04/04
  * - page now returns selected journeys to the screen and can be clicked on to take to next page
- *
- * created by Harry Akitt 16/03/2022
+ * - Qingbiao Song Send the ticket message to the confirmation page
  * **/
 
 package com.example.team05;
@@ -17,21 +29,19 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -41,7 +51,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 
 
@@ -76,14 +85,13 @@ public class BookOutbound extends AppCompatActivity {
         });
 
         //All incoming intents
-        String castleName = incomingIntent.getStringExtra("Castle");
-        String quantity = incomingIntent.getStringExtra("quantity");
-        int currentTime = incomingIntent.getIntExtra("CurrentTime", 0);
-        String dayName = incomingIntent.getStringExtra("DayName");
-        String currentDate = incomingIntent.getStringExtra("currentDate"); //current date
-        String searchedDate = incomingIntent.getStringExtra("selectedDate"); //searched date
+        String castleName = incomingIntent.getStringExtra("Castle"); //castle name
+        String quantity = incomingIntent.getStringExtra("quantity"); //quantity
+        int currentTime = incomingIntent.getIntExtra("CurrentTime", 0); //current time
+        String dayName = incomingIntent.getStringExtra("DayName"); //day of week
+        String currentDate = incomingIntent.getStringExtra("currentDate"); //current
+        String searchedDate = incomingIntent.getStringExtra("selectedDate"); //searched
 
-        Log.d("DATECHECK","Outbound: "+searchedDate);
         //turns dayName into dayType (Weekday/Saturday/Sunday)
         if (dayName.equals("Monday") || dayName.equals("Tuesday") || dayName.equals("Wednesday") || dayName.equals("Thursday") || dayName.equals("Friday") || dayName.equals("Weekday")) {
             dayName = "Weekday";
@@ -112,7 +120,7 @@ public class BookOutbound extends AppCompatActivity {
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(BookOutbound.this, More.class);
+                        Intent intent2 = new Intent(BookOutbound.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 
@@ -188,6 +196,7 @@ public class BookOutbound extends AppCompatActivity {
                             list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, legs, op1, bus1, op2, bus2, op3, bus3, departureStation, arrivalStation, departureStation2, arrivalStation2, departureStation3, arrivalStation3));
                         }
 
+                        //listener for when user clicks on journey
                         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -199,25 +208,24 @@ public class BookOutbound extends AppCompatActivity {
                                 // inflate the layout of the popup window
                                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-                                // parameters for popup window
-                                int height = 1000;
+                                // width for popup window
                                 int width = 1000;
 
+                                //inflate layout for popup
                                 if (legsNumber == 1) {
                                     popupView = inflater.inflate(R.layout.journey_details_1_leg, null);
-                                    height = 850;
                                 }
                                 if (legsNumber == 2) {
                                     popupView = inflater.inflate(R.layout.journey_details_2_leg, null);
-                                    height = 1450;
                                 }
                                 if (legsNumber == 3) {
                                     popupView = inflater.inflate(R.layout.journey_details_3_leg, null);
-                                    height = 2000;
                                 }
 
-                                PopupWindow pw = new PopupWindow(popupView, width, height, true);
+                                //popup location and parameters
+                                PopupWindow pw = new PopupWindow(popupView, width, (ViewGroup.LayoutParams.WRAP_CONTENT), true);
                                 pw.showAtLocation(view, Gravity.CENTER, 0, 0);
+                                pw .setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
                                 //leg 1 text views
                                 TextView tv_op1 = pw.getContentView().findViewById(R.id.leg1_operator);
@@ -283,23 +291,21 @@ public class BookOutbound extends AppCompatActivity {
                                         intent.putExtra("currentTime",currentTime);
                                         intent.putExtra("TicketType",ticketType);
 
+
                                         startActivity(intent);
                                         finish();
                                     }
                                 });
                             }
                         });
-
-                    }
-
-                    // add error if no search results
-                    if (list.isEmpty()) {
-                        displayError();
-                    }
+                        // add error if no search results
+                        if (list.size()==0) {
+                            displayError();
+                        }
 
                     //on unsuccessful pull
-                } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }} else {
+                    databaseError();
                 }
             }
         });
@@ -309,8 +315,13 @@ public class BookOutbound extends AppCompatActivity {
 
     //method to change number value in database to money
     public String money(String s) {
-        String str;
-        str = "£" + s.charAt(0) + "." + s.charAt(1) + s.charAt(2);
+        String str = null;
+        if (s.length() ==3) {
+            str = "£" + s.charAt(0) + "." + s.charAt(1) + s.charAt(2);
+        }
+        if (s.length() ==4){
+            str = "£" + s.charAt(0) + s.charAt(1) + "." + s.charAt(2) + s.charAt(3);
+        }
         return str;
     }
 
@@ -330,6 +341,8 @@ public class BookOutbound extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    //turns time string into correct format
     private String setTimeFormat(String providedTime){
 
         if(providedTime.length()==3){
@@ -339,6 +352,7 @@ public class BookOutbound extends AppCompatActivity {
 
     }
 
+    //calculates time for a journey
     private String setJourneyTime(String arriveT, String departT){
         int departAsMinutes = 60 * Integer.parseInt(departT.substring(0,2)) + Integer.parseInt(departT.substring(3,5));
         int arrivalAsMinutes = 60*Integer.parseInt(arriveT.substring(0,2)) + Integer.parseInt(arriveT.substring(3,5));
@@ -352,5 +366,22 @@ public class BookOutbound extends AppCompatActivity {
         }else{
             return (hours + " hours, "+minutes+" minutes.");
         }
+    }
+
+    //error for no journeys
+    public void databaseError() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Error connecting to the database - please check your internet connection and try again");
+        alertDialogBuilder.setTitle("Error - No Connection");
+        alertDialogBuilder.setNegativeButton("return", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(BookOutbound.this, Booking.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
     }

@@ -1,7 +1,16 @@
 /**
- * This is the class to define the Journey object
+ ***** Description *****
+ * This class creates a Journey Object
  *
- * created by Harry Akitt 04/04/2022
+ ***** Key Functionality *****
+ * -Create an accessible journey object that can have either 1, 2 or 3 legs
+ *
+ ***** Author(s)  *****
+ * Harry Akitt
+ * -Main functionality (Created 04/04/22)
+ * Oli Presland
+ * -Intial overloaded constructor tweak
+ *
  * **/
 
 package com.example.team05;
@@ -184,14 +193,4 @@ public class Journey implements Serializable {
         return ArrivalT;
     }
 
-    public String getJourneyTime(String arriveT, String departT){
-        int departAsMinutes = 60 * Integer.parseInt(departT.substring(0,2)) + Integer.parseInt(departT.substring(3,5));
-        int arrivalAsMinutes = 60*Integer.parseInt(arriveT.substring(0,2)) + Integer.parseInt(arriveT.substring(3,5));
-
-        int totalMinutes = arrivalAsMinutes - departAsMinutes;
-        int minutes = totalMinutes%60;
-        int hours = (totalMinutes - minutes)/60;
-
-        return (hours + "h "+minutes+"m");
-    }
 }

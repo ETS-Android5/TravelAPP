@@ -1,32 +1,35 @@
 /**
+ ***** Description *****
  * This is the main activity page with a view of all the castles on one page
  *
- * Functionalities include a clickable image of each castle which takes the user
- * to the specific castle page with more details, as well as a book button which takes
- * the user directly to the book page.
+ ***** Key Functionality *****
+ * -Clickable image of each castle which takes the user to the specific castle page with more details
+ * -Book button which takes the user directly to the book page.
+ * -Map to display all castles
  *
- * The page is swipable so the user can view all the castles.
+ ***** Author(s)  *****
+ * Harry Akitt
+ * -Created 16/03/22
+ * Ruipeng Jiao
+ * -Main formatting
+ * -Navigation
+ *Qingbiao Song
+ * added google map
+ * Added four castle coordinate markers
  *
- * TO DO:
- * - DENNIS TO COMPLETE UI
- *
- * created by Harry Akitt 16/03/2022
- *
- * - Ruipeng (Dennis) completes Navmore button function the page jump 12/04/2022
+ * ***** Changelog: *****
+ * Qingbiao Song
+ * added google map
+ * Added four castle coordinate markers
  * **/
 
-package com.example.team05;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.team05;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,17 +38,9 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import android.app.Activity;
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -53,18 +48,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.io.IOException;
-import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -85,8 +70,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (actionBar != null) {
             actionBar.hide();
         }
-
-
 
         //set action bar
         ActionBar bar = getSupportActionBar();
@@ -226,6 +209,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Castle.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -244,7 +237,4 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Barnard_Castle));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Bamburgh_Castle));
     }
-
-
-
 }

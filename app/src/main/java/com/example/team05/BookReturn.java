@@ -1,15 +1,29 @@
 /**
-        * This is the page to view and select the return journey to the castle.
-        *
-        *
-        * Changelog:
-        * - page now returns selected journeys to the screen and can be clicked on to take to next page
-        *
-        * created by Harry Akitt 16/03/2022
-        * **/
+ ***** Description *****
+ * This is the page to view and select the return journey to the castle.
+ *
+ ***** Key Functionality *****
+ * -Retrieve information about return journey times from database
+ * -Display journey times to user
+ * -Pass selected journey as intent to booking confirmation
+ *
+ ***** Author(s)  *****
+ * Harry Akitt (Created 16/03/22)
+ * -Displaying journey times
+ * -Passing information to intent via Journey object
+ * -Error handling on no database results
+ * Oli Presland
+ * -Retrieving journey information from database
+ *
+ ***** Changelog: *****
+ * -page now returns selected journeys to the screen and can be clicked on to take to next page
+ * - Qingbiao Song Send the ticket message to the confirmation page
+ * **/
 
-        package com.example.team05;
+package com.example.team05;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +31,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -48,13 +63,6 @@ public class BookReturn extends AppCompatActivity {
     public String dayName;
     public String castleNameShortened;
 
-    //method to change number value in database to money
-    public String money(String s){
-        String str;
-        str = "£" + s.charAt(0) + "." + s.charAt(1) + s.charAt(2);
-        return str;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +93,7 @@ public class BookReturn extends AppCompatActivity {
                         break;
 
                     case R.id.moreNav:
-                        Intent intent2 = new Intent(BookReturn.this, More.class);
+                        Intent intent2 = new Intent(BookReturn.this, ThingsToDo.class);
                         startActivity(intent2);
                         break;
 
@@ -115,15 +123,14 @@ public class BookReturn extends AppCompatActivity {
         castleNameShortened = incomingIntent.getStringExtra("Castle");
         String searchedDate = incomingIntent.getStringExtra("searchedDate");
         String currentDate = incomingIntent.getStringExtra("currentDate");
-        String currentTime = incomingIntent.getStringExtra("currentTime");
+        int currentTime = incomingIntent.getIntExtra("currentTime",0);
+        String DayName = incomingIntent.getStringExtra("DayName");
         String TicketType = incomingIntent.getStringExtra("TicketType");
 
 
         //get Journey object intent
         Journey journeyOut = (Journey )incomingIntent.getSerializableExtra("JourneyDetails");
         String quantity = incomingIntent.getStringExtra("quantity");
-
-        int outLegsNumber = Integer.valueOf(String.valueOf(journeyOut.getLegs()));
 
         //set back button
         Button back_btn = (Button) findViewById(R.id.back_btn);
@@ -198,24 +205,21 @@ public class BookReturn extends AppCompatActivity {
                                 // inflate the layout of the popup window
                                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-                                // parameters for popup window
-                                int height = 1000;
+                                // width for popup window
                                 int width = 1000;
 
                                 if (retLegsNumber == 1) {
                                     popupView = inflater.inflate(R.layout.journey_details_1_leg, null);
-                                    height = 850;
                                 }
                                 if (retLegsNumber == 2) {
                                     popupView = inflater.inflate(R.layout.journey_details_2_leg, null);
-                                    height = 1450;
                                 }
                                 if (retLegsNumber == 3) {
                                     popupView = inflater.inflate(R.layout.journey_details_3_leg, null);
-                                    height = 2000;
                                 }
 
-                                PopupWindow pw = new PopupWindow(popupView, width, height, true);
+                                //extra parameters for popup
+                                PopupWindow pw = new PopupWindow(popupView, width, (ViewGroup.LayoutParams.WRAP_CONTENT), true);
                                 pw.showAtLocation(view, Gravity.CENTER, 0, 0);
 
                                 //leg 1 text views
@@ -282,6 +286,10 @@ public class BookReturn extends AppCompatActivity {
                                         intent.putExtra("RetJourney", journeyRet);
                                         intent.putExtra("OutJourney",journeyOut);
                                         intent.putExtra("TicketType",TicketType);
+                                        intent.putExtra("currentDate",currentDate);
+                                        intent.putExtra("currentTime",currentTime);
+                                        intent.putExtra("DayName",DayName);
+
 
                                         startActivity(intent);
                                     }
@@ -292,7 +300,7 @@ public class BookReturn extends AppCompatActivity {
                         });
                     }
                 } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    databaseError();
                 }
             }
         });
@@ -315,6 +323,7 @@ public class BookReturn extends AppCompatActivity {
         }
     }
 
+    //format time string
     private String setTimeFormat(String providedTime){
 
         if(providedTime.length()==3){
@@ -323,6 +332,7 @@ public class BookReturn extends AppCompatActivity {
         return providedTime.substring(0,2) + ":" + providedTime.substring(2,4);
     }
 
+    //calculate time of journey
     private String setJourneyTime(String arriveT, String departT){
         int departAsMinutes = 60 * Integer.parseInt(departT.substring(0,2)) + Integer.parseInt(departT.substring(3,5));
         int arrivalAsMinutes = 60*Integer.parseInt(arriveT.substring(0,2)) + Integer.parseInt(arriveT.substring(3,5));
@@ -336,6 +346,23 @@ public class BookReturn extends AppCompatActivity {
         }else{
             return (hours + " hours, "+minutes+" minutes.");
         }
+    }
+
+    //error for no journeys
+    public void databaseError() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Error connecting to the database - please check your internet connection and try again");
+        alertDialogBuilder.setTitle("Error - No Connection");
+        alertDialogBuilder.setNegativeButton("return", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(BookReturn.this, Booking.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

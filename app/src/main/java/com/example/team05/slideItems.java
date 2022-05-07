@@ -1,9 +1,11 @@
 /**
+ ***** Description *****
  * This is the class to set the individual image layout used in the adapter
  *
- * NO EDITING NEEDED
+ ***** Author(s)  *****
+ * Harry Akitt
+ * -Key functionality
  *
- * created by Harry Akitt 16/03/2022
  * **/
 
 package com.example.team05;

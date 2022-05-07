@@ -1,3 +1,18 @@
+/**
+ ***** Description *****
+ * This class runs asynchronously to create accessible JSON Object of specific place data by pulling from Google Places API
+ *
+ ***** Key Functionality *****
+ * -Request specific information about a place (name, phone number etc.) from its Google PlaceID
+ *
+ ***** Author(s)  *****
+ * Oli Presland
+ * -Key functionality
+ *
+ ***** References *****
+ * Google - Places API (https://developers.google.com/maps/documentation/places/web-service/overview)
+ * **/
+
 package com.example.team05;
 
 import android.os.AsyncTask;

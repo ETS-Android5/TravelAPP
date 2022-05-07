@@ -1,9 +1,11 @@
 /**
+ ***** Description *****
  * This is the class to define the image layouts to be used on the welcome screen
  *
- * NO EDITING NEEDED
+ ***** Author(s)  *****
+ * Harry Akitt
+ * -Key functionality
  *
- * created by Harry Akitt 16/03/2022
  * **/
 
 package com.example.team05;

@@ -1,3 +1,15 @@
+/**
+ ***** Description:  *****
+ * This class is called to verify a payment with HorsePay
+ *
+ ***** Author(s):  *****
+ * Oli Presland
+ * -Key functionality
+ *
+ ***** References:  *****
+ * Daniel Nesbitt - CSC8019 HorsePay (http://homepages.cs.ncl.ac.uk/daniel.nesbitt/CSC8019/HorsePay/)
+ */
+
 package com.example.team05;
 
 import android.app.Activity;

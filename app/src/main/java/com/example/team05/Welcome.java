@@ -1,17 +1,17 @@
 /**
+ ***** Description:  *****
  * This is the opening welcome page the user see when opening the app.
  *
- * Functionalities include a gallery view of images of the four castles
- * that cycle after a give time or can be swiped across
+ ***** Key functionality *****
+ *  -gallery view of images of the four castles that cycle after a give time or can be swiped across
  *
- * There is also an enter button that takes the user to the Main pages for
- * more information on the castles
+ ***** Author(s):  *****
+ * Harry Akitt
+ * -Created 16/03/22
+ * Ruipeng Jiao
+ * -Formatting
  *
- * TO DO:
- * - DENNIS TO COMPLETE UI
- *
- * created by Harry Akitt 16/03/2022
- * **/
+*/
 
 package com.example.team05;
 
