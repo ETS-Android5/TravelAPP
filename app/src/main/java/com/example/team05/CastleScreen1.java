@@ -8,6 +8,8 @@
  *
  ***** Author(s)  *****
  * Harry Akitt (Created 16/03/22)
+ * -Added opening times table and price
+ * -Added back and book button with intents
  * Qingbiao Song
  * -Added map functionality (03/04/2022)
  * -Added Castle history Content introduction
@@ -48,6 +50,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.Stack;
 
 public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -135,6 +139,37 @@ public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallba
                 "It is a Grade I listed building and as of 2012 received over 800,000 visitors per year when combined with adjacent attraction The Alnwick Garden.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set Castle postcode block
+        TextView CastleAddress = (TextView) findViewById(R.id.textViewCastleAddressInfo);
+        StringBuilder stringBuilderCA = new StringBuilder();
+        String CAInformaion = "NE66 1NQ";
+        stringBuilderCA.append(CAInformaion);
+        CastleAddress.setText(stringBuilderCA.toString());
+
+        //set mobile phone block
+        TextView phoneNumber = (TextView) findViewById(R.id.textViewCastlePhoneNumber);
+        StringBuilder stringBuilderpN = new StringBuilder();
+        String pNInformation = "01665 511 100";
+        stringBuilderpN.append(pNInformation);
+        phoneNumber.setText(stringBuilderpN.toString());
+
+        //set email block
+        TextView email = (TextView) findViewById(R.id.textViewCastleEmailInfor);
+        StringBuilder stringBuilderEm = new StringBuilder();
+        String EmInformation = "info@alnwickcastle.com";
+        stringBuilderEm.append(EmInformation);
+        email.setText(stringBuilderEm.toString());
+
+        //set find Us
+        TextView findUsInfor = (TextView) findViewById(R.id.textViewFindUsInfor);
+        StringBuilder stringBuilderFindU = new StringBuilder();
+        String FindU = "Just off the A1 and easily accessible by train and bus. " +
+                "\nAlnwick Castle is perfectly situated in the heart of " +
+                "Northumberland - away from the hustle and bustle of city life. ";
+        stringBuilderFindU.append(FindU);
+        findUsInfor.setText(stringBuilderFindU.toString());
+
 
         //set visit Website button
         Button button = findViewById(R.id.WebSite);

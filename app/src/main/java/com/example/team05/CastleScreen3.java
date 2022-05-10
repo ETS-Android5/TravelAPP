@@ -8,6 +8,8 @@
  *
  ***** Author(s)  *****
  * Harry Akitt (Created 16/03/22)
+ * -Added opening times table and price
+ * -Added back and book button with intents
  * Qingbiao Song
  * -Added map functionality (03/04/2022)
  * -Added Castle history Content introduction
@@ -120,7 +122,7 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
-        int imageResource = getResources().getIdentifier("@drawable/barnard_castle", null, this.getPackageName());
+        int imageResource = getResources().getIdentifier("@drawable/barnard_info_castle", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
 
         // set main text field
@@ -130,6 +132,36 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
                 + "It sits on the opposite bank to Startforth and is 21 miles (34 km) south-west of the county town of Durham. Nearby towns include Bishop Auckland to the north-east, Darlington to the east and Richmond in North Yorkshire to the south-east. The largest employer is GlaxoSmithKline, with a manufacturing facility on the town's outskirts.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set Castle postcode block
+        TextView CastleAddress = (TextView) findViewById(R.id.textViewCastleAddressInfo);
+        StringBuilder stringBuilderCA = new StringBuilder();
+        String CAInformaion = "DL12 8BH";
+        stringBuilderCA.append(CAInformaion);
+        CastleAddress.setText(stringBuilderCA.toString());
+
+        //set mobile phone block
+        TextView phoneNumber = (TextView) findViewById(R.id.textViewCastlePhoneNumber);
+        StringBuilder stringBuilderpN = new StringBuilder();
+        String pNInformation = "01833 638212";
+        stringBuilderpN.append(pNInformation);
+        phoneNumber.setText(stringBuilderpN.toString());
+
+        //set email block
+        TextView email = (TextView) findViewById(R.id.textViewCastleEmailInfor);
+        StringBuilder stringBuilderEm = new StringBuilder();
+        String EmInformation = "development@english-heritage.org.uk";
+        stringBuilderEm.append(EmInformation);
+        email.setText(stringBuilderEm.toString());
+
+        //set find Us
+        TextView findUsInfor = (TextView) findViewById(R.id.textViewFindUsInfor);
+        StringBuilder stringBuilderFindU = new StringBuilder();
+        String FindU = "Barnard Castle has road connections to Bishop Auckland, " +
+                "Spennymoor and central County Durham via the A688 and Darlington, " +
+                "Stockton-on-Tees, and Middlesbrough by the A67. ";
+        stringBuilderFindU.append(FindU);
+        findUsInfor.setText(stringBuilderFindU.toString());
 
         //set visit Website button
         Button button = findViewById(R.id.WebSite);

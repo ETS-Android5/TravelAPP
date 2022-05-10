@@ -15,6 +15,8 @@
  * -Key functionality
  * Oli Presland
  * -Bug fixes
+ * Ruipeng Jiao
+ * -Add Image display
  *
  ***** References: *****
  * JavaPoint - Alert Dialog (https://www.javatpoint.com/android-alert-dialog-example)
@@ -27,7 +29,9 @@
  * - OLI updated date display for current date
  * - OLI error handling for if date is in past.
  * - Ruipeng (Dennis) completes Navmore button function the page jump
- * -Qingbiao Song Send the booking message to the confirmation page
+ * - Harry add intents to BookOutbound
+ * - Harry error for castle closed
+ * - Ruipeng add a function of change image
  *
  * **/
 
@@ -43,9 +47,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -193,6 +199,31 @@ public class Booking extends AppCompatActivity {
                 displayDate.setText(date);
             }
         };
+
+
+        // Listen the choice of castle and change images
+        ImageView imageview=(ImageView) findViewById(R.id.imageView);
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String castleImgName=adapterView.getItemAtPosition(i).toString();
+                if(castleImgName.equals("Alnwick Castle")){
+                    imageview.setImageResource(R.drawable.home_alnwick);
+                }else if(castleImgName.equals("Auckland Castle")){
+                    imageview.setImageResource(R.drawable.home_auckland);
+                }else if(castleImgName.equals("Bamburgh Castle")){
+                    imageview.setImageResource(R.drawable.home_bamburgh);
+                }else if(castleImgName.equals("Barnard Castle")){
+                    imageview.setImageResource(R.drawable.home_barnard);
+                }else{
+                    return;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         // search button
         // passes the chosen castle and day of week from the spinners to be searched in the

@@ -12,12 +12,12 @@
  * -Displaying journey times
  * -Passing information to intent via Journey object
  * -Error handling on no database results
+ * - UI
  * Oli Presland
  * -Retrieving journey information from database
  *
  ***** Changelog: *****
  * -page now returns selected journeys to the screen and can be clicked on to take to next page
- * - Qingbiao Song Send the ticket message to the confirmation page
  * **/
 
 package com.example.team05;

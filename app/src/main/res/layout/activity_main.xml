@@ -39,12 +39,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="60dp"
                 android:fontFamily="@font/abhaya_libre"
-                android:text="Welcome to Newcastle \nCastle Planner"
-                android:textColor="@color/black"
-                android:shadowRadius="8"
                 android:shadowColor="@color/legs_grey"
                 android:shadowDx="0"
                 android:shadowDy="10"
+                android:shadowRadius="8"
+                android:text="Welcome to Newcastle \nCastle Planner"
+                android:textColor="@color/black"
                 android:textSize="30sp" />
 
 
@@ -70,7 +70,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:translationX="60dp"
-                android:translationY="-265dp" />
+                android:translationY="-90dp" />
 
 
             <View
@@ -81,7 +81,7 @@
                 android:layout_below="@id/alnwickTitle"
                 android:layout_alignParentStart="true"
                 android:translationX="60dp"
-                android:translationY="-265dp" />
+                android:translationY="-95dp" />
 
             <Button
                 android:id="@+id/BookAlnwick"
@@ -261,7 +261,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="50dp"
                 android:fontFamily="@font/abhaya_libre"
-                android:textSize="22sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="Castle Locations" />

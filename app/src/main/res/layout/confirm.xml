@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F4F9FA"
-    android:layout_marginTop="10dp"
+    android:background="#CEE2E6"
+
     >
 
         <TextView
@@ -13,16 +13,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Confirmation"
+            android:layout_marginTop="20dp"
+            android:text="Payment"
+            android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/black"
-            android:textSize="40dp"></TextView>
+            android:textSize="30dp"/>
 
         <Button
             android:id="@+id/back_btn"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/back_btn"
-            android:src="@drawable/back_btn"></Button>
+            android:src="@drawable/back_btn"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
@@ -32,163 +36,418 @@
             android:background="@color/white"
             app:menu="@menu/bottom_menu" />
 
-        <RelativeLayout
-            android:id="@+id/Layout"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="620dp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:layout_below="@+id/title">
-
-                <TextView
-                    android:id="@+id/textViewDepart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@id/textView"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/confir"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textColor="@color/black"
-                    android:textSize="28dp"
-                    android:backgroundTint="@color/white"/>
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/confir"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textColor="@color/black"
-                    android:textSize="28dp"
-                    android:backgroundTint="@color/white"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout"
-                    android:layout_below="@id/textView"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/confir"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textColor="@color/black"
-                    android:textSize="28dp"
-                    android:layout_weight="90"/>
-
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignRight="@id/textView2"
-                    android:layout_alignBaseline="@id/textView2"
-                    android:background="@drawable/ic_baseline_info_24"
-                    android:id="@+id/btn1"
-                    ></Button>
-        </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout2"
-                    android:layout_below="@id/linearLayout"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearLayout"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/confir"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textColor="@color/black"
-                    android:textSize="28dp"
-                    android:layout_weight="90"
-                    android:backgroundTint="@color/white"/>
-
-                        <Button
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignBaseline="@id/textView2"
-                            android:layout_alignRight="@id/textView2"
-                            android:background="@drawable/ic_baseline_info_24"
-                            android:id="@+id/btn2"></Button>
-        </LinearLayout>
+            android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:id="@+id/paylayout"
+                    android:id="@+id/Layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearLayout2"
-                    android:layout_marginTop="80dp"
-                    android:background="@drawable/confir"
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:backgroundTint="@color/white">
+                    android:layout_height="1200dp"
+                    android:layout_below="@+id/title"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="100dp">
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/textViewDepartBackground"
+                            android:layout_width="500dp"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center_vertical|left"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/textViewDepart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/textViewDepartAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="70dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:text="Address"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/busPriceBlock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="120dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:text="Ticket Price:"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+
+                        <ImageView
+                            android:id="@+id/imageViewStation"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/confor_station_pic" />
+
+
+                        <TextView
+                            android:id="@+id/lineFirst"
+                            android:layout_width="350dp"
+                            android:layout_height="1.5dp"
+                            android:layout_below="@id/textViewDepartBackground"
+                            android:layout_centerHorizontal="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="150dp"
+                            android:background="@drawable/dotted"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="TextView" />
+
+
+                        <TextView
+                            android:id="@+id/textViewBackground"
+                            android:layout_width="500dp"
+                            android:layout_height="150dp"
+                            android:layout_below="@+id/textViewDepartBackground"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center" />
+
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewDepartBackground"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="24dp" />
+
+                        <TextView
+                            android:id="@+id/textViewCastleAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lineFirst"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="70dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:text="Address"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/castlePriceBlock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/lineFirst"
+                            android:layout_marginTop="120dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/alata"
+                            android:text="Ticket Price:"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+
+                        <ImageView
+                            android:id="@+id/imageViewCastletic"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/lineFirst"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/confor_castletic_pic" />
+
+                        <TextView
+                            android:id="@+id/lineSecond"
+                            android:layout_width="350dp"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/textViewBackground"
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/black"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/textView2Background"
+                            android:layout_width="500dp"
+                            android:layout_height="150dp"
+                            android:layout_below="@id/textViewBackground"
+                            android:layout_weight="90"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:gravity="center" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_below="@id/textViewBackground"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/lineSecond"
+                                    android:layout_marginTop="50dp"
+                                    android:layout_weight="100"
+                                    android:background="@drawable/confir"
+                                    android:backgroundTint="@color/back_white"
+                                    android:fontFamily="@font/alata"
+                                    android:gravity="center"
+                                    android:text="TextView"
+                                    android:textColor="@color/black"
+                                    android:textSize="28dp" />
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageViewRight1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/lineSecond"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="60dp"
+                            app:srcCompat="@drawable/follow_right" />
+
+                        <TextView
+                            android:id="@+id/textViewStationOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineSecond"
+                            android:layout_marginTop="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="100"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="28dp" />
+
+
+                        <Button
+                            android:id="@+id/btn1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/lineSecond"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/ic_baseline_info_24" />
+
+                        <ImageView
+                            android:id="@+id/imageViewOutbound"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/lineSecond"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/confor_outbound_pic" />
+
+                        <TextView
+                            android:id="@+id/lineThird"
+                            android:layout_width="350dp"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/linearLayout"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/dotted"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/textView3Background"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_below="@id/linearLayout"
                             android:layout_marginBottom="10dp"
+                            android:layout_weight="100"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white" />
+
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_below="@id/linearLayout"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/lineThird"
+                                    android:layout_marginTop="50dp"
+                                    android:layout_weight="100"
+                                    android:background="@drawable/confir"
+                                    android:backgroundTint="@color/white"
+                                    android:fontFamily="@font/alata"
+
+                                    android:gravity="center_horizontal"
+                                    android:text="TextView"
+                                    android:textColor="@color/black"
+                                    android:textSize="28dp" />
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageViewRight2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/lineThird"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="60dp"
+                            app:srcCompat="@drawable/follow_right" />
+
+                        <Button
+                            android:id="@+id/btn2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/lineThird"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/ic_baseline_info_24" />
+
+                        <ImageView
+                            android:id="@+id/imageViewReturn"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/lineThird"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/confor_return_pic" />
+
+                        <RelativeLayout
+                            android:id="@+id/paylayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/linearLayout2"
+                            android:layout_marginTop="80dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
                             android:gravity="left"
-                            android:text="To pay:"
-                            android:textColor="@color/black"
-                            android:textSize="25dp" />
+                            android:padding="20dp">
 
-                        <TextView
-                            android:id="@+id/price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="80dp"
-                            android:layout_toRightOf="@id/textView4"
-                            android:gravity="left"
-                            android:text="price"
-                            android:textColor="@color/black"
-                            android:textSize="25dp" />
+                                <TextView
+                                    android:id="@+id/textView4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:fontFamily="@font/alata"
+                                    android:gravity="left"
+                                    android:text="To pay:"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
 
-                        <TextView
-                            android:id="@+id/tv5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/textView4"></TextView>
+                                <TextView
+                                    android:id="@+id/total"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="40dp"
+                                    android:fontFamily="@font/alata"
+                                    android:gravity="left"
+                                    android:text="Total"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp" />
 
-                        <TextView
-                            android:id="@+id/tv6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tv5"></TextView>
+                                <ImageView
+                                    android:id="@+id/imageViewLock"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginStart="50dp"
+                                    android:layout_marginTop="43dp"
+                                    app:srcCompat="@drawable/confor_lock" />
+
+
+                                <TextView
+                                    android:id="@+id/price"
+                                    android:layout_width="500dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="40dp"
+                                    android:fontFamily="@font/alata"
+                                    android:gravity="right"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
+
+                                <TextView
+                                    android:id="@+id/tv5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/price" />
+
+                                <TextView
+                                    android:id="@+id/tv6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv5" />
+                        </RelativeLayout>
+
+                        <Button
+                            android:id="@+id/payButton"
+                            android:layout_width="250dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/paylayout"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="70dp"
+                            android:background="@drawable/buttom_radius"
+                            android:text="Pay Now"
+                            android:textColor="@color/white" />
+
+
+
                 </RelativeLayout>
 
-                <Button
-                    android:id="@+id/payButton"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/paylayout"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="70dp"
-                    android:background="@drawable/buttom_radius"
-                    android:text="Pay Now"
-                    android:textColor="@color/white"/>
-        </RelativeLayout>
-
-
-
-
-
-
+        </ScrollView>
 
 
 </RelativeLayout>

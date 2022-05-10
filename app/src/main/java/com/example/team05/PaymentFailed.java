@@ -86,7 +86,7 @@ public class PaymentFailed extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PaymentFailed.this,MainActivity.class);
+                Intent intent = new Intent(PaymentFailed.this,Booking.class);
                 startActivity(intent);
             }
         });

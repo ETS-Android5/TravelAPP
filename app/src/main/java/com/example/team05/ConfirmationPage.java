@@ -10,6 +10,9 @@
  ***** Author(s)  *****
  * Harry Akitt (Created 16/03/22)
  * -Retrieves information from passed intent and displays to user
+ * -Add intents
+ * - Added back button with functionality
+ * - Added popups
  * Qingbiao Song
  * -Calculates price
  * -display information(Destination,time of Outbound and Return And total price)
@@ -77,6 +80,14 @@ public class ConfirmationPage extends AppCompatActivity {
         TextView tv6 = (TextView) findViewById(R.id.tv6); //castle ticket price
         TextView priceTv = (TextView) findViewById(R.id.price); //total price
         TextView tv7 = (TextView) findViewById(R.id.textViewDepart); //departure station
+
+        //set Address
+        TextView DepartAddress = (TextView) findViewById(R.id.textViewDepartAddress); //bus station address
+        TextView CastleAddress = (TextView) findViewById(R.id.textViewCastleAddress); //castle station address
+
+        //ticket price(in the box)
+        TextView busPriceBlock = (TextView) findViewById(R.id.busPriceBlock);
+        TextView castlePriceBlock = (TextView) findViewById(R.id.castlePriceBlock);
 
         //get intents from previous page
         Intent incomingIntent = getIntent();
@@ -170,19 +181,42 @@ public class ConfirmationPage extends AppCompatActivity {
         }
 
         //Number of student
-        Integer Number = Integer.parseInt(incomingIntent.getStringExtra("quantity"));
+        int Number = Integer.parseInt(incomingIntent.getStringExtra("quantity"));
 
         //calculate total price
         Double totalPrice = (priceTicket+priceBus)*Number;
 
         //set text
         tv7.setText("Departure: " + departure);
-        tv.setText("Destination: "+castleFull+" Castle");
-        tv2.setText("Outbound: "+outDepart+" ->"+outArrive);
-        tv3.setText("Return: "+retDepart+" ->"+retArrive);
-        priceTv.setText("Price: £" + String.format("%.2f",totalPrice));
+        if(departure.equals("Eldon Square")){
+            DepartAddress.setText("Postcode :  " + "NE1 7XW");
+        }else{
+            DepartAddress.setText("Postcode :  " + "NE1 7PF");
+        }
+        busPriceBlock.setText("Ticket Price: £ "+String.format("%.2f",priceBus));
+
+        tv.setText(castleFull+" Castle");
+        if(castleFull.equals("Alnwick")){
+            CastleAddress.setText("Postcode :  "+"NE66 1NQ");
+        }else if (castleFull.equals("Auckland")){
+            CastleAddress.setText("Postcode :  "+"DL14 7NR");
+        }else if (castleFull.equals("Barnard")){
+            CastleAddress.setText("Postcode :  "+"DL12 8BH");
+        }else{
+            CastleAddress.setText("Postcode :  "+"NE69 7DF");
+        }
+        castlePriceBlock.setText("Ticket Price: £ "+ String.format("%.2f",priceTicket));
+
+        tv2.setText(""+outDepart+"             "+outArrive);
+        tv3.setText(""+retDepart+"               "+retArrive);
+        priceTv.setText("£ " + String.format("%.2f",totalPrice)); //price
         tv5.setText("   " + Number + " x " + TicketType + " @ £" + String.format("%.2f",priceBus));
         tv6.setText("   " + Number + " x " + "Castle Ticket" + " @ £" + String.format("%.2f",priceTicket));
+
+        //Extra intents to return to previous page if back button pressed
+        String DayName = incomingIntent.getStringExtra("DayName");
+        String currentDate = incomingIntent.getStringExtra("currentDate");
+        int currentTime = incomingIntent.getIntExtra("currentTime",0);
 
         //set pay button
         Button payBtn = (Button) findViewById(R.id.payButton);
@@ -209,7 +243,15 @@ public class ConfirmationPage extends AppCompatActivity {
                 SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
                 Date date = new Date();
                 String transactionTime = formatter.format(date);
-                String timeZone = "BST";
+                String timeZone;
+
+                int indexST = currentTime.toString().indexOf("mUseDst");
+                String useDst = currentTime.toString().substring(indexST + 8,indexST+9);
+                if(useDst.equals("t")){
+                    timeZone = "BST";
+                }else{
+                    timeZone = "GMT";
+                }
 
                 String request = "{\"storeID\":\"Team05\", \"customerID\":\""+customerID+"\", \"date\":\""+searchedDate+"\", \"time\":\""+transactionTime+"\", \"timeZone\":\""+timeZone+"\", \"transactionAmount\":\""+totalPrice+"\", \"currencyCode\":\"GBP\"}";
                 Log.d("Confirm",request);
@@ -219,11 +261,6 @@ public class ConfirmationPage extends AppCompatActivity {
 
             }
         });
-
-        //Extra intents to return to previous page if back button pressed
-        String DayName = incomingIntent.getStringExtra("DayName");
-        String currentDate = incomingIntent.getStringExtra("currentDate");
-        int currentTime = incomingIntent.getIntExtra("currentTime",0);
 
         //set back button
         Button back_btn = (Button) findViewById(R.id.back_btn);

@@ -12,6 +12,7 @@
  * -Displaying journey times
  * -Passing information to intent via Journey object
  * -Error handling on no database results
+ * - UI
  * Oli Presland
  * -Retrieving journey information from database
  *
@@ -20,7 +21,6 @@
  * - OLI added calls to database. Currently not working. 03/04
  * - OLI Update, database call now fixed 04/04
  * - page now returns selected journeys to the screen and can be clicked on to take to next page
- * - Qingbiao Song Send the ticket message to the confirmation page
  * **/
 
 package com.example.team05;
@@ -133,7 +133,7 @@ public class BookOutbound extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.lv1);
 
         //create array list
-        ArrayList<Journey> list = new ArrayList<Journey>();
+        ArrayList<Journey> list = new ArrayList<Journey>(0);
 
         // List Adapter for format
         JourneyAdapter adapter = new JourneyAdapter(this, R.layout.adapter, list);

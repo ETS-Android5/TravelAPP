@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
     android:background="#F4F9FA">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,18 +22,18 @@
     <Button
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:translationX="20dp"
         android:src="@drawable/back_btn"
         android:id="@+id/back_btn"
         android:background="@drawable/back_btn"
-        android:layout_marginTop="20dp"
-        ></Button>
+        android:layout_marginTop="20dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:scrollbars="none">
 
 
         <RelativeLayout
@@ -41,10 +43,10 @@
 
             <ImageView
                 android:id="@+id/topImage"
-                android:layout_width="350dp"
+                android:layout_width="wrap_content"
                 android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+
+                android:layout_marginTop="0dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/radius"
                 android:scaleType="fitXY" />
@@ -53,37 +55,47 @@
                 android:id="@+id/castleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:translationX="20dp"
                 android:layout_below="@id/topImage"
                 android:layout_alignStart="@id/topImage"
-                android:text="Castle Name"
                 android:fontFamily="@font/montserrat_bold"
+                android:text="Castle Name"
                 android:textColor="@color/black"
-                android:textSize="15pt"></TextView>
+                android:textSize="12pt" />
+
             <View
                 android:id="@+id/viewline"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/line_yellow"
+                android:layout_width="200dp"
+                android:layout_height="2dp"
                 android:layout_below="@id/castleName"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line_yellow" />
 
             <TextView
                 android:id="@+id/subtitle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/castleName"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="History"
                 android:textColor="@color/black"
-                android:textSize="12pt"></TextView>
+                android:textSize="10pt" />
 
             <TextView
                 android:id="@+id/messageWindow"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="match_parent"
                 android:layout_below="@id/subtitle3"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:textSize="8pt" />
 
@@ -91,389 +103,372 @@
                 android:id="@+id/subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/messageWindow"
+                android:layout_below="@+id/map"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="Opening Times"
                 android:textColor="@color/black"
-                android:textSize="12pt"></TextView>
+                android:textSize="10pt" />
 
             <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+                android:id="@+id/table"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:stretchColumns="0,1,2"
-                android:gravity="center"
-                android:id="@+id/table"
                 android:layout_below="@+id/subtitle1"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TableRow
-                    android:background="@color/brown"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    >
+
+                    android:background="@color/brown">
+
                     <TableRow
-                        android:background="#000000"
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        >
-
+                        android:background="#000000">
 
 
                     </TableRow>
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    >
+                    android:background="#000000">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="110dp"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text=" Day "
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:textStyle="bold"
-                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="110dp"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Opening"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="110dp"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Closing"
-                        android:layout_margin="1dp"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_column="2"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
-                        />
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    >
+                    android:background="#000000">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Monday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
                         android:id="@+id/mon1"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
                         android:id="@+id/mon2"
-                        android:textSize="8pt"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
 
 
-
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    >
+                    android:background="#000000">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Tuesday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
                         android:id="@+id/tues1"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
                         android:id="@+id/tues2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:textSize="8pt"
-                    >
+                    android:background="#000000"
+                    android:textSize="8pt">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Wednesday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/wed1"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
                         android:id="@+id/wed2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:textSize="8pt"
-                    >
+                    android:background="#000000"
+                    android:textSize="8pt">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Thursday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/thu1"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
                         android:id="@+id/thu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:textSize="8pt"
-                    >
+                    android:background="#000000"
+                    android:textSize="8pt">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Friday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/fri1"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
                         android:id="@+id/fri2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:textSize="8pt"
-                    >
+                    android:background="#000000"
+                    android:textSize="8pt">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
                         android:text="Saturday"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/sat1"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/sat2"
+                        android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
+                        android:id="@+id/sat2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
+
                 <TableRow
-                    android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:textSize="8pt"
-                    >
+                    android:background="#000000"
+                    android:textSize="8pt">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Sunday"
-                        android:layout_margin="1dp"
                         android:layout_column="0"
+                        android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:textSize="8pt"
-                        />
+                        android:text="Sunday"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/sun1"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:textSize="8pt"
-                        />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/sun2"
+                        android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
+
+                    <TextView
+                        android:id="@+id/sun2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_column="2"
-                        android:textSize="8pt"/>
+                        android:layout_margin="1dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="8pt" />
                 </TableRow>
 
 
@@ -483,29 +478,32 @@
                 android:id="@+id/subtitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/table"
+                android:layout_below="@+id/messageWindow"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="Price"
                 android:textColor="@color/black"
-                android:textSize="12pt"></TextView>
+                android:textSize="10pt" />
 
             <TextView
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="8pt"
-                android:id="@+id/price"
-                android:text=""
                 android:layout_below="@id/subtitle2"
                 android:layout_marginBottom="10dp"
-                ></TextView>
+                android:layout_marginLeft="20dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="8pt"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/price"
-                android:id="@+id/layout_btn">
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/price">
 
                 <Button
                     android:id="@+id/BookCastle"
@@ -525,8 +523,8 @@
                     android:background="@drawable/buttom_radius"
                     android:text="Visit Website"
                     android:textColor="@color/button_text_blue"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/BookCastle"
+                    app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -537,7 +535,287 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_below="@id/layout_btn"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="40dp" />
+
+            <View
+                android:id="@+id/viewInformationBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="750dp"
+                android:layout_below="@+id/table"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/info_contact_block"
+                android:src="@drawable/radius" />
+
+            <TextView
+                android:id="@+id/textViewContactDeatial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/table"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Contact Details"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <View
+                android:id="@+id/viewlineBlack1"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_below="@id/textViewContactDeatial"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/viewlineBlack1"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                app:srcCompat="@drawable/castle_infor_location" />
+
+
+            <TextView
+                android:id="@+id/textViewCastleAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewlineBlack1"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Address:"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCastleAddressInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastleAddress"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+                android:textIsSelectable="true"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Address is"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <ImageView
+                android:id="@+id/imageViewAddre"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/textViewCastleAddressInfo"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                app:srcCompat="@drawable/castle_infor_phone" />
+
+
+            <TextView
+                android:id="@+id/textViewCastleMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastleAddressInfo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Mobile:"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCastlePhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastleMobile"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+                android:textIsSelectable="true"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Phone is"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/imageViewEmail"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_below="@+id/textViewCastlePhoneNumber"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                app:srcCompat="@drawable/castle_info_email" />
+
+
+            <TextView
+                android:id="@+id/textViewCastleEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastlePhoneNumber"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="E-mail:"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCastleEmailInfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastleEmail"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+                android:textIsSelectable="true"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Email is"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/textViewFindUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCastleEmailInfor"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Find Us"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <View
+                android:id="@+id/viewlineBlack2"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_below="@id/textViewFindUs"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewFindUsInfor"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewlineBlack2"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Email is"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/textViewKeyFeatures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewFindUsInfor"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Key Features"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <View
+                android:id="@+id/viewlineBlack3"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_below="@id/textViewKeyFeatures"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageViewWifi"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/viewlineBlack3"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="50dp"
+                app:srcCompat="@drawable/castle_infor_wifi" />
+
+            <TextView
+                android:id="@+id/textViewWifiTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageViewWifi"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Wifi"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/imageViewCar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/viewlineBlack3"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="120dp"
+                app:srcCompat="@drawable/castle_info_car" />
+
+            <TextView
+                android:id="@+id/textViewCarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageViewCar"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Parking"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/imageViewAccessible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/viewlineBlack3"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="210dp"
+                app:srcCompat="@drawable/castle_infor_accessible" />
+
+            <TextView
+                android:id="@+id/textViewAccessibleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageViewAccessible"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="195dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Accessible"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
 
         </RelativeLayout>
     </ScrollView>

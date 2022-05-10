@@ -8,6 +8,8 @@
  *
  ***** Author(s)  *****
  * Harry Akitt (Created 16/03/22)
+ * -Added opening times table and price
+ * -Added back and book button with intents
  * Qingbiao Song
  * -Added map functionality (03/04/2022)
  * -Added Castle history Content introduction
@@ -130,6 +132,36 @@ public class CastleScreen2 extends AppCompatActivity implements OnMapReadyCallba
                 "In 1832, this castle replaced Durham Castle as the official residence of the Bishops of Durham.It is now a tourist attraction, but still houses the Bishop's offices; the Castle is a Grade I listed building.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set Castle postcode block
+        TextView CastleAddress = (TextView) findViewById(R.id.textViewCastleAddressInfo);
+        StringBuilder stringBuilderCA = new StringBuilder();
+        String CAInformaion = "DL14 7NR";
+        stringBuilderCA.append(CAInformaion);
+        CastleAddress.setText(stringBuilderCA.toString());
+
+        //set mobile phone block
+        TextView phoneNumber = (TextView) findViewById(R.id.textViewCastlePhoneNumber);
+        StringBuilder stringBuilderpN = new StringBuilder();
+        String pNInformation = "01388743750";
+        stringBuilderpN.append(pNInformation);
+        phoneNumber.setText(stringBuilderpN.toString());
+
+        //set email block
+        TextView email = (TextView) findViewById(R.id.textViewCastleEmailInfor);
+        StringBuilder stringBuilderEm = new StringBuilder();
+        String EmInformation = "enquiries@aucklandproject.org";
+        stringBuilderEm.append(EmInformation);
+        email.setText(stringBuilderEm.toString());
+
+        //set find Us
+        TextView findUsInfor = (TextView) findViewById(R.id.textViewFindUsInfor);
+        StringBuilder stringBuilderFindU = new StringBuilder();
+        String FindU = "The Auckland Castle is located in Bishop Auckland, " +
+                "County Durham, which is approximately 12 miles south of Durham, " +
+                "and 30 miles south of Newcastle-upon-Tyne. ";
+        stringBuilderFindU.append(FindU);
+        findUsInfor.setText(stringBuilderFindU.toString());
 
         //set visit Website button
         Button button = findViewById(R.id.WebSite);

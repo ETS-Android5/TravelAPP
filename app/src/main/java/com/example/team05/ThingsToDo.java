@@ -11,7 +11,7 @@
  * Oli Presland
  * -Key functionality
  * Ruipeng Jiao
- * -UI formatting
+ * -UI formatting and Image button functionality
  *
  ***** References:  *****
  * Andy Point - Google Maps search feature (https://www.codeproject.com/Articles/1121102/Google-Maps-Search-Nearby-Displaying-Nearby-Places)
@@ -35,6 +35,7 @@ import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -178,38 +179,6 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         //run the programme of choose castle
         setLatLong();
 
-        //Create castle spinner with default of current location
-//        mySpinner = (Spinner) findViewById(R.id.castleList);
-//        ArrayList<String> CastleName = new ArrayList<>();
-//        CastleName.add("Current Location");
-//        CastleName.add("Alnwick Castle");
-//        CastleName.add("Auckland Castle");
-//        CastleName.add("Bamburgh Castle");
-//        CastleName.add("Barnard Castle");
-//        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ThingsToDo.this,
-//                android.R.layout.simple_list_item_1, CastleName);
-//        mySpinner.setAdapter(myAdapter);
-
-
-        //press imagebutton to jump to castle
-//        imageButton1.setOnClickListener(new View.OnClickListener() {
-//            //mySpinner.getSelectedItem().equals("Alnwick Castle");
-//            @Override
-//            public void onClick(View view) {
-//                setLatLong();
-//            }
-//        });
-//
-
-        //Button to set current location
-//        Button searchButton = (Button) findViewById(R.id.Search_Button_Activities);
-//        searchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                setLatLong();
-//            }
-//        });
-
         //Button initialises search for nearby restaurants
         Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
@@ -247,11 +216,6 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
                 Toast.makeText(ThingsToDo.this,"Nearby Supermarkets", Toast.LENGTH_LONG).show();
             }
         });
-
-//        sv = (ScrollView) findViewById((R.id.places_list));
-
-        // List Adapter for format
-//        PlaceAdapter adapter = new PlaceAdapter(this, R.layout.places_list_adapter, list);
 
         placeNameTV = findViewById(R.id.PlaceName);
         weakTVRefPlaceName = new WeakReference<>(placeNameTV);
@@ -348,6 +312,8 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
 
 
     }
+
+
 
     private boolean checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
@@ -474,10 +440,26 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         View imageButton2 = (View) findViewById(R.id.imageAuckland);
         View imageButton3 = (View) findViewById(R.id.imageBamburgh);
         View imageButton4 = (View) findViewById(R.id.imageBarnard);
+        View imageButton5 = (View) findViewById(R.id.currentLocation);
+
+        TextView textAlnwick = (TextView) findViewById(R.id.textAlnwick);
+        TextView textAuckland = (TextView) findViewById(R.id.textAuckland);
+        TextView textBamburgh = (TextView) findViewById(R.id.textBamburgh);
+        TextView textBarnard = (TextView) findViewById(R.id.textBarnard);
+        TextView textLocation = (TextView) findViewById(R.id.textCurrentLocation);
+
+
+
 
         imageButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textAlnwick.setTextColor(Color.parseColor("#FF81E3D7")); //color:successful_color
+                textAuckland.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBamburgh.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBarnard.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+                textLocation.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+
                 MarkerOptions markerOptions = new MarkerOptions();
 //            markerOptions.title("Alnwick Castle");
                 latitude = 55.41571066816451;
@@ -492,6 +474,12 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         imageButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textAlnwick.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textAuckland.setTextColor(Color.parseColor("#FF81E3D7")); //color:successful_color
+                textBamburgh.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBarnard.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+                textLocation.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+
                 latitude = 54.67153810776224;
                 longitude = -1.6712613553567615;
                 LatLng Current_Position  = new LatLng(latitude,longitude);
@@ -504,6 +492,12 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         imageButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textAlnwick.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textAuckland.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBamburgh.setTextColor(Color.parseColor("#FF81E3D7")); //color:successful_color
+                textBarnard.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+                textLocation.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+
                 latitude = 55.609080781406995;
                 longitude = -1.7099322879491325;
                 LatLng Current_Position  = new LatLng(latitude,longitude);
@@ -516,6 +510,12 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         imageButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textAlnwick.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textAuckland.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBamburgh.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBarnard.setTextColor(Color.parseColor("#FF81E3D7"));  //color:successful_color
+                textLocation.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+
                 latitude = 54.5456698230093;
                 longitude = -1.9236628163269331;
                 LatLng Current_Position  = new LatLng(latitude,longitude);
@@ -526,50 +526,23 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         });
 
 
+        imageButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textAlnwick.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textAuckland.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBamburgh.setTextColor(Color.parseColor("#FFE6F2F4")); //color:main_blue
+                textBarnard.setTextColor(Color.parseColor("#FFE6F2F4"));  //color:main_blue
+                textLocation.setTextColor(Color.parseColor("#FF81E3D7"));  //color:successful_color
 
-//        if(mySpinner.getSelectedItem().equals("Current Location")){
-//            onStart();
-//        }
-//
-//        if(mySpinner.getSelectedItem().equals("Alnwick Castle")){
-////            MarkerOptions markerOptions = new MarkerOptions();
-////            markerOptions.title("Alnwick Castle");
-//            latitude = 55.41571066816451;
-//            longitude = -1.7058452995980735;
-//            LatLng Current_Position  = new LatLng(latitude,longitude);
-//            mMap.clear();
-//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Alnwick Castle"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-//        }
-//
-//        if(mySpinner.getSelectedItem().equals("Auckland Castle")){
-//            latitude = 54.67153810776224;
-//            longitude = -1.6712613553567615;
-//            LatLng Current_Position  = new LatLng(latitude,longitude);
-//            mMap.clear();
-//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Auckland Castle"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-//        }
-//
-//        if(mySpinner.getSelectedItem().equals("Bamburgh Castle")){
-//            latitude = 55.609080781406995;
-//            longitude = -1.7099322879491325;
-//            LatLng Current_Position  = new LatLng(latitude,longitude);
-//            mMap.clear();
-//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Bamburgh Castle"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-//        }
-//
-//        if(mySpinner.getSelectedItem().equals("Barnard Castle")){
-//            latitude = 54.5456698230093;
-//            longitude = -1.9236628163269331;
-//            LatLng Current_Position  = new LatLng(latitude,longitude);
-//            mMap.clear();
-//            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Barnard Castle"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
-//        }
-
+                onStart();
+            }
+        });
     }
+
+
+
+
 
     //Adds nearby places to map
     public static void ShowNearbyPlaces(List<HashMap<String, String>> nearbyPlacesList) {
@@ -610,12 +583,7 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
 
     @Override
     public boolean onMarkerClick(final Marker marker) {
-
-        Log.d("Test",marker.getTitle());
-        Log.d("Test",marker.getId());
-        Log.d("Test", String.valueOf(marker.getTag()));
-        String placeID = DataParser.placeIDs.get(marker.getTag());
-        Log.d("Test","On marker click placeID = "+DataParser.placeIDs.get(marker.getTag()));
+         String placeID = DataParser.placeIDs.get(marker.getTag());
 
         //add more fields here
         String url ="https://maps.googleapis.com/maps/api/place/details/json?place_id="+placeID+"&fields=name,website,formatted_phone_number,rating&key=AIzaSyAHVJQxykBY31DrV2BZadqbtJkoyDaFVwA";
@@ -623,17 +591,6 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         DataTransfer[0] = url;
         GetPlaceData getPlaceData = new GetPlaceData();
         getPlaceData.execute(DataTransfer);
-
-        Log.d("Test",Thread.currentThread().getName());
-//        try {
-//            getPlaceData.wait(10);
-////            getPlaceData.notify();
-//            Log.d("Test",getPlaceData.getStatus().toString());
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-
 
         return false;
     }
@@ -665,8 +622,6 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         }else{
             weakTVRefRating.get().setText("Rating: "+placeRating);
         }
-
-
 
 
     }

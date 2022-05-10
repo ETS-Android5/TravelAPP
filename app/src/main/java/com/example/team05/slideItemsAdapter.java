@@ -43,6 +43,10 @@ public class slideItemsAdapter extends PagerAdapter {
         TextView title = sliderLayout.findViewById(R.id.title);
         title.setText(theSlideItemsModelClassList.get(position).getCaption());
 
+
+        TextView description = sliderLayout.findViewById(R.id.pageInformation);
+        description.setText(theSlideItemsModelClassList.get(position).getDescription());
+
         featured_image.setImageResource(theSlideItemsModelClassList.get(position).getFeatured_image());
         container.addView(sliderLayout);
         return sliderLayout;

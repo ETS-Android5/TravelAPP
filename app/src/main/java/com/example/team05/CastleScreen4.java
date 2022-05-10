@@ -8,6 +8,8 @@
  *
  ***** Author(s)  *****
  * Harry Akitt (Created 16/03/22)
+ * -Added opening times table and price
+ * -Added back and book button with intents
  * Qingbiao Song
  * -Added map functionality (03/04/2022)
  * -Added Castle history Content introduction
@@ -134,6 +136,35 @@ public class CastleScreen4 extends AppCompatActivity implements OnMapReadyCallba
                 "After a revolt in 1095 supported by the castle's owner, it became the property of the English monarch.";
         stringBuilder.append(message);
         mMessageWindow.setText(stringBuilder.toString());
+
+        //set Castle postcode block
+        TextView CastleAddress = (TextView) findViewById(R.id.textViewCastleAddressInfo);
+        StringBuilder stringBuilderCA = new StringBuilder();
+        String CAInformaion = "NE69 7DF";
+        stringBuilderCA.append(CAInformaion);
+        CastleAddress.setText(stringBuilderCA.toString());
+
+        //set mobile phone block
+        TextView phoneNumber = (TextView) findViewById(R.id.textViewCastlePhoneNumber);
+        StringBuilder stringBuilderpN = new StringBuilder();
+        String pNInformation = "01668 214 208";
+        stringBuilderpN.append(pNInformation);
+        phoneNumber.setText(stringBuilderpN.toString());
+
+        //set email block
+        TextView email = (TextView) findViewById(R.id.textViewCastleEmailInfor);
+        StringBuilder stringBuilderEm = new StringBuilder();
+        String EmInformation = "administrator@bamburghcastle.com";
+        stringBuilderEm.append(EmInformation);
+        email.setText(stringBuilderEm.toString());
+
+        //set find Us
+        TextView findUsInfor = (TextView) findViewById(R.id.textViewFindUsInfor);
+        StringBuilder stringBuilderFindU = new StringBuilder();
+        String FindU = "Bamburgh Castle is situated on a volcanic outcrop bordering the North Sea. " +
+                "\nIt is 78 miles from Edinburgh and 51 miles from Newcastle.";
+        stringBuilderFindU.append(FindU);
+        findUsInfor.setText(stringBuilderFindU.toString());
 
         //set visit Website button
         Button button = findViewById(R.id.WebSite);

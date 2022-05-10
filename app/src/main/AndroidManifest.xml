@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.team05">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.team05" >
 
     <uses-permission android:name="com.example.team05.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -19,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round0"
         android:supportsRtl="true"
         android:theme="@style/Theme.Team05"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
         <activity
             android:name=".PaymentFailed"
             android:exported="false" />
@@ -40,7 +41,7 @@
         <!-- /> -->
         <activity
             android:name=".Welcome"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -82,10 +83,7 @@
             android:name=".ConfirmationPage"
             android:label="Confirmation"
             android:parentActivityName=".BookReturn" />
-        <activity
-            android:name=".More"
-            android:label="Recommend"
-            android:parentActivityName=".MainActivity" />
+        
     </application>
 
 </manifest>

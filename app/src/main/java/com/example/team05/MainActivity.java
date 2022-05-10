@@ -10,6 +10,8 @@
  ***** Author(s)  *****
  * Harry Akitt
  * -Created 16/03/22
+ * -Formatting and UI
+ * -Buttons and Intents
  * Ruipeng Jiao
  * -Main formatting
  * -Navigation

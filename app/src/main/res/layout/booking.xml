@@ -11,15 +11,15 @@
     android:background="#F4F9FA">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:text="Booking"
-        android:textSize="40dp"
-        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        ></TextView>
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Booking"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -31,80 +31,134 @@
         />
 
 
-
-
     <TextView
+        android:id="@+id/castleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_alignLeft="@+id/castleList"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/castleList"
         android:text="Destination: "
-        android:id="@+id/castleText"
-        android:textSize="25dp"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/title"/>
+        android:textSize="12sp" />
 
     <Spinner
         android:id="@+id/castleList"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/castleText"
-        android:background="@drawable/rectangle"
+        android:layout_below="@+id/castleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/book_box"
         android:gravity="center"
         android:scrollbarSize="40dp"
         android:spinnerMode="dropdown"
-        android:textAlignment="center"
-        android:layout_below="@+id/title"/>
+        android:textAlignment="center" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quantity"
-        android:spinnerMode="dropdown"
-        android:scrollbarSize="40dp"
-        android:gravity="center"
-        android:layout_alignStart="@id/castleList"
-        android:layout_below="@id/castleList"
-        android:background="@drawable/rectangle"
-        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/imageViewDown"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignRight="@+id/castleList"
+        android:layout_toLeftOf="@id/castleList"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/castleText"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        app:srcCompat="@drawable/book_down" />
+
 
     <TextView
+        android:id="@+id/quantityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/castleList"
+        android:layout_marginTop="5dp"
+
+        android:layout_alignLeft="@+id/quantity"
+        android:layout_toRightOf="@id/quantity"
         android:text="Quantity: "
-        android:id="@+id/quantityText"
-        android:layout_below="@id/castleText"
         android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <Spinner
+        android:id="@+id/quantity"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/book_box"
+        android:gravity="center"
+        android:hint="Quantity"
+        android:scrollbarSize="40dp"
+        android:spinnerMode="dropdown" />
+
+    <ImageView
+        android:id="@+id/imageViewDown2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/quantityText"
+        android:layout_alignRight="@+id/quantity"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
         android:layout_toLeftOf="@id/quantity"
-        android:layout_alignBaseline="@id/quantity"
-        android:textSize="25dp"/>
+        app:srcCompat="@drawable/book_down" />
 
 
     <TextView
         android:id="@+id/date_input"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/quantity"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rectangle"
+        android:background="@drawable/book_box"
         android:gravity="center"
         android:hint="Select Date"
         android:textColor="@color/black"
         android:textSize="20dp" />
 
+    <ImageView
+        android:id="@+id/imageViewZoom"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/quantity"
+        android:layout_alignRight="@+id/date_input"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:layout_toLeftOf="@id/date_input"
+        app:srcCompat="@drawable/book_zoom" />
+
+
     <Button
         android:id="@+id/search_button"
         android:layout_width="300dp"
         android:layout_height="55dp"
-        android:layout_above="@id/bottomNav"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="95dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/buttom_radius"
         android:text="Get Times &amp; Tickets"
         android:textColor="@color/white"
         android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="340dp"
+        android:layout_height="220dp"
+        android:layout_below="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="30dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_alnwick" />
 
 
 

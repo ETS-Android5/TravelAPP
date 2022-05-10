@@ -24,90 +24,211 @@
 
     <View
         android:id="@+id/viewleft"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:background="@color/todo_left_background"
         android:layout_marginTop="0dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageAlnwick"
+    <ScrollView
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="fitXY"
-        android:translationX="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_alnwick"
-        tools:ignore="MissingConstraints"
-        android:background="@drawable/todo_button" />
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/imageAuckland"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="fitXY"
-        android:translationX="10dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_auckland"
-        tools:ignore="MissingConstraints"
-        android:background="@drawable/todo_button" />
-    <ImageButton
-        android:id="@+id/imageBamburgh"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="fitXY"
-        android:translationX="10dp"
-        android:layout_marginTop="300dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_bamburgh"
-        tools:ignore="MissingConstraints"
-        android:background="@drawable/todo_button" />
-    <ImageButton
-        android:id="@+id/imageBarnard"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="fitXY"
-        android:translationX="10dp"
-        android:layout_marginTop="440dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_barnard"
-        tools:ignore="MissingConstraints"
-        android:background="@drawable/todo_button" />
+        <ImageButton
+            android:id="@+id/imageAlnwick"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:translationX="5dp"
+            android:src="@drawable/selector_alnwick"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_alnwick"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/todo_button" />
 
+        <TextView
+            android:id="@+id/textAlnwick"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Alnwick\nCastle"
+            android:textStyle="bold"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/main_blue"
+            android:gravity="center"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="8"
+            android:layout_marginTop="95dp"
+            android:translationX="5sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
+        <ImageButton
+            android:id="@+id/imageAuckland"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:translationX="5dp"
+            android:src="@drawable/selector_auckland"
+            android:layout_marginTop="160dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_auckland"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/todo_button" />
+
+            <TextView
+                android:id="@+id/textAuckland"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="235dp"
+                android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:shadowRadius="8"
+                android:text="Auckland\nCastle"
+                android:textColor="@color/main_blue"
+                android:textStyle="bold"
+                android:translationX="5sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/imageBamburgh"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:translationX="5dp"
+            android:src="@drawable/selector_bamburgh"
+            android:layout_marginTop="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_bamburgh"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/todo_button" />
+
+        <TextView
+            android:id="@+id/textBamburgh"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Bamburgh\nCastle"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/main_blue"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="8"
+            android:layout_marginTop="375dp"
+            android:translationX="5sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/imageBarnard"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:translationX="5dp"
+            android:src="@drawable/selector_barnard"
+            android:layout_marginTop="440dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_barnard"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/todo_button" />
+
+        <TextView
+            android:id="@+id/textBarnard"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Barnard\nCastle"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/main_blue"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="8"
+            android:layout_marginTop="515dp"
+            android:translationX="5sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/currentLocation"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:translationX="5dp"
+            android:layout_marginTop="580dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/currentlocation"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/todo_button" />
+
+            <TextView
+                android:id="@+id/textCurrentLocation"
+                android:layout_width="70dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="655dp"
+                android:fontFamily="@font/alata"
+                android:gravity="center_horizontal"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:shadowRadius="8"
+                android:text="Current\nLocation"
+                android:textColor="@color/main_blue"
+                android:textStyle="bold"
+                android:translationX="5sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        </RelativeLayout>
+    </ScrollView>
 
 
     <Button
         android:id="@+id/btnRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="40dp"
-        android:text="Nearby Restaurants"
-        app:layout_constraintEnd_toStartOf="@+id/btnSupermarket"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="110dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/todo_nearby_button"
+        android:text="Eat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSupermarket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="60dp"
-        android:text="Nearby SuperMarkets"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/todo_nearby_button"
+        android:text="Shop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="250dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginLeft="100dp"
+        android:layout_width="260dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="30dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,8 +242,8 @@
         android:layout_width="280dp"
         android:layout_height="20dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="25dp"
         android:gravity="left"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +254,7 @@
         android:layout_width="280dp"
         android:layout_height="20dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="110dp"
         android:gravity="left"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +268,7 @@
         android:layout_width="280dp"
         android:layout_height="20dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="110dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -160,12 +281,13 @@
         android:layout_width="280dp"
         android:layout_height="20dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="110dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PlacePhone" />
+
 
 
 

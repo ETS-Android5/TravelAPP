@@ -17,26 +17,41 @@
         <entry key="..\:/AndroidCode/CSC8019_Team05_2021-22/app/src/main/res/layout/welcome_main.xml" value="0.2418478260869565" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.123" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/MainPage_radius.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/back_btn.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/book_box.xml" value="0.218" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/btn_selector.xml" value="0.1" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/buttom_radius.xml" value="0.1" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/confir.xml" value="0.123" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/dotted.xml" value="0.2555" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/home_button.xml" value="0.1255" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.123" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/ic_home.xml" value="0.123" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/ic_launcher_background.xml" value="0.123" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/ic_more.xml" value="0.123" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/info_contact_block.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/mainpage_radius.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/nopress.xml" value="0.115" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/onpress.xml" value="0.1015" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/radius.xml" value="0.1" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/rectangle.xml" value="0.114" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/rounded_corners.xml" value="0.123" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector.xml" value="0.1005" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_auckland.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_bamburgh.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_barnard.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/todo_button.xml" value="0.1735" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/todo_nearby_button.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/font/montserrat_bold.xml" value="0.23425925925925925" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_maps.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_payment_failed.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_things_to_do.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_things_to_doback.xml" value="0.18796296296296297" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/adapter.xml" value="0.14074074074074075" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/book_outbound.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/booking.xml" value="0.264" />
-        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/castle_layout.xml" value="0.25364583333333335" />
-        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/confirm.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/castle_layout.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/confirm.xml" value="0.2" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/fragment_multiplexing.xml" value="0.1527777777777778" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/item_layout.xml" value="0.1527777777777778" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/more_recommend.xml" value="0.1527777777777778" />
@@ -124,7 +139,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -27,6 +27,7 @@
     /*Castle Information page*/
     <color name="button_blue">#FF3B5998</color>
     <color name="button_text_blue">#FFDFF3F9</color>
+    <color name="detail_background">#FFFCFCFC</color>
 
     /*Book Outbound Journey Page*/
     <color name="back_black">#FF000000</color>

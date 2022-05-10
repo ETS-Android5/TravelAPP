@@ -8,6 +8,7 @@
  ***** Author(s):  *****
  * Harry Akitt
  * -Created 16/03/22
+ * - Main functionality and button
  * Ruipeng Jiao
  * -Formatting
  *
@@ -31,6 +32,7 @@ public class Welcome extends AppCompatActivity{
 
     private ViewPager page;
     private List<slideItems> listItems;
+    private List<slideItems> descriptionItems;
 
 
     @Override
@@ -45,10 +47,10 @@ public class Welcome extends AppCompatActivity{
 
         //create object list of castle images
         listItems = new ArrayList<>() ;
-        listItems.add(new slideItems(R.drawable.welcome_discover, "Castle\n"+"Information"));  //Discover
-        listItems.add(new slideItems(R.drawable.welcome_book, "Book Tickets"));         //Book
-        listItems.add(new slideItems(R.drawable.welcome_student, "Surrounding\n"+"Locations")); //Find Things to Do
-        listItems.add(new slideItems(R.drawable.welcome_todo, "For Newcastle\n"+"Students"));  //For Students in Newcastle
+        listItems.add(new slideItems(R.drawable.welcome_discover, "Castle\n"+"Information","Learn more about the North East's rich history"));  //Discover
+        listItems.add(new slideItems(R.drawable.welcome_book, "Book Tickets","Get your bus tickets and castle entrance, all in one place!"));         //Book
+        listItems.add(new slideItems(R.drawable.welcome_student, "Surrounding\n"+"Locations","Discover things to do nearby")); //Find Things to Do
+        listItems.add(new slideItems(R.drawable.welcome_todo, "For Newcastle\n"+"Students","Made exclusively for Newcastle University students"));  //For Students in Newcastle
 
         //set page adapter
         slideItemsAdapter itemsPager_adapter = new slideItemsAdapter(this, listItems);

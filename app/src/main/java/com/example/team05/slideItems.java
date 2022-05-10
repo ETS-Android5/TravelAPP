@@ -14,11 +14,13 @@ public class slideItems {
 
     private int image;
     private String caption;
+    private String description;
 
 
-    public slideItems(int image, String caption) {
+    public slideItems(int image, String caption,String description) {
         this.image = image;
         this.caption = caption;
+        this.description = description;
     }
 
     public int getFeatured_image() {
@@ -27,5 +29,9 @@ public class slideItems {
 
     public String getCaption() {
         return caption;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

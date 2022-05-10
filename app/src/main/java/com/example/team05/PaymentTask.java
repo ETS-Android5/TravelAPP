@@ -30,6 +30,15 @@ public class PaymentTask extends AsyncTask<String, Void, String> {
     String paymentData;
     boolean success;
     private Context context;
+    int currentTime;
+    String castleFull;
+    String DayName;
+    String searchedDate;
+    int Number;
+    Journey journeyOut;
+    Journey journeyRet;
+    String currentDate;
+    String TicketType;
 
     public PaymentTask(Context context){
         this.context=context;
