@@ -19,50 +19,56 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
-        android:text="Payment Failed."
-        android:textSize="25dp"
-        android:layout_marginTop="100dp"/>
+        android:text="Payment Failed"
+        android:textColor="@color/black"
+        android:textSize="28dp" />
 
     <RelativeLayout
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="40dp"
         android:layout_below="@id/textView6">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/fail"
-            android:layout_marginTop="50dp"/>
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+
+
+            android:background="@drawable/fail" />
 
     </RelativeLayout>
 
 
     <TextView
         android:id="@+id/reasonTV"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Sorry - No Reason Given"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
-        android:textSize="20dp"
         android:padding="20dp"
-         />
+        android:text="Sorry - No Reason Given"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/return_main"
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
+        android:background="@drawable/buttom_radius"
         android:layout_below="@id/reasonTV"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
-        android:text="OK"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:text="Try Again" />
 
 </RelativeLayout>

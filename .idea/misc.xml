@@ -39,19 +39,21 @@
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_auckland.xml" value="0.1" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_bamburgh.xml" value="0.1" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/selector_barnard.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/shape_gray_square_bg.xml" value="0.1865" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/todo_button.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/drawable/todo_nearby_button.xml" value="0.1735" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/font/montserrat_bold.xml" value="0.23425925925925925" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_maps.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_payment_failed.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_payment_success.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_things_to_do.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/activity_things_to_doback.xml" value="0.18796296296296297" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/adapter.xml" value="0.14074074074074075" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/book_outbound.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/booking.xml" value="0.264" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/castle_layout.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/confirm.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/confirm.xml" value="0.264" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/fragment_multiplexing.xml" value="0.1527777777777778" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/item_layout.xml" value="0.1527777777777778" />
         <entry key="..\:/AndroidStudioworkSpace/CSC8019_Team05_2021-22/app/src/main/res/layout/more_recommend.xml" value="0.1527777777777778" />

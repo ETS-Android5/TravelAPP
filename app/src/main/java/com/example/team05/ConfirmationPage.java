@@ -52,9 +52,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 
@@ -76,6 +79,14 @@ public class ConfirmationPage extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.textView); //castle name
         TextView tv2 = (TextView) findViewById(R.id.textView2); //outbound journey
         TextView tv3 = (TextView) findViewById(R.id.textView3); //return journey
+        TextView totalTimeD = (TextView) findViewById(R.id.totalTimeD); // change station total time
+        TextView totalTimeR = (TextView) findViewById(R.id.totalTimeR); // change station total time
+        TextView DepData = (TextView) findViewById(R.id.DepData);
+        TextView RetData = (TextView) findViewById(R.id.RetData);
+        TextView castleDirection = (TextView) findViewById(R.id.castleDirection);
+        TextView stationDirection = (TextView) findViewById(R.id.stationDirection);
+        TextView castleReturn = (TextView) findViewById(R.id.castleReturn);
+        TextView stationReturn = (TextView) findViewById(R.id.stationReturn);
         TextView tv5 = (TextView) findViewById(R.id.tv5); //ticket price for travel
         TextView tv6 = (TextView) findViewById(R.id.tv6); //castle ticket price
         TextView priceTv = (TextView) findViewById(R.id.price); //total price
@@ -106,6 +117,10 @@ public class ConfirmationPage extends AppCompatActivity {
         //journey objects
         Journey journeyOut = (Journey) incomingIntent.getSerializableExtra("OutJourney");
         Journey journeyRet = (Journey) incomingIntent.getSerializableExtra("RetJourney");
+        int legsOut = Integer.valueOf(journeyOut.getLegs());
+        int legsRet = Integer.valueOf(journeyRet.getLegs());
+        String beforeD="";
+        String beforeR="";
 
         //pop up when extra button clicked
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +174,20 @@ public class ConfirmationPage extends AppCompatActivity {
         String outArrive = setTimeFormat(journeyOut.getArrivalT());
         String retDepart = setTimeFormat(journeyRet.getDepartureT1());
         String retArrive = setTimeFormat(journeyRet.getArrivalT());
+        String totalTD = setJourneyTime(setTimeFormat(journeyOut.getArrivalT()), setTimeFormat(journeyOut.getDepartureT1()));
+        String totalTR = setJourneyTime(setTimeFormat(journeyRet.getArrivalT()), setTimeFormat(journeyRet.getDepartureT1()));
+        String castleD;
+        String stationR = journeyRet.getDepartureStation1();;
         Double priceBus = Double.parseDouble(price.substring(1));
+
+        if(legsOut == 1){
+            castleD = journeyOut.getArrivalStation1();
+        }else if(legsOut ==2){
+            castleD = journeyOut.getArrivalStation2();
+        }else{
+            castleD = journeyOut.getArrivalStation3();
+        }
+
 
         //set departure station dependant on destination
         String departure = "Eldon Square";
@@ -186,14 +214,16 @@ public class ConfirmationPage extends AppCompatActivity {
         //calculate total price
         Double totalPrice = (priceTicket+priceBus)*Number;
 
-        //set text
+        /**
+         * Set All text
+         * */
         tv7.setText("Departure: " + departure);
         if(departure.equals("Eldon Square")){
             DepartAddress.setText("Postcode :  " + "NE1 7XW");
         }else{
             DepartAddress.setText("Postcode :  " + "NE1 7PF");
         }
-        busPriceBlock.setText("Ticket Price: £ "+String.format("%.2f",priceBus));
+        busPriceBlock.setText("Ticket Price: £ "+String.format("%.2f",Number * priceBus));
 
         tv.setText(castleFull+" Castle");
         if(castleFull.equals("Alnwick")){
@@ -205,10 +235,67 @@ public class ConfirmationPage extends AppCompatActivity {
         }else{
             CastleAddress.setText("Postcode :  "+"NE69 7DF");
         }
-        castlePriceBlock.setText("Ticket Price: £ "+ String.format("%.2f",priceTicket));
+        castlePriceBlock.setText("Ticket Price: £ "+ String.format("%.2f",Number *priceTicket));
 
         tv2.setText(""+outDepart+"             "+outArrive);
-        tv3.setText(""+retDepart+"               "+retArrive);
+        tv3.setText(""+retDepart+"             "+retArrive);
+
+        //make dd/mm/yy change to format like : Mon 16 Jun
+        String[] dateString = searchedDate.split("/");
+        String day = dateString[0];
+        int [] dateInt= new int[dateString.length];
+        for(int i=0;i<dateString.length;i++){
+            dateInt[i] = Integer.parseInt(dateString[i]);
+        }
+        GregorianCalendar gre=new GregorianCalendar();
+        Date dat = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
+        gre.setTime(dat);
+
+        int weekday = gre.get(Calendar.DAY_OF_WEEK)-1; //0 IS SUNDAY
+        int month = dateInt[1]-1; //0 IS JUN
+        String [] weekShort={"Sun","Mon","Tues","Wed","Thur","Fri","Sat",};
+        String[] monthShort = {"Jun","Deb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
+        String dateFinalDep = new String(weekShort[weekday]+" "+ day+" "+monthShort[month]);
+        String dateFinalRet = new String(weekShort[weekday]+" "+ day+" "+monthShort[month]);
+
+        //set spend time and date
+        String changeType = "";
+        if(legsOut>1 && legsOut<=3){
+            changeType = "Changes";
+            totalTimeD.setText(totalTD+" "+ legsOut +" "+ changeType);
+        }else {
+            changeType = "Direct";
+            totalTimeD.setText(totalTD+" " + changeType);
+        }
+        if(legsRet>1 && legsRet<=3){
+            changeType = "Changes";
+            totalTimeR.setText(totalTR+" "+ legsRet +" "+ changeType);
+        }else {
+            changeType = "Direct";
+            totalTimeR.setText(totalTR+" " + changeType);
+        }
+        DepData.setText(dateFinalDep); //date
+        RetData.setText(dateFinalRet); //date
+
+
+        int indexD = castleD.indexOf(" ");// get first " " word
+        beforeD = castleD.substring(0,indexD); //first word
+        String afterD1 = castleD.substring(indexD + 1); //back of the first word
+        String[] stringcFirst = afterD1.split(" ");
+        String finallyD = beforeD +" "+ stringcFirst[0];
+
+        int indexR = stationR.indexOf(" ");
+        beforeR = stationR.substring(0,indexR);
+        String afterR1 = stationR.substring(indexR + 1);
+        String[] stringsFirst = afterR1.split(" ");
+        String finallyR = beforeR +" "+ stringsFirst[0];
+
+
+        castleDirection.setText(departure+" station");
+        stationDirection.setText(finallyD);
+        castleReturn.setText(finallyR);
+        stationReturn.setText(departure+" station");
+
         priceTv.setText("£ " + String.format("%.2f",totalPrice)); //price
         tv5.setText("   " + Number + " x " + TicketType + " @ £" + String.format("%.2f",priceBus));
         tv6.setText("   " + Number + " x " + "Castle Ticket" + " @ £" + String.format("%.2f",priceTicket));
@@ -216,6 +303,8 @@ public class ConfirmationPage extends AppCompatActivity {
         //Extra intents to return to previous page if back button pressed
         String DayName = incomingIntent.getStringExtra("DayName");
         String currentDate = incomingIntent.getStringExtra("currentDate");
+
+
         int currentTime = incomingIntent.getIntExtra("currentTime",0);
 
         //set pay button
@@ -273,6 +362,7 @@ public class ConfirmationPage extends AppCompatActivity {
                 intent.putExtra("searchedDate",searchedDate);
                 intent.putExtra("quantity",Number);
                 intent.putExtra("JourneyDetails", journeyOut);
+                intent.putExtra("JourneyRDetails", journeyRet);
                 intent.putExtra("currentDate",currentDate);
                 intent.putExtra("currentTime",currentTime);
                 intent.putExtra("TicketType",TicketType);

@@ -51,9 +51,10 @@ public class PaymentSuccess extends AppCompatActivity {
 
         String incomingReason = incomingIntent.getStringExtra("CustomerID");
 
-        TextView customerID = (TextView) findViewById(R.id.customerIDTV);
-        customerID.setText("Your customer ID is: "+incomingReason+".\nKeep this information safe incase you do not receive your booking confirmation!");
-
+        TextView customerIDText = (TextView) findViewById(R.id.customerIDTV);
+        TextView customerID = (TextView) findViewById(R.id.customerID);
+        customerIDText.setText("Your customer ID is: "+"\n\n\nKeep this information safe incase you do not receive your booking confirmation!");
+        customerID.setText(incomingReason);
         // set bottom nav bar
         BottomNavigationView bottomNavBar = (BottomNavigationView) findViewById(R.id.bottomNav);
         bottomNavBar.getMenu().setGroupCheckable(0,false,true);

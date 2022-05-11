@@ -52,7 +52,7 @@
                         <TextView
                             android:id="@+id/textViewDepartBackground"
                             android:layout_width="500dp"
-                            android:layout_height="150dp"
+                            android:layout_height="170dp"
                             android:layout_marginTop="0dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
@@ -63,14 +63,40 @@
                             android:textSize="22dp" />
 
                         <TextView
-                            android:id="@+id/textViewDepart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="60dp"
+                            android:id="@+id/textViewBackground"
+                            android:layout_width="500dp"
+                            android:layout_height="170dp"
+                            android:layout_below="@+id/textViewDepartBackground"
                             android:layout_marginTop="20dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
+                            android:gravity="center" />
+
+
+                        <TextView
+                            android:id="@+id/lineFirst"
+                            android:layout_width="350dp"
+                            android:layout_height="1.5dp"
+                            android:layout_below="@id/textViewDepartBackground"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="170dp"
+
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/textViewDepart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewDepartBackground"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="50dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/white"
                             android:fontFamily="@font/alata"
+                            android:stateListAnimator="@null"
                             android:text="TextView"
                             android:textColor="@color/black"
                             android:textSize="22dp" />
@@ -79,26 +105,29 @@
                             android:id="@+id/textViewDepartAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/lineFirst"
                             android:layout_marginStart="60dp"
-                            android:layout_marginTop="70dp"
+                            android:layout_marginTop="100dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
                             android:fontFamily="@font/alata"
                             android:text="Address"
                             android:textColor="@color/black"
+                            android:textIsSelectable="true"
                             android:textSize="18dp" />
 
                         <TextView
                             android:id="@+id/busPriceBlock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/lineFirst"
                             android:layout_alignParentRight="true"
-                            android:layout_marginTop="120dp"
+                            android:layout_marginTop="150dp"
                             android:layout_marginRight="20dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
                             android:fontFamily="@font/alata"
-                            android:text="Ticket Price:"
+                            android:text="Full Ticket Price:"
                             android:textColor="@color/black"
                             android:textSize="12dp" />
 
@@ -107,43 +136,22 @@
                             android:id="@+id/imageViewStation"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:layout_below="@+id/lineFirst"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
+
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="50dp"
                             app:srcCompat="@drawable/confor_station_pic" />
 
+<!---->
 
-                        <TextView
-                            android:id="@+id/lineFirst"
-                            android:layout_width="350dp"
-                            android:layout_height="1.5dp"
-                            android:layout_below="@id/textViewDepartBackground"
-                            android:layout_centerHorizontal="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="150dp"
-                            android:background="@drawable/dotted"
-                            android:elevation="5dp"
-                            android:stateListAnimator="@null"
-                            android:text="TextView" />
-
-
-                        <TextView
-                            android:id="@+id/textViewBackground"
-                            android:layout_width="500dp"
-                            android:layout_height="150dp"
-                            android:layout_below="@+id/textViewDepartBackground"
-                            android:background="@drawable/confir"
-                            android:backgroundTint="@color/white"
-                            android:gravity="center" />
 
 
                         <TextView
                             android:id="@+id/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/textViewDepartBackground"
-                            android:layout_marginStart="60dp"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
@@ -157,9 +165,9 @@
                             android:id="@+id/textViewCastleAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/lineFirst"
                             android:layout_marginStart="60dp"
                             android:layout_marginTop="70dp"
+                            android:textIsSelectable="true"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
                             android:fontFamily="@font/alata"
@@ -172,8 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_below="@+id/lineFirst"
-                            android:layout_marginTop="120dp"
+                            android:layout_marginTop="130dp"
                             android:layout_marginRight="20dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/white"
@@ -187,6 +194,7 @@
                             android:id="@+id/imageViewCastletic"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:layout_alignParentTop="true"
                             android:layout_below="@+id/lineFirst"
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="20dp"
@@ -228,7 +236,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/lineSecond"
-                                    android:layout_marginTop="50dp"
+                                    android:layout_marginTop="40dp"
                                     android:layout_weight="100"
                                     android:background="@drawable/confir"
                                     android:backgroundTint="@color/back_white"
@@ -236,7 +244,7 @@
                                     android:gravity="center"
                                     android:text="TextView"
                                     android:textColor="@color/black"
-                                    android:textSize="28dp" />
+                                    android:textSize="32dp" />
 
 
                         </LinearLayout>
@@ -247,24 +255,78 @@
                             android:layout_height="30dp"
                             android:layout_below="@+id/lineSecond"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="60dp"
+                            android:layout_marginTop="55dp"
                             app:srcCompat="@drawable/follow_right" />
 
                         <TextView
-                            android:id="@+id/textViewStationOut"
+                            android:id="@+id/DepData"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/lineSecond"
-                            android:layout_marginTop="100dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_weight="100"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="15dp"
                             android:background="@drawable/confir"
                             android:backgroundTint="@color/back_white"
                             android:fontFamily="@font/alata"
                             android:gravity="center"
                             android:text="TextView"
                             android:textColor="@color/black"
-                            android:textSize="28dp" />
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/totalTimeD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineSecond"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="85dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/castleDirection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineSecond"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="110dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/stationDirection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineSecond"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="110dp"
+                            android:layout_marginEnd="50dp"
+                            android:layout_marginBottom="60dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="12dp" />
+
+
+
 
 
                         <Button
@@ -284,7 +346,7 @@
                             android:layout_below="@+id/lineSecond"
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="20dp"
                             app:srcCompat="@drawable/confor_outbound_pic" />
 
                         <TextView
@@ -322,16 +384,15 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/lineThird"
-                                    android:layout_marginTop="50dp"
+                                    android:layout_marginTop="40dp"
                                     android:layout_weight="100"
                                     android:background="@drawable/confir"
                                     android:backgroundTint="@color/white"
                                     android:fontFamily="@font/alata"
-
                                     android:gravity="center_horizontal"
                                     android:text="TextView"
                                     android:textColor="@color/black"
-                                    android:textSize="28dp" />
+                                    android:textSize="32dp" />
 
 
                         </LinearLayout>
@@ -342,17 +403,86 @@
                             android:layout_height="30dp"
                             android:layout_below="@+id/lineThird"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="60dp"
+                            android:layout_marginTop="55dp"
                             app:srcCompat="@drawable/follow_right" />
+
+                        <TextView
+                            android:id="@+id/RetData"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineThird"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/totalTimeR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineThird"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="85dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/castleReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineThird"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginTop="110dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/stationReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lineThird"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="110dp"
+                            android:layout_marginEnd="50dp"
+                            android:layout_marginBottom="60dp"
+                            android:background="@drawable/confir"
+                            android:backgroundTint="@color/back_white"
+                            android:fontFamily="@font/alata"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textIsSelectable="true"
+                            android:textSize="12dp" />
+
+
 
                         <Button
                             android:id="@+id/btn2"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_alignParentRight="true"
                             android:layout_below="@+id/lineThird"
-                            android:layout_marginRight="20dp"
+                            android:layout_alignParentRight="true"
                             android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
                             android:background="@drawable/ic_baseline_info_24" />
 
                         <ImageView
@@ -362,7 +492,7 @@
                             android:layout_below="@+id/lineThird"
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="20dp"
                             app:srcCompat="@drawable/confor_return_pic" />
 
                         <RelativeLayout
@@ -441,7 +571,8 @@
                             android:layout_marginTop="70dp"
                             android:background="@drawable/buttom_radius"
                             android:text="Pay Now"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
 
 

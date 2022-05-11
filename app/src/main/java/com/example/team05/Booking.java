@@ -37,6 +37,8 @@
 
 package com.example.team05;
 
+import static android.icu.text.Normalizer.YES;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -208,13 +210,13 @@ public class Booking extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String castleImgName=adapterView.getItemAtPosition(i).toString();
                 if(castleImgName.equals("Alnwick Castle")){
-                    imageview.setImageResource(R.drawable.home_alnwick);
+                    imageview.setImageResource(R.drawable.book_alnwick);
                 }else if(castleImgName.equals("Auckland Castle")){
-                    imageview.setImageResource(R.drawable.home_auckland);
+                    imageview.setImageResource(R.drawable.book_auckland);
                 }else if(castleImgName.equals("Bamburgh Castle")){
-                    imageview.setImageResource(R.drawable.home_bamburgh);
+                    imageview.setImageResource(R.drawable.book_bamburgh);
                 }else if(castleImgName.equals("Barnard Castle")){
-                    imageview.setImageResource(R.drawable.home_barnard);
+                    imageview.setImageResource(R.drawable.book_barnard);
                 }else{
                     return;
                 }
@@ -328,7 +330,7 @@ public class Booking extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Error - Date is in the past.");
+        alert.setTitle("Sorry - Date is in the past.");
         alert.show();
 
     }
@@ -345,7 +347,7 @@ public class Booking extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Error - Castle closed.");
+        alert.setTitle("Sorry - Castle closed today. Please choose another day.");
         alert.show();
     }
 }
