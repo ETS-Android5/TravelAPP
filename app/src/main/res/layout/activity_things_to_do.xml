@@ -13,6 +13,7 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemIconTint="@color/sele_nav_color"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +204,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/todo_nearby_button"
         android:text="Eat"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,7 +215,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/todo_nearby_button"
         android:text="Shop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -224,11 +225,10 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="260dp"
-        android:layout_height="350dp"
+        android:layout_height="430dp"
         android:layout_marginTop="30dp"
         android:layout_marginStart="110dp"
         android:layout_marginEnd="30dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -237,15 +237,20 @@
 
 
 
+
     <TextView
         android:id="@+id/PlaceName"
-        android:layout_width="280dp"
-        android:layout_height="20dp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="90dp"
         android:layout_marginTop="25dp"
-        android:gravity="left"
+        android:gravity="center_horizontal"
         android:text=""
+        android:fontFamily="@font/abhaya_libre"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map" />
 
@@ -255,21 +260,31 @@
         android:layout_height="20dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="60dp"
         android:gravity="left"
         android:text=""
+        android:fontFamily="@font/abhaya_libre"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PlaceName"
+        app:layout_constraintTop_toBottomOf="@+id/map"
         android:autoLink="web"/>
 
     <TextView
         android:id="@+id/PlacePhone"
-        android:layout_width="280dp"
-        android:layout_height="20dp"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="10dp"
         android:text=""
+        android:fontFamily="@font/abhaya_libre"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -278,15 +293,18 @@
 
     <TextView
         android:id="@+id/PlaceRating"
-        android:layout_width="280dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="110dp"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
         android:text=""
+        android:gravity="right"
+        android:fontFamily="@font/abhaya_libre"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PlacePhone" />
+        app:layout_constraintTop_toBottomOf="@+id/PlaceUrl" />
 
 
 

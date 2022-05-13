@@ -6,19 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:backgroundTint="#e3e3e3"
+    android:backgroundTint="#CCE4F3"
     android:background="@drawable/radius">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoxTop"
         android:text="Journey Details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         android:textSize="10pt"
         tools:ignore="MissingConstraints"
-        android:id="@+id/title"></TextView>
+        android:id="@+id/title"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:id="@+id/leg1_start"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_start"
         android:id="@+id/leg1_operator"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_operator"
         android:id="@+id/leg1_time"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_time"
         android:id="@+id/leg1_end"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_end"
         android:id="@+id/splitter"
-        android:layout_marginTop="5dp"></TextView>
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,7 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splitter"
         android:id="@+id/leg2_info"
-        android:layout_marginTop="5dp"></TextView>
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg2_info"
         android:id="@+id/leg2_operator"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg2_operator"
         android:id="@+id/leg2_time"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -108,7 +109,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg2_time"
         android:id="@+id/leg2_end"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg2_end"
         android:id="@+id/splitter2"
-        android:layout_marginTop="5dp"></TextView>
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splitter2"
         android:id="@+id/leg3_info"
-        android:layout_marginTop="5dp"></TextView>
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -138,7 +139,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg3_info"
         android:id="@+id/leg3_operator"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -148,7 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg3_operator"
         android:id="@+id/leg3_time"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -158,7 +159,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg3_time"
         android:id="@+id/leg3_end"
-        android:layout_marginTop="40dp"></TextView>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -168,7 +169,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg3_end"
         android:id="@+id/total_time"
-        android:layout_marginTop="10dp"></TextView>
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/return_btn"
@@ -180,6 +181,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_time"
         android:textColor="@color/white"
-        android:background="@drawable/buttom_radius"></Button>
+        android:background="@drawable/buttom_radius"/>
+
+    <TextView
+        android:id="@+id/textViewBoxTop"
+        android:layout_width="10dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn"
+        android:text=""
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewBox"
+        android:layout_width="10dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn"
+        android:text=""
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

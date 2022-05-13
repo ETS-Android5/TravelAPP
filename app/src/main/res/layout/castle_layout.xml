@@ -13,10 +13,11 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:background="@color/white"
-        android:layout_width="500dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
+        app:itemIconTint="@color/sele_nav_color"
         app:menu="@menu/bottom_menu" />
 
     <Button
@@ -55,14 +56,14 @@
                 android:id="@+id/castleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:translationX="20dp"
                 android:layout_below="@id/topImage"
                 android:layout_alignStart="@id/topImage"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Castle Name"
                 android:textColor="@color/black"
-                android:textSize="12pt" />
+                android:textSize="12pt"
+                android:translationX="20dp" />
 
             <View
                 android:id="@+id/viewline"
@@ -112,15 +113,17 @@
                 android:textColor="@color/black"
                 android:textSize="10pt" />
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout
 
                 android:id="@+id/table"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/subtitle1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -128,8 +131,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-
-                    android:background="@color/brown">
+                    android:background="@color/brown"
+                    android:orientation="horizontal">
 
                     <TableRow
                         android:layout_width="fill_parent"
@@ -146,39 +149,48 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_margin="1dp"
-                    android:background="#000000">
+                    android:background="#000000"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="110dp"
+
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_column="0"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
+
+                        android:paddingLeft="25dp"
+                        android:paddingRight="25dp"
                         android:text=" Day "
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="110dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:paddingLeft="25dp"
+                        android:paddingRight="25dp"
                         android:text="Opening"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="110dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:paddingLeft="19dp"
+                        android:paddingRight="19dp"
                         android:text="Closing"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textSize="9pt"
@@ -229,7 +241,10 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
                     android:background="#000000">
 
                     <TextView
@@ -492,18 +507,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/subtitle2"
-                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="8pt"/>
+                android:textSize="8pt" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/price">
+                android:layout_below="@+id/price"
+                android:layout_marginTop="20dp">
 
                 <Button
                     android:id="@+id/BookCastle"
@@ -576,9 +591,9 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_below="@+id/viewlineBlack1"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_infor_location" />
 
 
@@ -615,9 +630,9 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_below="@+id/textViewCastleAddressInfo"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_infor_phone" />
 
 
@@ -642,10 +657,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="10dp"
-                android:textIsSelectable="true"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="Phone is"
                 android:textColor="@color/black"
+                android:textIsSelectable="true"
                 android:textSize="16dp" />
 
             <ImageView
@@ -653,9 +668,9 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_below="@+id/textViewCastlePhoneNumber"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_info_email" />
 
 
@@ -680,10 +695,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="10dp"
-                android:textIsSelectable="true"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="Email is"
                 android:textColor="@color/black"
+                android:textIsSelectable="true"
                 android:textSize="16dp" />
 
             <TextView
@@ -716,9 +731,9 @@
                 android:layout_below="@+id/viewlineBlack2"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="50dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="Email is"
                 android:textColor="@color/black"
@@ -752,9 +767,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/viewlineBlack3"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_infor_wifi" />
 
             <TextView
@@ -775,9 +790,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/viewlineBlack3"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="120dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_info_car" />
 
             <TextView
@@ -798,9 +813,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/viewlineBlack3"
-                android:layout_marginTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="210dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/castle_infor_accessible" />
 
             <TextView

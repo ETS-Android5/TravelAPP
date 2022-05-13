@@ -4,11 +4,14 @@
     <item android:title="Home"
         android:icon="@drawable/ic_home"
         android:id="@+id/mainActivityNav"
+        android:iconTint="@color/sele_nav_color"
         />
     <item android:title="Book"
         android:icon="@drawable/ic_book"
-        android:id="@+id/bookingNav"/>
+        android:id="@+id/bookingNav"
+        android:iconTint="@color/sele_nav_color" />
     <item android:title="More"
         android:icon="@drawable/ic_more"
-        android:id="@+id/moreNav"/>
+        android:id="@+id/moreNav"
+        android:iconTint="@color/sele_nav_color" />
 </menu>

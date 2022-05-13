@@ -7,18 +7,19 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:textColor="@color/black"
-    android:backgroundTint="#e3e3e3"
+    android:backgroundTint="#CCE4F3"
     android:background="@drawable/radius">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoxTop"
         android:text="Journey Details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="10pt"
         tools:ignore="MissingConstraints"
-        android:id="@+id/title"></TextView>
+        android:id="@+id/title"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:id="@+id/leg1_operator"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_operator"
         android:id="@+id/leg1_start"
-        android:layout_margin="5dp"></TextView>
+        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_start"
         android:id="@+id/leg1_time"
-        android:layout_marginTop="50dp"></TextView>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_time"
         android:id="@+id/leg1_end"
-        android:layout_marginTop="50dp"></TextView>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,19 +69,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leg1_end"
         android:id="@+id/total_time"
-        android:layout_marginTop="10dp"></TextView>
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/return_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Return"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_time"
         tools:ignore="MissingConstraints"
         android:textColor="@color/white"
-        android:background="@drawable/buttom_radius"></Button>
+        android:background="@drawable/buttom_radius"/>
+
+    <TextView
+        android:id="@+id/textViewBoxTop"
+        android:layout_width="10dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn"
+        android:text=""
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewBox"
+        android:layout_width="10dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/return_btn"
+        android:text=""
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

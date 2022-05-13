@@ -83,7 +83,6 @@
             android:name=".ConfirmationPage"
             android:label="Confirmation"
             android:parentActivityName=".BookReturn" />
-        
     </application>
 
 </manifest>

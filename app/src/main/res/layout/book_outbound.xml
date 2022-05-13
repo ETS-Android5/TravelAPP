@@ -9,6 +9,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemIconTint="@color/sele_nav_color"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:menu="@menu/bottom_menu"
@@ -19,29 +20,36 @@
         android:id="@+id/back_btn"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/back_btn"
-        android:src="@drawable/back_btn"></Button>
+        android:src="@drawable/back_btn" />
 
     <TextView
         android:id="@+id/book_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/alata"
         android:text="Title"
         android:textColor="@color/black"
-        android:textSize="40dp"></TextView>
+        android:textSize="40dp" />
 
     <ListView
         android:id="@+id/lv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/book_title"
-        android:layout_marginStart="5dp"
+
+        android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="80dp"
         android:divider="#F4F9FA"
-        android:dividerHeight="5.0sp" />
+        android:dividerHeight="15.0sp"
+        android:minHeight="70dp"
+        android:scrollbars="none" />
 
 </RelativeLayout>
 

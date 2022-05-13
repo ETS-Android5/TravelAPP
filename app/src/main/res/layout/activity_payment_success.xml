@@ -10,8 +10,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="500dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/sele_nav_color"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:menu="@menu/bottom_menu" />

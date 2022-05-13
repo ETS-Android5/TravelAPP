@@ -156,8 +156,9 @@ public class Booking extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(Booking.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        R.style.MyDatePickerDialogTheme,
                         mDateSetListener, year, month, day);
+                dialog.getWindow().setDimAmount(0.5f);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }

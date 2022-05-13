@@ -612,15 +612,15 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
         }
 
         if(placePhoneNo.equals("null") || placePhoneNo==null){
-            weakTVRefphone.get().setText("Phone Number not available");
+            weakTVRefphone.get().setText("Not available");
         }else{
             weakTVRefphone.get().setText(placePhoneNo);
         }
 
         if(placeRating.equals("null") || placeRating==null){
-            weakTVRefRating.get().setText("Rating not available");
+            weakTVRefRating.get().setText("Not available");
         }else{
-            weakTVRefRating.get().setText("Rating: "+placeRating);
+            weakTVRefRating.get().setText("Rating:   "+placeRating);
         }
 
 

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="100"
     android:background="@drawable/rectangle"
-    android:backgroundTint="@color/white"
-    android:layout_margin="20dp">
+    android:backgroundTint="@color/timetable_blue"
+    android:layout_margin="30dp">
 
 <!--    <TextView-->
 <!--        android:layout_width="match_parent"-->
@@ -20,7 +21,7 @@
 <!--        android:text="Text1"/>-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:orientation="vertical"
         android:layout_weight="40"
         android:layout_marginLeft="10dp"
@@ -29,24 +30,34 @@
         <TextView
             android:id="@+id/tv1"
             android:layout_width="match_parent"
+            android:fontFamily="@font/alata"
             android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
             android:gravity="center"
             android:text="Text1"
+            android:textColor="@color/black"
             android:textAlignment="viewStart"
-            android:textSize="20sp" />
+            android:textSize="26sp"
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/tv2"
+            android:textColor="@color/black"
+            android:fontFamily="@font/alata"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="30dp"
             android:gravity="center"
             android:text="Text2"
+            tools:ignore="RtlCompat"
             android:textAlignment="textStart" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:orientation="vertical"
         android:layout_weight="60"
         android:layout_marginRight="10dp"
@@ -54,18 +65,26 @@
 
         <TextView
             android:id="@+id/tv3"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
+            android:fontFamily="@font/alata"
             android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
             android:gravity="center"
             android:text="Text3"
+            tools:ignore="RtlCompat"
             android:textAlignment="viewEnd" />
 
         <TextView
             android:id="@+id/tv4"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:fontFamily="@font/alata"
+            android:layout_marginTop="5dp"
+            android:layout_height="25dp"
             android:gravity="center"
             android:text="Text4"
+            tools:ignore="RtlCompat"
             android:textAlignment="textEnd" />
     </LinearLayout>
 
