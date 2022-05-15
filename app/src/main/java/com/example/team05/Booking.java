@@ -211,12 +211,16 @@ public class Booking extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String castleImgName=adapterView.getItemAtPosition(i).toString();
                 if(castleImgName.equals("Alnwick Castle")){
+                    //https://www.alnwickcastle.com/blog/10-fun-things-to-do-north-east
                     imageview.setImageResource(R.drawable.book_alnwick);
                 }else if(castleImgName.equals("Auckland Castle")){
+                    //https://www.thisisdurham.com/things-to-do/the-auckland-project-p22561
                     imageview.setImageResource(R.drawable.book_auckland);
                 }else if(castleImgName.equals("Bamburgh Castle")){
+                    //https://wall.alphacoders.com/big.php?i=1114403
                     imageview.setImageResource(R.drawable.book_bamburgh);
                 }else if(castleImgName.equals("Barnard Castle")){
+                    //https://www.coolplaces.co.uk/places/uk/england/county-durham/durham/9434-barnard-castle
                     imageview.setImageResource(R.drawable.book_barnard);
                 }else{
                     return;

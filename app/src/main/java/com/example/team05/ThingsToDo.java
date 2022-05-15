@@ -96,13 +96,6 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
     SupportMapFragment mapFragment;
     public static GoogleMap mMap;
 
-    Spinner mySpinner;
-
-    //Defines list view
-//    ScrollView sv;
-
-    static String markerInfo;
-
     public static String placeName;
     public static String placeUrl;
     public static String placePhoneNo;
@@ -306,6 +299,14 @@ public class ThingsToDo extends AppCompatActivity implements GoogleApiClient.Con
             LatLng Current_Position  = new LatLng(latitude,longitude);
             Log.d("Test","Latitude = "+latitude+" Longitude = "+longitude);
             mMap.addMarker(new MarkerOptions().position(Current_Position).title("Current Position"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
+            stopLocationUpdates();
+        }else{
+            latitude = 55.41571066816451;
+            longitude = -1.7058452995980735;
+            LatLng Current_Position  = new LatLng(latitude,longitude);
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(Current_Position).title("Alnwick Castle"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(Current_Position));
             stopLocationUpdates();
         }

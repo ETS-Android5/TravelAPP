@@ -122,6 +122,7 @@ public class CastleScreen3 extends AppCompatActivity implements OnMapReadyCallba
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
+        //https://www.coolplaces.co.uk/places/uk/england/county-durham/durham/9434-barnard-castle
         int imageResource = getResources().getIdentifier("@drawable/barnard_info_castle", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
 

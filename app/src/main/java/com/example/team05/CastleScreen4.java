@@ -123,6 +123,7 @@ public class CastleScreen4 extends AppCompatActivity implements OnMapReadyCallba
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
+        //https://wall.alphacoders.com/big.php?i=1114403
         int imageResource = getResources().getIdentifier("@drawable/bamburgh_castle", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
 

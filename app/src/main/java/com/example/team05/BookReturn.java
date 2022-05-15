@@ -63,6 +63,11 @@ public class BookReturn extends AppCompatActivity {
     public String dayName;
     public String castleNameShortened;
 
+    String searchedDate;
+    String currentDate;
+    int currentTime;
+    String quantity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,16 +126,16 @@ public class BookReturn extends AppCompatActivity {
         //day and castle intents from search
         dayName = incomingIntent.getStringExtra("DayName");
         castleNameShortened = incomingIntent.getStringExtra("Castle");
-        String searchedDate = incomingIntent.getStringExtra("searchedDate");
-        String currentDate = incomingIntent.getStringExtra("currentDate");
-        int currentTime = incomingIntent.getIntExtra("currentTime",0);
+        searchedDate = incomingIntent.getStringExtra("searchedDate");
+        currentDate = incomingIntent.getStringExtra("currentDate");
+        currentTime = incomingIntent.getIntExtra("currentTime",0);
         String DayName = incomingIntent.getStringExtra("DayName");
         String TicketType = incomingIntent.getStringExtra("TicketType");
 
 
         //get Journey object intent
         Journey journeyOut = (Journey )incomingIntent.getSerializableExtra("JourneyDetails");
-        String quantity = incomingIntent.getStringExtra("quantity");
+        quantity = incomingIntent.getStringExtra("quantity");
 
         //set back button
         Button back_btn = (Button) findViewById(R.id.back_btn);
@@ -154,6 +159,10 @@ public class BookReturn extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+
+                    if (task.getResult().isEmpty()) {
+                        displayError();
+                    }
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         lv.setAdapter(adapter);
 
@@ -358,6 +367,30 @@ public class BookReturn extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(BookReturn.this, Booking.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    //error for no journeys
+    public void displayError() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        Log.d(TAG,"Called123");
+        alertDialogBuilder.setMessage("No further journeys on this day (allowing for 2 hours at the castle). Please select an earlier Outbound journey.");
+        alertDialogBuilder.setTitle("Error - No Journeys");
+        alertDialogBuilder.setNegativeButton("return", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(BookReturn.this, BookOutbound.class);
+                intent.putExtra("Castle", (castleNameShortened + " Castle"));
+                intent.putExtra("DayName",dayName);
+                intent.putExtra("CurrentTime",currentTime);
+                intent.putExtra("currentDate", currentDate);
+                intent.putExtra("selectedDate", searchedDate);
+                intent.putExtra("quantity",quantity);
                 startActivity(intent);
             }
         });

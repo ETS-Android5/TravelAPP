@@ -128,6 +128,7 @@ public class CastleScreen1 extends AppCompatActivity implements OnMapReadyCallba
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
+        //https://www.alnwickcastle.com/blog/10-fun-things-to-do-north-east
         int imageResource = getResources().getIdentifier("@drawable/alnwick_castle", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
 

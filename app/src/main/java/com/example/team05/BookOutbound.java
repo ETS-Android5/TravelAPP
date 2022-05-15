@@ -29,6 +29,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -133,7 +134,7 @@ public class BookOutbound extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.lv1);
 
         //create array list
-        ArrayList<Journey> list = new ArrayList<Journey>(0);
+        ArrayList<Journey> list = new ArrayList<Journey>();
 
         // List Adapter for format
         JourneyAdapter adapter = new JourneyAdapter(this, R.layout.adapter, list);
@@ -154,11 +155,20 @@ public class BookOutbound extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+
+                    if (task.getResult().isEmpty()) {
+                        displayError();
+                    }
+
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         lv.setAdapter(adapter);
 
+
+
+
                         //legs as int for required logic
                         int legsNumber = Integer.parseInt(String.valueOf(document.getData().get("Legs")));
+
 
                         //return values from database as Strings, to be passed to intent
                         String LegsInfo = "Legs: " + String.valueOf(document.getData().get("Legs"));
@@ -184,7 +194,6 @@ public class BookOutbound extends AppCompatActivity {
                         String arrivalStation3 = String.valueOf(document.getData().get("Leg3ArrivalStation"));
                         String ticketType = String.valueOf(document.getData().get("TicketType"));
 
-
                         //Creates journey objects to be used in list
                         if (legsNumber == 1) {
                             list.add(new Journey(departureT1, arrivalT1, price, legs, op1, bus1, departureStation, arrivalStation));
@@ -195,6 +204,7 @@ public class BookOutbound extends AppCompatActivity {
                         if (legsNumber == 3) {
                             list.add(new Journey(departureT1, arrivalT1, departureT2, arrivalT2, departureT3, arrivalT3, price, legs, op1, bus1, op2, bus2, op3, bus3, departureStation, arrivalStation, departureStation2, arrivalStation2, departureStation3, arrivalStation3));
                         }
+
 
                         //listener for when user clicks on journey
                         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -298,10 +308,6 @@ public class BookOutbound extends AppCompatActivity {
                                 });
                             }
                         });
-                        // add error if no search results
-                        if (list.size()==0) {
-                            displayError();
-                        }
 
                     //on unsuccessful pull
                 }} else {
@@ -328,6 +334,7 @@ public class BookOutbound extends AppCompatActivity {
     //error for no journeys
     public void displayError() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        Log.d(TAG,"Called123");
         alertDialogBuilder.setMessage("No further journeys on this day. Please select a different castle or day.");
         alertDialogBuilder.setTitle("Error - No Journeys");
         alertDialogBuilder.setNegativeButton("return", new DialogInterface.OnClickListener() {

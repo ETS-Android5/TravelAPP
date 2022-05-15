@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //set image button image and intent
         ImageButton iTopImage = (ImageButton) findViewById(R.id.topImage);
+        //https://www.alnwickcastle.com/blog/10-fun-things-to-do-north-east
         int imageResource = getResources().getIdentifier("@drawable/home_alnwick", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
         iTopImage.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //set second image button image and intent
         ImageButton iSecondImage = (ImageButton) findViewById(R.id.secondImage);
+        //https://www.thisisdurham.com/things-to-do/the-auckland-project-p22561
         int imageResource2 = getResources().getIdentifier("@drawable/home_auckland", null, this.getPackageName());
         iSecondImage.setImageResource(imageResource2);
         iSecondImage.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //set third image button image and intent
         ImageButton iThirdImage = (ImageButton) findViewById(R.id.thirdImage);
+        //https://www.coolplaces.co.uk/places/uk/england/county-durham/durham/9434-barnard-castle
         int imageResource3 = getResources().getIdentifier("@drawable/home_barnard", null, this.getPackageName());
         iThirdImage.setImageResource(imageResource3);
         iThirdImage.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //set fourth image button image and intent
         ImageButton iFourthImage = (ImageButton) findViewById(R.id.fourthImage);
+        //https://wall.alphacoders.com/big.php?i=1114403
         int imageResource4 = getResources().getIdentifier("@drawable/home_bamburgh", null, this.getPackageName());
         iFourthImage.setImageResource(imageResource4);
         iFourthImage.setOnClickListener(new View.OnClickListener() {

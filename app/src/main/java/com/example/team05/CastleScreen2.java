@@ -122,6 +122,7 @@ public class CastleScreen2 extends AppCompatActivity implements OnMapReadyCallba
 
         // set image
         ImageView iTopImage = (ImageView) findViewById(R.id.topImage);
+        //https://www.thisisdurham.com/things-to-do/the-auckland-project-p22561
         int imageResource = getResources().getIdentifier("@drawable/auckland_castle", null, this.getPackageName());
         iTopImage.setImageResource(imageResource);
 
